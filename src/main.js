@@ -1,6 +1,10 @@
 import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import App from './app/containers/App';
 
 import BootState from './states/Boot'
 import SplashState from './states/Splash'
@@ -27,7 +31,7 @@ class Game extends Phaser.Game {
   }
 }
 
-window.game = new Game()
+// window.game = new Game()
 
 if (window.cordova) {
   var app = {
@@ -55,3 +59,8 @@ if (window.cordova) {
 
   app.initialize()
 }
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+);
