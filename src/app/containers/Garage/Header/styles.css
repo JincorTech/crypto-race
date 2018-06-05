@@ -1,4 +1,15 @@
 .container {
   height: 50px;
+  color: #fff;
   background-color: #090910;
+}
+
+.linksBlock {
+  margin: auto;
+  width: 315px;
+  line-height: 3;
+}
+
+.link {
+  margin: 0 10px;
 }
