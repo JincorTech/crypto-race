@@ -1,13 +1,11 @@
 import * as React from 'react';
 import s from './styles.css';
 
-import ShipSettings from '../ShipSettings';
-
-export default class Layout extends React.Component {
+export default class User extends React.Component {
   render() {
     return (
       <div className={s.container}>
-        <ShipSettings />
+        User dummy
       </div>
     )
   }
