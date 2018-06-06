@@ -7,7 +7,9 @@ export default class Layout extends React.Component {
   render() {
     return (
       <div className={s.container}>
-        <ShipSettings />
+        <div className={s.settingsContainer}>
+          <ShipSettings />
+        </div>
       </div>
     )
   }

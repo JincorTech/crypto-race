@@ -1,3 +1,15 @@
 .container {
-  
+  margin: auto;
+  margin-top: 20px;
+  position: absolute;
+  width: 600px;
+}
+
+.avatar {
+  width: 55px;
+  height: 55px;
+}
+
+.avatarImage {
+  width: 100%;
 }
