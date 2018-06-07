@@ -13,3 +13,8 @@
 .link {
   margin: 0 10px;
 }
+
+.link:hover {
+  cursor: pointer;
+  color: #39ef99;
+}
