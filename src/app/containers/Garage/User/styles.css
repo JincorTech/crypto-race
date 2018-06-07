@@ -85,3 +85,11 @@
   cursor: pointer;
   background-color: #f67b80;
 }
+
+.balanceCaption {
+  color: #03ebec;
+}
+
+.balanceEth {
+  color: #39ef99;
+}

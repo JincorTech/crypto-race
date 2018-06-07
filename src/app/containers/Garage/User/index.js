@@ -21,7 +21,7 @@ export default class User extends React.Component {
             </div>
           </div>
           <div className={s.balance}>
-            <span>RACES: 10 / 30 (40) | BALANCE: 100 ETH 000,1 BTC</span>
+            <span><span className={s.balanceCaption}>RACES: </span>10 / 30 (40)<span className={s.balanceCaption}> | BALANCE: </span><span className={s.balanceEth}>100 ETH</span> 000,1 BTC</span>
           </div>
           <div className={s.buttons}>
             <div className={s.addButton}>+ADD</div>
