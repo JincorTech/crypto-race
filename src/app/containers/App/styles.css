@@ -1,7 +1,3 @@
-.caption {
-  color: red;
-}
-
 .container {
-  border: 1px solid red;
+  font-family: 'Roboto', sans-serif;
 }

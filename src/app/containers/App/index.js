@@ -8,7 +8,9 @@ import Garage from '../Garage';
 export default class App extends React.Component {
   render() {
     return (
-      <Garage />
+      <div className={s.container}>
+        <Garage />
+      </div>
     )
   }
 }
