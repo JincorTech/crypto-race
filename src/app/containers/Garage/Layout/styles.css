@@ -3,7 +3,8 @@
   background-color: #11111e;
 }
 
-.settingsContainer {
+.userContainer {
+  position: relative;
   margin: auto;
-  width: 600px;
+  width: 435px;
 }
