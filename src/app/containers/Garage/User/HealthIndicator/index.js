@@ -8,8 +8,8 @@ export default class HealthIndicator extends React.Component {
   render() {
     return (
       <div className={s.container}>
-        {['','','',''].map(() => <img className={s.item} src={ActiveItemPath} />)}
-        {['','','',''].map(() => <img className={s.item} src={InactiveItemPath} />)}
+        {[0,1,2,3].map((key) => <img key={key} className={s.item} src={ActiveItemPath} />)}
+        {[0,1,2,3].map((key) => <img key={key} className={s.item} src={InactiveItemPath} />)}
       </div>
     )
   }
