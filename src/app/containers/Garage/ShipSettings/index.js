@@ -3,6 +3,7 @@ import s from './styles.css';
 
 import Indicator from 'components/Indicator';
 import ColorPicker from './ColorPicker';
+import UpgradesPicker from './UpgradesPicker';
 
 const CapacityIcon = '/assets/images/ship_settings/capacity.png';
 const PumpIcon = '/assets/images/ship_settings/pump.png';
@@ -30,7 +31,7 @@ export default class ShipSettings extends React.Component {
               <span className={s.indicatorCaption}>PUMP LVL</span>
             </div>
             <div className={s.value}>
-              <Indicator level={3} length={13} color="#35baeb" />
+              <Indicator level={8} length={13} color="#35baeb" />
               <span className={s.indicatorLevel}>80</span>
             </div>
           </div>
@@ -40,11 +41,12 @@ export default class ShipSettings extends React.Component {
               <span className={s.indicatorCaption}>PRICE</span>
             </div>
             <div className={s.value}>
-              <Indicator level={3} length={13} color="#ffc50a" />
+              <Indicator level={4} length={13} color="#ffc50a" />
               <span className={s.indicatorLevel}>30</span>
             </div>
           </div>
           <ColorPicker />
+          <UpgradesPicker />
         </div>
         <div className={s.column}>
           <div className={s.caption}>YOUR SHIP</div>
