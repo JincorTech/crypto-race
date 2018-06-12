@@ -9,7 +9,7 @@ export default class ShipSettings extends React.Component {
       <div className={s.container}>
         <div className={s.column}>
           <div className={s.caption}>TUNING</div>
-          <Indicator />
+          <Indicator level={3} length={16} color="#39ef99"/>
         </div>
         <div className={s.column}>
           <div className={s.caption}>YOUR SHIP</div>
