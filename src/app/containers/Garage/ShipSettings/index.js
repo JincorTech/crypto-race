@@ -10,6 +10,7 @@ import ShipCarousel from './ShipCarousel';
 const CapacityIcon = '/assets/images/ship_settings/capacity.png';
 const PumpIcon = '/assets/images/ship_settings/pump.png';
 const PriceIcon = '/assets/images/ship_settings/price.png';
+const ShopShip = '/assets/images/shop/ship.png';
 
 export default class ShipSettings extends React.Component {
   render() {
@@ -56,6 +57,9 @@ export default class ShipSettings extends React.Component {
         </div>
         <div className={s.column}>
           <div className={s.caption}>SHOP</div>
+          <div className={s.shopShipCaption}>TURBORACER 30000</div>
+          <img className={s.shopShip} src={ShopShip} />
+          <div className={s.shopButton}>SHOP</div>
         </div>
       </div>
     )

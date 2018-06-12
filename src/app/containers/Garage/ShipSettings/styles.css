@@ -60,3 +60,34 @@
   float: right;
   margin-bottom: 10px;
 }
+
+.shopShipCaption {
+  width: 150px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  margin: auto;
+  text-align: left;
+}
+
+.shopShip {
+  width: 150px;
+  margin: 20px 0 25px 0;
+}
+
+.shopButton:hover {
+  cursor: pointer;
+  background-color: #87d993;
+}
+
+.shopButton {
+  background-color: #39b54a;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  height: 50px;
+  width: 125px;
+  border-radius: 50px;
+  margin: auto;
+  line-height: 2.3;
+}
