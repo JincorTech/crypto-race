@@ -1,0 +1,41 @@
+.container {
+  width: 900px;
+  height: 400px;
+  margin: auto;
+}
+
+.column {
+  float: left;
+  padding: 0 25px;
+  width: 850px;
+  text-align: center;
+}
+
+.caption {
+  color: #01f9f9;
+  font-size: 27px;
+  font-weight: 900;
+  border-top: solid 1px #01f9f9;
+  border-bottom: solid 1px #01f9f9;
+  line-height: 2;
+  margin-bottom: 34px;
+}
+
+.racesColumn {
+  font-size: 27px;
+  font-weight: 900;
+  float: left;
+  padding: 0 25px;
+  width: 400px;
+  text-align: center;
+}
+
+.activeCaption {
+  color: #39ef99;
+  margin-bottom: 40px;
+}
+
+.awaitingCaption {
+  color: #3593eb;
+  margin-bottom: 40px;
+}

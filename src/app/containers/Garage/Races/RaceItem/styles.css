@@ -1,0 +1,93 @@
+.container {
+  clear: both;
+  float: left;
+  margin-bottom: 15px;
+}
+
+.info {
+  border-radius: 31px;
+  padding-left: 49px;
+  height: 31px;
+  margin-left: -38px;
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  padding-top: 7px;
+  border-top: 1px solid #19f4f2;
+  border-bottom: 1px solid #19f4f2;
+  border-right: 1px solid #19f4f2;
+  text-align: left;
+}
+
+.infoValue {
+  position: absolute;
+  top: 3px;
+  left: 27px;
+}
+
+.info div {
+  position: relative;
+  display: inline-block;
+}
+
+.info img {
+  height: 20px;
+}
+
+.number {
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  display: inline-block;
+  line-height: 1.9;
+}
+
+.showButton {
+  display: inline-block;
+  height: 40px;
+  border: 1px solid #19f4f2;
+  border-radius: 40px;
+  width: 57px;
+  margin: 0 5px;
+}
+
+.showButton img {
+  width: 43px;
+  margin-top: 9px;
+}
+
+.showButton:hover {
+  cursor: pointer;
+  background-color: #39ef99;
+}
+
+.addButton {
+  display: inline-block;
+  height: 42px;
+  border-radius: 40px;
+  width: 57px;
+  background-color: #ed1c24;
+}
+
+.addButton img {
+  width: 20px;
+  margin-top: 9px;
+}
+
+.addButton:hover {
+  cursor: pointer;
+  background-color: #f89da1;
+}
+
+.duration {
+  width: 70px;
+}
+
+.prize {
+  width: 77px;
+}
+
+.participants {
+  width: 72px;
+}

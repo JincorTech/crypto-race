@@ -3,6 +3,7 @@ import s from './styles.css';
 
 import User from '../User';
 import ShipSettings from '../ShipSettings';
+import Races from '../Races';
 
 export default class Layout extends React.Component {
   render() {
@@ -13,6 +14,9 @@ export default class Layout extends React.Component {
         </div>
         <div className={s.shipSettingsContainer}>
           <ShipSettings />
+        </div>
+        <div className={s.racesContainer}>
+          <Races />
         </div>
       </div>
     )
