@@ -1,9 +1,11 @@
 import * as React from 'react';
+// import cx from 'classnames';
 import s from './styles.css';
 
 import Indicator from 'components/Indicator';
 import ColorPicker from './ColorPicker';
 import UpgradesPicker from './UpgradesPicker';
+import ShipCarousel from './ShipCarousel';
 
 const CapacityIcon = '/assets/images/ship_settings/capacity.png';
 const PumpIcon = '/assets/images/ship_settings/pump.png';
@@ -50,6 +52,7 @@ export default class ShipSettings extends React.Component {
         </div>
         <div className={s.column}>
           <div className={s.caption}>YOUR SHIP</div>
+          <ShipCarousel />
         </div>
         <div className={s.column}>
           <div className={s.caption}>SHOP</div>
