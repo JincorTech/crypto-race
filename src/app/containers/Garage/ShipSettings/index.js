@@ -2,6 +2,7 @@ import * as React from 'react';
 import s from './styles.css';
 
 import Indicator from 'components/Indicator';
+import ColorPicker from './ColorPicker';
 
 const CapacityIcon = '/assets/images/ship_settings/capacity.png';
 const PumpIcon = '/assets/images/ship_settings/pump.png';
@@ -43,6 +44,7 @@ export default class ShipSettings extends React.Component {
               <span className={s.indicatorLevel}>30</span>
             </div>
           </div>
+          <ColorPicker />
         </div>
         <div className={s.column}>
           <div className={s.caption}>YOUR SHIP</div>
