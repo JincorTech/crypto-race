@@ -18,4 +18,44 @@
   border-top: solid 1px #01f9f9;
   border-bottom: solid 1px #01f9f9;
   line-height: 2;
+  margin-bottom: 34px;
+}
+
+.capacity {
+  color: #39ef99;
+}
+
+.pump {
+  color: #35baeb;
+}
+
+.price {
+  color: #ffc50a;
+}
+
+.indicatorIcon {
+  margin-right: 4px;
+  height: 14px;
+}
+
+.indicatorLevel {
+  font-size: 19px;
+  margin-left: 8px;
+  font-weight: 900;
+}
+
+.indicatorCaption {
+  margin-right: 14px;
+  line-height: 1.1;
+}
+
+.name {
+  margin-top: 2px;
+  float: left;
+  clear: both;
+}
+
+.value {
+  float: right;
+  margin-bottom: 10px;
 }
