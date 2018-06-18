@@ -1,5 +1,7 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 import s from './styles.css';
+import routes from 'routes';
 
 export default class Header extends React.Component {
   render() {
@@ -7,7 +9,7 @@ export default class Header extends React.Component {
       <div className={s.container}>
         <div className={s.linksBlock}>
           <span className={s.link}>RACES</span>|
-          <span className={s.link}>GARAGE</span>|
+          <Link to={routes.garage} className={s.link}>GARAGE</Link>|
           <span className={s.link}>SHOP</span>|
           <span className={s.link}>LOGOUT</span>
         </div>
