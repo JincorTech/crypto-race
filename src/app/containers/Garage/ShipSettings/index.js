@@ -3,6 +3,7 @@ import * as React from 'react';
 import s from './styles.css';
 
 import Indicator from 'components/Indicator';
+import Caption from 'components/Caption';
 import ColorPicker from './ColorPicker';
 import UpgradesPicker from './UpgradesPicker';
 import ShipCarousel from './ShipCarousel';
@@ -17,7 +18,7 @@ export default class ShipSettings extends React.Component {
     return (
       <div className={s.container}>
         <div className={s.column}>
-          <div className={s.caption}>TUNING</div>
+          <Caption text='TUNING'/>
           <div className={s.capacity}>
             <div className={s.name}>
               <img className={s.indicatorIcon} src={CapacityIcon} />
@@ -52,11 +53,11 @@ export default class ShipSettings extends React.Component {
           <UpgradesPicker />
         </div>
         <div className={s.column}>
-          <div className={s.caption}>YOUR SHIP</div>
+          <Caption text='YOUR SHIP'/>
           <ShipCarousel />
         </div>
         <div className={s.column}>
-          <div className={s.caption}>SHOP</div>
+          <Caption text='SHOP'/>
           <div className={s.shopShipCaption}>TURBORACER 30000</div>
           <img className={s.shopShip} src={ShopShip} />
           <div className={s.shopButton}>SHOP</div>

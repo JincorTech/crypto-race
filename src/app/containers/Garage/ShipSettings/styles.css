@@ -11,16 +11,6 @@
   text-align: center;
 }
 
-.caption {
-  color: #01f9f9;
-  font-size: 27px;
-  font-weight: 900;
-  border-top: solid 1px #01f9f9;
-  border-bottom: solid 1px #01f9f9;
-  line-height: 2;
-  margin-bottom: 34px;
-}
-
 .capacity {
   color: #39ef99;
 }
