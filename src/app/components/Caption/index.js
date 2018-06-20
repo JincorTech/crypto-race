@@ -7,7 +7,7 @@ export default class Caption extends React.Component {
 
     return (
       <div className={s.caption}>
-        {icon}
+        {icon && <img className={s.icon} src={icon}/>}
         {text}
       </div>
     )

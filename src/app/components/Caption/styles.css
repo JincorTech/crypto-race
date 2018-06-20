@@ -1,4 +1,5 @@
 .caption {
+  text-align: center;
   color: #01f9f9;
   font-size: 27px;
   font-weight: 900;
@@ -6,4 +7,8 @@
   border-bottom: solid 1px #01f9f9;
   line-height: 2;
   margin-bottom: 34px;
+}
+
+.icon {
+  height: 27px;
 }
