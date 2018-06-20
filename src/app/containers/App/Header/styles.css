@@ -12,8 +12,11 @@
 
 .link {
   margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
 }
 
+.link.active,
 .link:hover {
   cursor: pointer;
   color: #39ef99;

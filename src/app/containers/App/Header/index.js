@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import s from './styles.css';
 import routes from 'routes';
 
@@ -9,7 +9,8 @@ export default class Header extends React.Component {
       <div className={s.container}>
         <div className={s.linksBlock}>
           <span className={s.link}>RACES</span>|
-          <Link to={routes.garage} className={s.link}>GARAGE</Link>|
+          <NavLink to={routes.fuel} className={s.link} activeClassName={s.active}>FUEL</NavLink>|
+          <NavLink to={routes.garage} className={s.link} activeClassName={s.active}>GARAGE</NavLink>|
           <span className={s.link}>SHOP</span>|
           <span className={s.link}>LOGOUT</span>
         </div>
