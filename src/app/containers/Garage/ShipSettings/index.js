@@ -18,27 +18,14 @@ export default class ShipSettings extends React.Component {
     return (
       <div className={s.container}>
         <div className={s.column}>
-          <Caption text='TUNING'/>
-          <div className={s.capacity}>
-            <div className={s.name}>
-              <img className={s.indicatorIcon} src={CapacityIcon} />
-              <span className={s.indicatorCaption}>CAPACITY</span>
-            </div>
-            <Indicator level={30} length={13} color="#39ef99" />
-          </div>
-          <div className={s.pump}>
-            <div className={s.name}>
-              <img className={s.indicatorIcon} src={PumpIcon} />
-              <span className={s.indicatorCaption}>PUMP LVL</span>
-            </div>
-            <Indicator level={80} length={13} color="#35baeb" />
-          </div>
+          <Caption text='TUNING' />
+          <Indicator name="CAPACITY" level={30} length={13} color="#39ef99"
+            icon={CapacityIcon} />
+          <Indicator name="PUMP LVL" level={80} length={13} color="#35baeb"
+            icon={PumpIcon} />
           <div className={s.price}>
-            <div className={s.name}>
-              <img className={s.indicatorIcon} src={PriceIcon} />
-              <span className={s.indicatorCaption}>PRICE</span>
-            </div>
-            <Indicator level={40} length={13} color="#ffc50a" />
+            <Indicator name="PRICE" level={40} length={13} color="#ffc50a"
+              icon={PriceIcon} />
           </div>
           <ColorPicker />
           <UpgradesPicker />

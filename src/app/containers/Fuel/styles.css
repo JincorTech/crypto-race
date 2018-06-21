@@ -4,7 +4,7 @@
   margin-top: 50px;
 }
 
-.indicator {
-  height: 20px;
-  background-color: '#fff';
+.indicators {
+  height: 200px;
+  width: 200px;
 }

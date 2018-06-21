@@ -22,7 +22,7 @@ export default class Fuel extends React.Component {
         <div className={s.indicators}>
           {Indicators.map((item) => (
             <div key={item.name} className={s.indicator}>
-              <Indicator level={item.level} color={item.color} />
+              <Indicator level={item.level} length={20} color={item.color} />
             </div>
           ))}
         </div>

@@ -6,13 +6,29 @@
   height: 14px;
 }
 
-.container {
-  float: right;
-  margin-bottom: 10px;
-}
-
 .level {
   font-size: 19px;
   margin-left: 8px;
   font-weight: 900;
+}
+
+.icon { 
+  margin-right: 4px;
+  height: 14px; 
+} 
+ 
+.caption { 
+  margin-right: 14px; 
+  line-height: 1.1; 
+} 
+ 
+.name { 
+  margin-top: 2px; 
+  float: left; 
+  clear: both; 
+} 
+
+.value {
+  float: right;
+  margin-bottom: 10px;
 }

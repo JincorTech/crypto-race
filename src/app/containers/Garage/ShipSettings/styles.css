@@ -11,33 +11,8 @@
   text-align: center;
 }
 
-.capacity {
-  color: #39ef99;
-}
-
-.pump {
-  color: #35baeb;
-}
-
 .price {
-  color: #ffc50a;
   margin-bottom: 150px;
-}
-
-.indicatorIcon {
-  margin-right: 4px;
-  height: 14px;
-}
-
-.indicatorCaption {
-  margin-right: 14px;
-  line-height: 1.1;
-}
-
-.name {
-  margin-top: 2px;
-  float: left;
-  clear: both;
 }
 
 .shopShipCaption {
