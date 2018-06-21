@@ -19,12 +19,17 @@ export default class Fuel extends React.Component {
     return (
       <div className={s.container}>
         <Caption icon={FuelImg} text='CHOOSE FUEL'/>
+        <div className={s.body}>
         <div className={s.indicators}>
           {Indicators.map((item) => (
             <div key={item.name} className={s.indicator}>
-              <Indicator level={item.level} length={20} color={item.color} />
+              <Indicator name={item.name} level={item.level} length={20} color={item.color} />
             </div>
           ))}
+          <div className={s.text}>
+            sdfsd sdfsdf dfs dfs dfs dfsdfsdfs dsdfs dfsdfsdfs sdfsdfsdfs sdfsdfsdfs dfs dfsd fsdf sdfsd
+          </div>
+        </div>
         </div>
       </div>
     )

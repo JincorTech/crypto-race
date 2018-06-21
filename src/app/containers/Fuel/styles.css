@@ -1,10 +1,21 @@
 .container {
+  height: 600px;
   width: 425px;
   margin: auto;
   margin-top: 50px;
 }
 
 .indicators {
-  height: 200px;
-  width: 200px;
+  height: 215px;
+}
+
+.body {
+  width: 300px;
+  margin: auto;
+}
+
+.text {
+  clear: both;
+  padding-top: 20px;
+  color: #44fce4;
 }
