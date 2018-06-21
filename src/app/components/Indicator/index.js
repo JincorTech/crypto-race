@@ -13,16 +13,19 @@ export default class Indicator extends React.Component {
   }
 
   render() {
-    const { level, color } = this.props;
+    const { level, color, length } = this.props;
 
     return (
-      this.getKeysArray().map((index) => (
-        <div
-          key={index}
-          style={{ backgroundColor: index < level ? color : '#000' }}
-          className={s.point}
-        />
-      ))
+      <div className={s.container}>
+        {this.getKeysArray().map((index) => (
+          <div
+            key={index}
+            style={{ backgroundColor: index < length * (level / 100) ? color : '#000' }}
+            className={s.point}
+          />
+        ))}
+        <span className={s.level}>{level}</span>
+      </div>
     )
   }
 }

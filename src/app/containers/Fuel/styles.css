@@ -3,3 +3,8 @@
   margin: auto;
   margin-top: 50px;
 }
+
+.indicator {
+  height: 20px;
+  background-color: '#fff';
+}
