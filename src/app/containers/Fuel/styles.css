@@ -10,6 +10,7 @@
 }
 
 .body {
+  position: relative;
   width: 300px;
   margin: auto;
 }
@@ -28,4 +29,10 @@
 .addButton {
   display: inline-block;
   margin-right: 10px;
+}
+
+.ship {
+  width: 300px;
+  left: -280px;
+  position: absolute;
 }
