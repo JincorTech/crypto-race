@@ -50,40 +50,12 @@
 
 .buttons {
   float: right;
-    margin-top: 10px;
-}
-
-.button {
-  color: #fff;
-  height: 27px;
-  text-align: center;
-  border-radius: 20px;
-  line-height: 1.7;
-  display: inline-block;
-  font-weight: 900;
+  margin-top: 10px;
 }
 
 .addButton {
-  composes: button;
-    background-color: #3593eb;
-    width: 64px;
+  display: inline-block;
     margin-right: 10px;
-}
-
-.addButton:hover {
-  cursor: pointer;
-  background-color: #89bded;
-}
-
-.withdrawButton {
-  composes: button;
-  background-color: #ed1c24;
-  width: 125px;
-}
-
-.withdrawButton:hover {
-  cursor: pointer;
-  background-color: #f67b80;
 }
 
 .balanceCaption {

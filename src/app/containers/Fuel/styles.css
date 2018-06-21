@@ -19,3 +19,13 @@
   padding-top: 20px;
   color: #44fce4;
 }
+
+.buttons {
+  float: right;
+  margin-top: 40px;
+}
+
+.addButton {
+  display: inline-block;
+  margin-right: 10px;
+}

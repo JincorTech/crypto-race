@@ -2,6 +2,7 @@ import * as React from 'react';
 import s from './styles.css';
 import Caption from 'components/Caption';
 import Indicator from 'components/Indicator';
+import Button from 'components/Button';
 
 const FuelImg = '/assets/images/fuel/fuel.png';
 
@@ -28,6 +29,12 @@ export default class Fuel extends React.Component {
           ))}
           <div className={s.text}>
             sdfsd sdfsdf dfs dfs dfs dfsdfsdfs dsdfs dfsdfsdfs sdfsdfsdfs sdfsdfsdfs dfs dfsd fsdf sdfsd
+          </div>
+          <div className={s.buttons}>
+            <div className={s.addButton}>
+              <Button text="+ADD" color="#3593eb"/>
+            </div>
+            <Button text="2THEMOON" color="#ed1c24"/>
           </div>
         </div>
         </div>
