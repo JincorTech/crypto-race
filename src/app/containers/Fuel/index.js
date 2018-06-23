@@ -3,6 +3,7 @@ import s from './styles.css';
 import Caption from 'components/Caption';
 import Indicator from 'components/Indicator';
 import Button from 'components/Button';
+import routes from 'routes';
 
 const FuelImg = '/assets/images/fuel/fuel.png';
 const ShipImg = '/assets/images/fuel/ship.png';
@@ -30,12 +31,12 @@ export default class Fuel extends React.Component {
             ))}
             <div className={s.text}>
               sdfsd sdfsdf dfs dfs dfs dfsdfsdfs dsdfs dfsdfsdfs sdfsdfsdfs sdfsdfsdfs dfs dfsd fsdf sdfsd
-          </div>
+            </div>
             <div className={s.buttons}>
               <div className={s.addButton}>
                 <Button text="+ADD" color="#3593eb" />
               </div>
-              <Button text="2THEMOON" color="#ed1c24" />
+              <Button to={routes.game} text="2THEMOON" color="#ed1c24" />
             </div>
           </div>
           <img className={s.ship} src={ShipImg} />

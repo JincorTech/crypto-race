@@ -6,8 +6,9 @@ import s from './styles.css';
 import routes from 'routes';
 import Garage from '../Garage';
 import Fuel from '../Fuel';
-import Header from './Header'
-import Footer from './Footer'
+import Header from './Header';
+import Footer from './Footer';
+import Game from '../Game';
 
 export default class App extends React.Component {
   render() {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
           <Route exact path="/" render={() => <Redirect to={routes.garage} />} />
           <Route exact path={routes.garage} component={Garage} />
           <Route exact path={routes.fuel} component={Fuel} />
+          <Route exact path={routes.game} component={Game} />
           <Footer />
         </div>
       </Router>

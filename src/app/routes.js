@@ -1,4 +1,5 @@
 export default {
   garage: '/garage',
-  fuel: '/fuel'
+  fuel: '/fuel',
+  game: '/game'
 }
