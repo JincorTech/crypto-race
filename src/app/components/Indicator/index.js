@@ -12,8 +12,31 @@ export default class Indicator extends React.Component {
     return result;
   }
 
+  renderInput = () => {
+    const { name } = this.props;
+    console.log('!!! ', name);
+    return <input className={s.BITCOIN} type="range" id="start" name="volume" min="0" max="100" />;
+  }
+
+  renderValue = () => {
+    const { level, color, length } = this.props;
+
+    return (
+      <div className={s.value}>
+          {this.getKeysArray().map((index) => (
+              <div
+              key={index}
+              style={{ backgroundColor: index < length * (level / 100) ? color : '#000' }}
+              className={s.point}
+            />))
+          }
+          <span style={{ color }} className={s.level}>{level}</span>
+        </div>
+    )
+  }
+
   render() {
-    const { level, color, length, name, icon } = this.props;
+    const { color, name, icon, isInput } = this.props;
 
     return (
       <div>
@@ -21,16 +44,7 @@ export default class Indicator extends React.Component {
           {icon && <img className={s.icon} src={icon} />}
           <span style={{ color }} className={s.caption}>{name}</span>
         </div>
-        <div className={s.value}>
-          {this.getKeysArray().map((index) => (
-            <div
-              key={index}
-              style={{ backgroundColor: index < length * (level / 100) ? color : '#000' }}
-              className={s.point}
-            />
-          ))}
-          <span style={{ color }} className={s.level}>{level}</span>
-        </div>
+        {isInput ? this.renderInput() : this.renderValue()}
       </div>
     )
   }

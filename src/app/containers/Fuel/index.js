@@ -26,7 +26,7 @@ export default class Fuel extends React.Component {
           <div className={s.indicators}>
             {Indicators.map((item) => (
               <div key={item.name} className={s.indicator}>
-                <Indicator name={item.name} level={item.level} length={20} color={item.color} />
+                <Indicator isInput name={item.name} level={item.level} length={20} color={item.color} />
               </div>
             ))}
             <div className={s.text}>
