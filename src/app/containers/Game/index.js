@@ -143,6 +143,12 @@ export default class GameContainer extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    if (window.game) {
+      window.game.destroy();
+    }
+  }
+
   render() {
     return (
       <div className={s.container} id="content"></div>
