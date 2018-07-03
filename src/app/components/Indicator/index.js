@@ -1,8 +1,17 @@
 import * as React from 'react';
+import cx from 'classnames';
 
 import s from './styles.css';
 
 export default class Indicator extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      level: props.level
+    }
+  }
+
   getKeysArray = () => {
     const { length } = this.props;
     const result = [];
@@ -13,8 +22,14 @@ export default class Indicator extends React.Component {
   }
 
   renderInput = () => {
-    const { thumbClass } = this.props;
-    return <input className={s[thumbClass]} type="range" id="start" name="volume" min="0" max="100" />;
+    const { thumbClass, color } = this.props;
+    const { level } = this.state;
+    return (
+      <div className={s.value}>
+        <input onChange={(event) => this.setState({ level: event.target.value })} value={level} style={{ backgroundColor: color }} className={s[thumbClass]} type="range" id="start" name="volume" min="0" max="99" />
+        <span style={{ color }} className={s.level}>{level}</span>
+      </div>
+    )
   }
 
   renderValue = () => {
