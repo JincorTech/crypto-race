@@ -13,9 +13,8 @@ export default class Indicator extends React.Component {
   }
 
   renderInput = () => {
-    const { name } = this.props;
-    console.log('!!! ', name);
-    return <input className={s.BITCOIN} type="range" id="start" name="volume" min="0" max="100" />;
+    const { thumbClass } = this.props;
+    return <input className={s[thumbClass]} type="range" id="start" name="volume" min="0" max="100" />;
   }
 
   renderValue = () => {

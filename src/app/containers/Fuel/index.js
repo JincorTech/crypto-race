@@ -9,12 +9,12 @@ const FuelImg = '/assets/images/fuel/fuel.png';
 const ShipImg = '/assets/images/fuel/ship.png';
 
 const Indicators = [
-  { name: 'BITCOIN', color: '#fff', level: 30 },
-  { name: 'ETHERIUM', color: '#3df2a1', level: 50 },
-  { name: 'RIPPLE', color: '#42b6ef', level: 40 },
-  { name: 'BTC CASH', color: '#ffc122', level: 80 },
-  { name: 'LITECOIN', color: '#b7b9b8', level: 30 },
-  { name: 'RANDOM', color: '#ff4103', level: 40 }
+  { name: 'BITCOIN', thumbClass: 'btc', color: '#fff', level: 30 },
+  { name: 'ETHERIUM', thumbClass: 'eth', color: '#3df2a1', level: 50 },
+  { name: 'RIPPLE', thumbClass: 'rpl', color: '#42b6ef', level: 40 },
+  { name: 'BTC CASH', thumbClass: 'bcc', color: '#ffc122', level: 80 },
+  { name: 'LITECOIN', thumbClass: 'ltc', color: '#b7b9b8', level: 30 },
+  { name: 'RANDOM', thumbClass: 'rnd', color: '#ff4103', level: 40 }
 ]
 
 export default class Fuel extends React.Component {
@@ -26,7 +26,7 @@ export default class Fuel extends React.Component {
           <div className={s.indicators}>
             {Indicators.map((item) => (
               <div key={item.name} className={s.indicator}>
-                <Indicator isInput name={item.name} level={item.level} length={20} color={item.color} />
+                <Indicator isInput thumbClass={item.thumbClass} name={item.name} level={item.level} length={20} color={item.color} />
               </div>
             ))}
             <div className={s.text}>
