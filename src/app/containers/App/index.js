@@ -10,17 +10,29 @@ import Header from './Header';
 import Footer from './Footer';
 import Game from '../Game';
 
+const withHeader = (WrappedComponent) => {
+  return class extends React.Component {
+    render() {
+      return (
+        <React.Fragment>
+          <Header />
+          <WrappedComponent/>
+          <Footer />
+        </React.Fragment>
+      )
+    }
+  }
+}
+
 export default class App extends React.Component {
   render() {
     return (
       <Router>
         <div className={s.container}>
-          <Header />
           <Route exact path="/" render={() => <Redirect to={routes.garage} />} />
-          <Route exact path={routes.garage} component={Garage} />
-          <Route exact path={routes.fuel} component={Fuel} />
+          <Route exact path={routes.garage} component={withHeader(Garage)} />
+          <Route exact path={routes.fuel} component={withHeader(Fuel)} />
           <Route exact path={routes.game} component={Game} />
-          <Footer />
         </div>
       </Router>
     )
