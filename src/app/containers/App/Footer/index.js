@@ -5,7 +5,13 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div className={s.container}>
-        Footer dummy
+        <div className={s.textBlock}>
+          <div className={s.logo}>TO THE MOON ©</div>
+          <div className={s.links}>
+            <a href='#'>Contacts</a> | <a href='#'>Terms of Use</a> | <a href='#'>Privacy Policy</a>
+          </div>
+          <div className={s.copyright}>© 2018 All rights Reserved</div>
+        </div>
       </div>
     )
   }
