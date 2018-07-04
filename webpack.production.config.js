@@ -55,7 +55,22 @@ module.exports = {
   ],
   module: {
     rules: [
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
       { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
+      {
+        test: /\.css$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: "[name]__[local]___[hash:base64:5]"
+            },
+          }
+        ],
+      }
     ]
   },
   node: {
@@ -65,6 +80,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-    }
+    },
+    modules: [
+      path.resolve('./src/app'),
+      path.resolve('./node_modules')
+    ]
   }
 }
