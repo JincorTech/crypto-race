@@ -16,7 +16,9 @@ const withHeader = (WrappedComponent) => {
       return (
         <React.Fragment>
           <Header />
-          <WrappedComponent/>
+          <div className={s.main}>
+            <WrappedComponent/>
+          </div>
           <Footer />
         </React.Fragment>
       )
