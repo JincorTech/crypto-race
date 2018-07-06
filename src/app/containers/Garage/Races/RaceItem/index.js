@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
+import routes from 'routes';
 import s from './styles.css';
 
 const DurationIcon = '/assets/images/races/duration.png';
@@ -37,7 +39,7 @@ export default class RaceItem extends React.Component {
           </div>
         </div>
         <div className={s.showButton}><img src={ShowIcon} /></div>
-        <div className={s.addButton}><img src={PlusIcon} /></div>
+        <Link to={routes.fuel} className={s.addButton}><img src={PlusIcon} /></Link>
       </div>
     )
   }
