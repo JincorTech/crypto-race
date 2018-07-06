@@ -1,5 +1,5 @@
 .container {
-  width: 900px;
+  width: 930px;
   height: 400px;
   margin: auto;
 }
@@ -7,7 +7,7 @@
 .column {
   float: left;
   padding: 0 25px;
-  width: 250px;
+  width: 260px;
   text-align: center;
 }
 

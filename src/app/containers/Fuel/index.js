@@ -18,19 +18,52 @@ const Indicators = [
 ]
 
 export default class Fuel extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      levels: [0, 0, 0, 0, 0, 0]
+    }
+  }
+
+  getTotal = (levels) => {
+    return levels.reduce((acc, current) => acc + current, 0);
+  }
+  
+  handleChangeIndicator = (value, index) => {
+    const levels = this.state.levels;
+    levels[index] = +value;
+
+    const newTotal = this.getTotal(levels);
+    
+    if (newTotal <= 100) {
+      this.setState({levels: levels});
+    } else {
+      levels[index] = 100 - (newTotal - +value);
+      this.setState({levels: levels});
+    }
+  }
+
   render() {
+    const {
+      levels
+    } = this.state;
+
     return (
       <div className={s.container}>
         <Caption icon={FuelImg} text='CHOOSE FUEL' />
         <div className={s.body}>
           <div className={s.indicators}>
-            {Indicators.map((item) => (
+            {Indicators.map((item, index) => (
               <div key={item.name} className={s.indicator}>
-                <Indicator isInput thumbClass={item.thumbClass} name={item.name} level={item.level} length={20} color={item.color} />
+                <Indicator isInput onChange={(value) => this.handleChangeIndicator(value, index)} thumbClass={item.thumbClass} name={item.name} level={levels[index]} length={20} color={item.color} />
               </div>
             ))}
+            <div className={s.totalIndicator}>
+              <Indicator name={'TOTAL'} level={100 - this.getTotal(levels)} length={20} color={'#fff'} />
+            </div>
             <div className={s.text}>
-              sdfsd sdfsdf dfs dfs dfs dfsdfsdfs dsdfs dfsdfsdfs sdfsdfsdfs sdfsdfsdfs dfs dfsd fsdf sdfsd
+              Fill your ship
             </div>
             <div className={s.buttons}>
               <div className={s.addButton}>

@@ -22,11 +22,11 @@ export default class Indicator extends React.Component {
   }
 
   renderInput = () => {
-    const { thumbClass, color } = this.props;
-    const { level } = this.state;
+    const { thumbClass, color, onChange, level } = this.props;
+
     return (
       <div className={s.value}>
-        <input onChange={(event) => this.setState({ level: event.target.value })} value={level} style={{ backgroundColor: color }} className={s[thumbClass]} type="range" id="start" name="volume" min="0" max="99" />
+        <input onChange={(event) => onChange(event.target.value)} value={level} style={{ backgroundColor: color }} className={s[thumbClass]} type="range" id="start" name="volume" min="0" max="100" />
         <span style={{ color }} className={s.level}>{level}</span>
       </div>
     )
