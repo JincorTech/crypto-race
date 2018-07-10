@@ -1,3 +1,16 @@
 .container {
-  
+
+}
+
+.topSection {
+  height: 450px;
+}
+
+.startSection {
+  height: 250px;
+  background-color: #fff;
+}
+
+.bottomSection {
+  height: 450px;
 }

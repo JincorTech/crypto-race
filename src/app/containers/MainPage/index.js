@@ -5,7 +5,12 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <div className={s.container}>
-       Main page dummy
+        <div className={s.topSection}>
+        </div>
+        <div className={s.startSection}>
+        </div>
+        <div className={s.bottomSection}>
+        </div>
       </div>
     )
   }
