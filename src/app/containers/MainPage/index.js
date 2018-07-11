@@ -6,6 +6,18 @@ const Ship2 = '/assets/images/main_page/ship-2.png';
 const Ship3 = '/assets/images/main_page/ship-3.png';
 
 export default class MainPage extends React.Component {
+  renderShip = (image, number, text) => {
+    return (
+      <div className={s.shipContainer}>
+        <div className={s.ship}>
+          <div className={s.shipNumber}>{number}</div>
+          <img className={s.shipImg} src={image} />
+        </div>
+        <div className={s.shipCaption}>{text}</div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className={s.container}>
@@ -15,27 +27,9 @@ export default class MainPage extends React.Component {
         </div>
         <div className={s.bottomSection}>
           <div className={s.shipsContainer}>
-            <div className={s.shipContainer}>
-              <div className={s.ship}>
-                <div className={s.shipNumber}>1</div>
-                <img className={s.shipImg} src={Ship1} />
-              </div>
-              <div className={s.shipCaption}>SUPERZAP</div>
-            </div>
-            <div className={s.shipContainer}>
-              <div className={s.ship}>
-                <div className={s.shipNumber}>2</div>
-                <img className={s.shipImg} src={Ship2} />
-              </div>
-              <div className={s.shipCaption}>CRYPTOBOY</div>
-            </div>
-            <div className={s.shipContainer}>
-              <div className={s.ship}>
-                <div className={s.shipNumber}>3</div>
-                <img className={s.shipImg} src={Ship3} />
-              </div>
-              <div className={s.shipCaption}>VLADBITCOIN</div>
-            </div>
+            {this.renderShip(Ship1, 1, 'SUPERZAP')}
+            {this.renderShip(Ship2, 2, 'CRYPTOBOY')}
+            {this.renderShip(Ship1, 3, 'VLADBITCOIN')}
           </div>
         </div>
       </div>
