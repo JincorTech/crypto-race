@@ -21,9 +21,9 @@
 }
 
 .startSection {
-  height: 330px;
   margin-bottom: 75px;
   background-color: #fff;
+  padding: 80px 0 90px;
 }
 
 .bottomSection {
@@ -132,4 +132,45 @@
 
 .scoreValue {
   /* margin-left: auto; */
+}
+
+.subscribeForm {
+  margin: auto;
+  width: 400px;
+}
+
+.subscribeInput {
+  display: block;
+  width: 378px;
+  height: 30px;
+  border-radius: 30px;
+  padding: 0 10px;
+  box-shadow: none;
+  border: 1px solid #3593eb;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.subscribeButton {
+  background-color: #3593eb;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  height: 50px;
+  width: 250px;
+  border-radius: 50px;
+  margin: auto;
+  line-height: 2.3;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.subscribeButton:hover {
+  cursor: pointer;
+  background-color: #8cbfef;
+}
+
+.subscribeMessage {
+  color: red;
+  text-align: center;
 }

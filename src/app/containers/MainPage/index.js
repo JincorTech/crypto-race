@@ -11,6 +11,14 @@ const ShipSmall2 = '/assets/images/main_page/ship-small-2.png';
 const ShipSmall3 = '/assets/images/main_page/ship-small-3.png';
 
 export default class MainPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      message: 'хуевый имейл'//null
+    }
+  }
+
   renderShip = (image, number, text) => {
     return (
       <div className={s.shipContainer}>
@@ -37,6 +45,24 @@ export default class MainPage extends React.Component {
     )
   }
 
+  renderSubscribeForm = () => {
+    const {
+      message
+    } = this.state;
+
+    return (
+      <div className={s.subscribeForm} onSubmit={() => {
+
+      }}>
+        <input className={s.subscribeInput} type="text" />
+        {message && <div className={s.subscribeMessage}>{message}</div>}
+        <div className={s.subscribeButton} type="submit" onClick={() => {
+
+        }}>Request early access</div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className={s.bg}>
@@ -44,6 +70,7 @@ export default class MainPage extends React.Component {
           <div className={s.topSection}>
           </div>
           <div className={s.startSection}>
+            {this.renderSubscribeForm()}
           </div>
           <div className={s.bottomSection}>
             <div className={s.shipsContainer}>
