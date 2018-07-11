@@ -20,6 +20,7 @@
 }
 
 .ship {
+  position: relative;
   display: inline-flex;
   width: 150px;
   background-size: 100%;
@@ -40,4 +41,17 @@
   width: 85px;
   display: block;
   margin: auto;
+}
+
+.shipNumber {
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  position: absolute;
+  line-height: 2;
+  background-color: #39ef99;
+  border-radius: 50%;
+  font-weight: 600;
 }
