@@ -11,9 +11,33 @@
 
 .startSection {
   height: 330px;
+  margin-bottom: 75px;
   background-color: #fff;
 }
 
 .bottomSection {
   height: 450px;
+}
+
+.ship {
+  display: inline-flex;
+  width: 150px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/main_page/circle.png);
+}
+
+.shipsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 660px;
+  height: 170px;
+}
+
+.shipImg {
+  width: 85px;
+  display: block;
+  margin: auto;
 }
