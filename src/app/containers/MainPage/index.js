@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cx from 'classnames';
 import s from './styles.css';
 
 const Ship1 = '/assets/images/main_page/ship-1.png';
@@ -38,21 +39,23 @@ export default class MainPage extends React.Component {
 
   render() {
     return (
-      <div className={s.container}>
-        <div className={s.topSection}>
-        </div>
-        <div className={s.startSection}>
-        </div>
-        <div className={s.bottomSection}>
-          <div className={s.shipsContainer}>
-            {this.renderShip(Ship1, 1, 'SUPERZAP')}
-            {this.renderShip(Ship2, 2, 'CRYPTOBOY')}
-            {this.renderShip(Ship3, 3, 'VLADBITCOIN')}
+      <div className={s.bg}>
+        <div className={s.container}>
+          <div className={s.topSection}>
           </div>
-          <div className={s.scoreBoard}>
-            {this.renderScoreLine(ShipSmall1, 1, 'LEIMAN', 250691)}
-            {this.renderScoreLine(ShipSmall2, 2, 'ROMBROMB', 244300)}
-            {this.renderScoreLine(ShipSmall3, 3, 'ROCKSTAR91', 244300)}
+          <div className={s.startSection}>
+          </div>
+          <div className={s.bottomSection}>
+            <div className={s.shipsContainer}>
+              {this.renderShip(Ship1, 1, 'SUPERZAP')}
+              {this.renderShip(Ship2, 2, 'CRYPTOBOY')}
+              {this.renderShip(Ship3, 3, 'VLADBITCOIN')}
+            </div>
+            <div className={s.scoreBoard}>
+              {this.renderScoreLine(ShipSmall1, 1, 'LEIMAN', 250691)}
+              {this.renderScoreLine(ShipSmall2, 2, 'ROMBROMB', 244300)}
+              {this.renderScoreLine(ShipSmall3, 3, 'ROCKSTAR91', 244300)}
+            </div>
           </div>
         </div>
       </div>

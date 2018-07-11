@@ -5,6 +5,17 @@
   background-image: url(/assets/images/main_page/bg.png);
 }
 
+.bg {
+  background-size: 1600px;
+  background-position-x: center;
+  background-repeat: repeat;
+  background-image: url(/assets/images/main_page/bg-stars.png);
+}
+
+.topBg {
+  height: 500px;
+}
+
 .topSection {
   height: 538px;
 }
