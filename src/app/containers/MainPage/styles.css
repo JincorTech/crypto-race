@@ -19,10 +19,15 @@
   height: 450px;
 }
 
-.ship {
+.shipContainer {
   position: relative;
-  display: inline-flex;
   width: 150px;
+  display: inline-flex;
+}
+
+.ship {
+  width: 150px;
+  display: inline-flex;
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,4 +59,18 @@
   background-color: #39ef99;
   border-radius: 50%;
   font-weight: 600;
+}
+
+.shipCaption {
+  position: absolute;
+  color: #fff;
+  border: 1px solid #00ffff;
+  border-radius: 20px;
+  padding: 5px 14px;
+  bottom: -37px;
+  left: 0;
+  right: 0;
+  margin: 0 15px 0 15px;
+  text-align: center;
+  font-size: 14px;
 }

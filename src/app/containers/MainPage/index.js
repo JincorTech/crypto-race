@@ -15,17 +15,26 @@ export default class MainPage extends React.Component {
         </div>
         <div className={s.bottomSection}>
           <div className={s.shipsContainer}>
-            <div className={s.ship}>
-              <div className={s.shipNumber}>1</div>
-              <img className={s.shipImg} src={Ship1} />
+            <div className={s.shipContainer}>
+              <div className={s.ship}>
+                <div className={s.shipNumber}>1</div>
+                <img className={s.shipImg} src={Ship1} />
+              </div>
+              <div className={s.shipCaption}>SUPERZAP</div>
             </div>
-            <div className={s.ship}>
-              <div className={s.shipNumber}>2</div>
-              <img className={s.shipImg} src={Ship2} />
+            <div className={s.shipContainer}>
+              <div className={s.ship}>
+                <div className={s.shipNumber}>2</div>
+                <img className={s.shipImg} src={Ship2} />
+              </div>
+              <div className={s.shipCaption}>CRYPTOBOY</div>
             </div>
-            <div className={s.ship}>
-              <div className={s.shipNumber}>3</div>
-              <img className={s.shipImg} src={Ship3} />
+            <div className={s.shipContainer}>
+              <div className={s.ship}>
+                <div className={s.shipNumber}>3</div>
+                <img className={s.shipImg} src={Ship3} />
+              </div>
+              <div className={s.shipCaption}>VLADBITCOIN</div>
             </div>
           </div>
         </div>
