@@ -30,6 +30,7 @@ export default class MainPage extends React.Component {
           <img className={s.scoreImg} src={image} />
         </div>
         <div className={s.scoreText}>{text}</div>
+        <div className={s.scoreSpacer}/>
         <div className={s.scoreValue}>{score}</div>
       </div>
     )

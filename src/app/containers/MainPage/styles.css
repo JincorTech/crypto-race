@@ -112,6 +112,13 @@
   height: 45px;
 }
 
+.scoreSpacer {
+  flex-grow: 1;
+  border-bottom: 1px dotted #fff;
+  height: 8px;
+  margin: 0 25px 0 10px;
+}
+
 .scoreValue {
-  margin-left: auto;
+  /* margin-left: auto; */
 }
