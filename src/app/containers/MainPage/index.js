@@ -15,7 +15,9 @@ export default class MainPage extends React.Component {
     super(props);
 
     this.state = {
-      message: 'хуевый имейл'//null
+      message: null,
+      email: null,
+      success: false
     }
   }
 
@@ -47,17 +49,26 @@ export default class MainPage extends React.Component {
 
   renderSubscribeForm = () => {
     const {
-      message
+      message,
+      email,
+      success
     } = this.state;
 
-    return (
-      <div className={s.subscribeForm} onSubmit={() => {
+    const validationRegexp = /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
 
-      }}>
-        <input className={s.subscribeInput} type="text" />
+    return (
+      <div className={s.subscribeForm}>
+        <input placeholder={'Enter your email'} className={s.subscribeInput} value={email} onChange={(event) => this.setState({email: event.target.value})} type="text" />
+        {success && !message && <div className={s.subscribeSuccess}>{'Early access was requested'}</div>}
         {message && <div className={s.subscribeMessage}>{message}</div>}
         <div className={s.subscribeButton} type="submit" onClick={() => {
-
+          if (!email.match(validationRegexp)) {
+            this.setState({message: 'Invalid email'})
+          } else if (success) {
+            this.setState({message: 'Already sent'})
+          } else {
+            this.setState({success: true, message: null});
+          }
         }}>Request early access</div>
       </div>
     )
