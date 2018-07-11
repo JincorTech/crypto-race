@@ -1,13 +1,16 @@
 .container {
-
+  background-size: 1600px;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/main_page/bg.png);
 }
 
 .topSection {
-  height: 450px;
+  height: 538px;
 }
 
 .startSection {
-  height: 250px;
+  height: 330px;
   background-color: #fff;
 }
 
