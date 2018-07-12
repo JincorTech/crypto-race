@@ -29,8 +29,7 @@
 }
 
 .bottomSection {
-  height: 490px;
-  padding: 0 45px;
+  padding: 0 45px 45px;
 }
 
 .shipContainer {
@@ -41,6 +40,7 @@
 
 .ship {
   width: 150px;
+  height: 160px;
   display: inline-flex;
   background-size: 100%;
   background-position: center;
@@ -53,7 +53,6 @@
   justify-content: space-around;
   margin: auto;
   max-width: 660px;
-  height: 170px;
 }
 
 .shipImg {
@@ -196,5 +195,12 @@
 }
 
 @media (max-width: 768px) {
+  .shipsContainer {
+    flex-flow: column;
+    width: 150px;
+  }
 
+  .shipContainer {
+    margin-bottom: 75px;
+  }
 }
