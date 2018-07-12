@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import cx from 'classnames';
+import cx from 'classnames';
 import s from './styles.css';
 
 import Indicator from 'components/Indicator';
@@ -30,7 +30,7 @@ export default class ShipSettings extends React.Component {
           <ColorPicker />
           <UpgradesPicker />
         </div>
-        <div className={s.column}>
+        <div className={cx(s.column, s.yourShip)}>
           <Caption text='YOUR SHIP'/>
           <ShipCarousel />
         </div>

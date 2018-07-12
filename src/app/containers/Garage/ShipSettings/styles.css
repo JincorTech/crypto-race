@@ -1,6 +1,6 @@
 .container {
+  display: flex;
   width: 930px;
-  height: 400px;
   margin: auto;
 }
 
@@ -44,4 +44,19 @@
   border-radius: 50px;
   margin: auto;
   line-height: 2.3;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-flow: column;
+    width: 100%;
+  }
+
+  .column {
+    margin: 0 auto 50px;
+  }
+  
+  .yourShip {
+    height: 350px;
+  }
 }
