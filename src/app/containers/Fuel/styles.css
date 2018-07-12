@@ -1,12 +1,13 @@
 .container {
   height: 600px;
-  width: 425px;
+  max-width: 425px;
   margin: auto;
   margin-top: 50px;
+  padding: 0 21px;
 }
 
 .indicators {
-  height: 215px;
+  margin-right: 21px;
 }
 
 .body {
