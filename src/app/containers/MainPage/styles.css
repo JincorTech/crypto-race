@@ -17,6 +17,7 @@
 }
 
 .topSection {
+  position: relative;
   height: 538px;
 }
 
@@ -178,4 +179,14 @@
 .subscribeSuccess {
   color: green;
   text-align: center;
+}
+
+.logo {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 200px;
+  left: 0;
+  right: 0;
+  width: 375px;
 }

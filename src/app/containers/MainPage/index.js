@@ -10,13 +10,15 @@ const ShipSmall1 = '/assets/images/main_page/ship-small-1.png';
 const ShipSmall2 = '/assets/images/main_page/ship-small-2.png';
 const ShipSmall3 = '/assets/images/main_page/ship-small-3.png';
 
+const LogoImg = '/assets/images/main_page/logo.png';
+
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       message: null,
-      email: null,
+      email: '',
       success: false
     }
   }
@@ -79,6 +81,7 @@ export default class MainPage extends React.Component {
       <div className={s.bg}>
         <div className={s.container}>
           <div className={s.topSection}>
+            <img className={s.logo} src={LogoImg}/>
           </div>
           <div className={s.startSection}>
             {this.renderSubscribeForm()}
@@ -90,9 +93,9 @@ export default class MainPage extends React.Component {
               {this.renderShip(Ship3, 3, 'VLADBITCOIN')}
             </div>
             <div className={s.scoreBoard}>
-              {this.renderScoreLine(ShipSmall1, 1, 'LEIMAN', 250691)}
-              {this.renderScoreLine(ShipSmall2, 2, 'ROMBROMB', 244300)}
-              {this.renderScoreLine(ShipSmall3, 3, 'ROCKSTAR91', 244300)}
+              {this.renderScoreLine(ShipSmall1, 4, 'LEIMAN', 250691)}
+              {this.renderScoreLine(ShipSmall2, 5, 'ROMBROMB', 244300)}
+              {this.renderScoreLine(ShipSmall3, 6, 'ROCKSTAR91', 244300)}
             </div>
           </div>
         </div>
