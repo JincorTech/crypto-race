@@ -203,4 +203,18 @@
   .shipContainer {
     margin-bottom: 75px;
   }
+
+  .bg {
+    background-size: 1600px 2000px;
+  }
+}
+
+@media (max-width: 425px) {
+  .scoreImgContainer {
+    display: none;
+  }
+
+  .scoreNumber {
+    margin-right: 10px;
+  }
 }
