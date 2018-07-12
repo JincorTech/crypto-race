@@ -1,21 +1,21 @@
 .container {
-  clear: both;
-  margin-bottom: 15px;
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 15px;
 }
 
 .info {
+  min-width: 275px;
   border-radius: 31px;
-  padding-left: 49px;
-  height: 31px;
-  margin-left: -38px;
+  height: 40px;
   color: #fff;
   font-size: 14px;
   display: inline-block;
-  padding-top: 7px;
   border-top: 1px solid #19f4f2;
   border-bottom: 1px solid #19f4f2;
   border-right: 1px solid #19f4f2;
   text-align: left;
+  margin: auto;
 }
 
 .infoValue {
@@ -34,12 +34,15 @@
 }
 
 .number {
+  margin-right: 10px;
   font-size: 22px;
   width: 40px;
   height: 40px;
   border-radius: 40px;
   display: inline-block;
   line-height: 1.9;
+  text-align: center;
+  color: #000;
 }
 
 .showButton {
@@ -89,4 +92,23 @@
 
 .participants {
   width: 72px;
+}
+
+.buttons {
+  width: 140px;
+  margin: auto;
+}
+
+@media (max-width: 475px) {
+  .container {
+    flex-flow: column;
+  }
+
+  .info {
+    margin-bottom: 15px;
+  }
+
+  .buttons {
+    margin: 0 auto 23px;
+  }
 }
