@@ -1,13 +1,12 @@
 .container {
-  width: 930px;
-  height: 400px;
+  max-width: 930px;
+  width: 100%;
   margin: auto;
+  padding-bottom: 50px;
 }
 
 .column {
-  float: left;
-  padding: 0 25px;
-  width: 850px;
+  padding: 0 24px;
   text-align: center;
 }
 
@@ -24,10 +23,9 @@
 .racesColumn {
   font-size: 27px;
   font-weight: 900;
-  float: left;
-  padding: 0 25px;
-  width: 400px;
+  padding: 0 20px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .activeCaption {
@@ -38,4 +36,15 @@
 .awaitingCaption {
   color: #3593eb;
   margin-bottom: 40px;
+}
+
+.racesContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  .racesContainer {
+    flex-flow: column;
+  }
 }
