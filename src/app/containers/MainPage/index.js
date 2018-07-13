@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
+import {post} from 'utils/fetch';
 import s from './styles.css';
 
 const Ship1 = '/assets/images/main_page/ship-1.png';
@@ -66,10 +67,19 @@ export default class MainPage extends React.Component {
         <div className={s.subscribeButton} type="submit" onClick={() => {
           if (!email.match(validationRegexp)) {
             this.setState({message: 'Invalid email'})
-          } else if (success) {
-            this.setState({message: 'Already sent'})
           } else {
-            this.setState({success: true, message: null});
+            post('http://88.80.191.36/game/early', {email}).then((res) => {
+              if (res.status === 200) {
+                this.setState({success: true, message: null});
+              } else {
+                this.setState({
+                  success: false,
+                  message: res.message.includes('email dup key')
+                    ? 'This email has already been sent'
+                    : res.message
+                });
+              }
+            })
           }
         }}>Request early access</div>
       </div>
