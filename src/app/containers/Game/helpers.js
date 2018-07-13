@@ -14,7 +14,6 @@ import ships from './ships';
 function addPlayer(self, player, percHeight, width) {
   const positionY = (player.percent * percHeight) + 256 + 65;
   const positionX = width / 3;
-  // const positionX = side - 65;
   self.player =
     self
       .physics
@@ -26,7 +25,6 @@ function addPlayer(self, player, percHeight, width) {
 
 function addEnemy(self, player, percHeight, width) {
   const positionY = (player.percent * percHeight) + 256 + 65;
-  // const side = (width - 130) / 3;
   const positionX = (width / 3) * 2;
   const _enemy =
     self

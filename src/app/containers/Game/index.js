@@ -23,17 +23,19 @@ const commonContext = {};
 const player1 = {
   id: '0x0',
   owner: true,
-  percent: 50,
-  position: { x: 800, y: 322 },
-  ship: 'ship:omega'
+  progress: 50,
+  ship: {
+    type: 'ship:omega'
+  }
 };
 
 const player2 = {
   id: '0x1',
   owner: false,
-  percent: 50,
-  position: { x: 800, y: 800 },
-  ship: 'ship:nova'
+  progress: 50,
+  ship: {
+    type: 'ship:nova'
+  }
 };
 // /test data
 
