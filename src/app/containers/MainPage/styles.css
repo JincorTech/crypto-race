@@ -23,7 +23,8 @@
 }
 
 .startSection {
-  margin-bottom: 75px;
+  position: relative;
+  margin-bottom: 105px;
   background-color: #fff;
   padding: 80px 45px 90px 45px;
 }
@@ -192,6 +193,16 @@
   right: 0;
   max-width: 375px;
   width: 100%;
+}
+
+.waves {
+  position: absolute;
+  bottom: -98px;
+  width: 860px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  display: block;
 }
 
 @media (max-width: 768px) {

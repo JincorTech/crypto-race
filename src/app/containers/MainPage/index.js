@@ -12,6 +12,7 @@ const ShipSmall2 = '/assets/images/main_page/ship-small-2.png';
 const ShipSmall3 = '/assets/images/main_page/ship-small-3.png';
 
 const LogoImg = '/assets/images/main_page/logo.png';
+const WavesImg = '/assets/images/main_page/waves-1.png';
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -95,6 +96,7 @@ export default class MainPage extends React.Component {
           </div>
           <div className={s.startSection}>
             {this.renderSubscribeForm()}
+            <img className={s.waves} src={WavesImg} />
           </div>
           <div className={s.bottomSection}>
             <div className={s.shipsContainer}>
