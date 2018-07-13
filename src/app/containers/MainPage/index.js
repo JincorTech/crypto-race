@@ -68,7 +68,7 @@ export default class MainPage extends React.Component {
           if (!email.match(validationRegexp)) {
             this.setState({message: 'Invalid email'})
           } else {
-            post('http://88.80.191.36/game/early', {email}).then((res) => {
+            post('https://game-api.secrettech.io/game/early', {email}).then((res) => {
               if (res.status === 200) {
                 this.setState({success: true, message: null});
               } else {
