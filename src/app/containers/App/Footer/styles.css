@@ -1,6 +1,67 @@
 .container {
-  height: 250px;
+  padding-top: 80px;
+  height: 170px;
   width: 100%;
   bottom: 0;
   background-color: #090910;
+}
+
+.textBlock {
+  max-width: 940px;
+  margin: auto;
+}
+
+.logoText {
+  display: inline-block;
+}
+
+.logo {
+  color: #a9a9a9;
+  letter-spacing: 16px;
+  margin-bottom: 20px;
+}
+
+.crSign {
+  font-size: 14px;
+}
+
+.links {
+  font-size: 14px;
+  color: #737373;
+  margin-bottom: 20px;
+}
+
+.links > a {
+  color: #737373;
+  text-decoration: none;
+}
+
+.divider {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.copyright {
+  color: #424242;
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .textBlock {
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 475px) {
+  .textBlock {
+    margin-left: 30px;
+  }
+
+  .logo {
+    font-size: 10px;
+  }
+
+  .links {
+    font-size: 12px;
+  }
 }
