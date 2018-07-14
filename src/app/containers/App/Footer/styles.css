@@ -36,6 +36,10 @@
   text-decoration: none;
 }
 
+.links > a:hover {
+  color: #245188;
+}
+
 .divider {
   display: inline-block;
   margin: 0 15px;
