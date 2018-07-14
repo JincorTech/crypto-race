@@ -10,7 +10,7 @@ const ShipImg = '/assets/images/fuel/ship.png';
 
 const Indicators = [
   { name: 'BITCOIN', thumbClass: 'btc', color: '#fff', level: 30 },
-  { name: 'ETHERIUM', thumbClass: 'eth', color: '#3df2a1', level: 50 },
+  { name: 'ETHEREUM', thumbClass: 'eth', color: '#3df2a1', level: 50 },
   { name: 'RIPPLE', thumbClass: 'rpl', color: '#42b6ef', level: 40 },
   { name: 'BTC CASH', thumbClass: 'bcc', color: '#ffc122', level: 80 },
   { name: 'LITECOIN', thumbClass: 'ltc', color: '#b7b9b8', level: 30 },
@@ -50,6 +50,7 @@ export default class Fuel extends React.Component {
     } = this.state;
 
     return (
+      <div className={s.bg}>
       <div className={s.container}>
         <Caption icon={FuelImg} text='CHOOSE FUEL' />
         <div className={s.body}>
@@ -74,6 +75,7 @@ export default class Fuel extends React.Component {
           </div>
           <img className={s.ship} src={ShipImg} />
         </div>
+      </div>
       </div>
     )
   }
