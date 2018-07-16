@@ -1,6 +1,6 @@
 import * as React from 'react';
 import s from './styles.css';
-import Caption from 'components/Caption';
+import Caption from './Caption';
 import Indicator from 'components/Indicator';
 import Button from 'components/Button';
 import Avatar from 'components/Avatar';
