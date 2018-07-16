@@ -43,6 +43,13 @@
   position: absolute;
 }
 
+.station {
+  width: 326px;
+  left: 339px;
+  top: -164px;
+  position: absolute;
+}
+
 .totalIndicator {
   padding-top: 220px;
 }
