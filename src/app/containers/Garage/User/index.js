@@ -3,6 +3,7 @@ import s from './styles.css';
 
 import HealthIndicator from './HealthIndicator';
 import Button from 'components/Button';
+import Avatar from 'components/Avatar';
 
 export default class User extends React.Component {
   render() {
@@ -10,7 +11,7 @@ export default class User extends React.Component {
       <div className={s.container}>
         <div className={s.info}>
           <div className={s.avatar}>
-            <img className={s.avatarImage} src='/assets/images/user_info/avatar.png' />
+            <Avatar />
           </div>
           <div className={s.name}>
             <span>STARLORD /</span>
