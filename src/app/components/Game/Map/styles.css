@@ -1,0 +1,76 @@
+.map {
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 5px;
+  height: auto;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.moon {
+  height: 60px;
+  padding: 0 10px;
+}
+
+.line {
+  height: 200px;
+  width: 15px;
+  background-color: rgba(58, 239, 154, .2);
+  border-radius: 15px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100px;
+  width: 15px;
+  position: absolute;
+  bottom: 0;
+  background-image: url('/assets/images/game_icons/map/progressTexture.png');
+  background-size: 15px;
+  background-position: bottom;
+}
+
+.progress:after {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: -10px;
+  width: 35px;
+  height: 39px;
+  background-image: url('/assets/images/game_icons/map/ship.png');
+  background-size: 35px;
+  background-repeat: no-repeat;
+}
+
+.timer {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.numbers {
+  color: #39ef99;
+  font-size: 14px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #39ef99;
+}
+
+.label {
+  font-size: 14px;
+  font-family: 'Roboto';
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
