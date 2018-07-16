@@ -1,5 +1,5 @@
 .container {
-  height: 600px;
+  height: 780px;
   max-width: 425px;
   margin: auto;
   margin-top: 50px;
@@ -45,4 +45,18 @@
 
 .totalIndicator {
   padding-top: 220px;
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 40px auto;
+}
+
+.avatarText {
+  color: #02f9f9;
+  width: 500px;
+  font-size: 12px;
+  margin-left: 10px;
 }

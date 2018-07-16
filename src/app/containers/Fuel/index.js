@@ -3,6 +3,7 @@ import s from './styles.css';
 import Caption from 'components/Caption';
 import Indicator from 'components/Indicator';
 import Button from 'components/Button';
+import Avatar from 'components/Avatar';
 import routes from 'routes';
 
 const FuelImg = '/assets/images/fuel/fuel.png';
@@ -51,31 +52,38 @@ export default class Fuel extends React.Component {
 
     return (
       <div className={s.bg}>
-      <div className={s.container}>
-        <Caption icon={FuelImg} text='CHOOSE FUEL' />
-        <div className={s.body}>
-          <div className={s.indicators}>
-            {Indicators.map((item, index) => (
-              <div key={item.name} className={s.indicator}>
-                <Indicator isInput onChange={(value) => this.handleChangeIndicator(value, index)} thumbClass={item.thumbClass} name={item.name} level={levels[index]} length={20} color={item.color} />
-              </div>
-            ))}
-            <div className={s.totalIndicator}>
-              <Indicator name={'TOTAL'} level={100 - this.getTotal(levels)} length={20} color={'#fff'} />
-            </div>
-            <div className={s.text}>
-              Fill your ship
-            </div>
-            <div className={s.buttons}>
-              <div className={s.addButton}>
-                <Button text="+ADD" color="#3593eb" />
-              </div>
-              <Button to={routes.game} text="2THEMOON" color="#ed1c24" />
+        <div className={s.container}>
+          <Caption icon={FuelImg} text='CHOOSE FUEL' />
+          <div className={s.avatarContainer}>
+              <Avatar />
+            <div className={s.avatarText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
             </div>
           </div>
-          <img className={s.ship} src={ShipImg} />
+          <div className={s.body}>
+            <div className={s.indicators}>
+              {Indicators.map((item, index) => (
+                <div key={item.name} className={s.indicator}>
+                  <Indicator isInput onChange={(value) => this.handleChangeIndicator(value, index)} thumbClass={item.thumbClass} name={item.name} level={levels[index]} length={20} color={item.color} />
+                </div>
+              ))}
+              <div className={s.totalIndicator}>
+                <Indicator name={'TOTAL'} level={100 - this.getTotal(levels)} length={20} color={'#fff'} />
+              </div>
+              <div className={s.text}>
+                Fill your ship
+            </div>
+              <div className={s.buttons}>
+                <div className={s.addButton}>
+                  <Button text="+ADD" color="#3593eb" />
+                </div>
+                <Button to={routes.game} text="2THEMOON" color="#ed1c24" />
+              </div>
+            </div>
+            <img className={s.ship} src={ShipImg} />
+          </div>
         </div>
-      </div>
       </div>
     )
   }
