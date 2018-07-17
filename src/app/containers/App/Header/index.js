@@ -11,7 +11,7 @@ export default class Header extends React.Component {
           <span className={s.link}>RACES</span>|
           <NavLink to={routes.garage} className={s.link} activeClassName={s.active}>GARAGE</NavLink>|
           <span className={s.link}>SHOP</span>|
-          <span className={s.link}>LOGOUT</span>
+          <NavLink to={routes.main} className={s.link}>LOGOUT</NavLink>
         </div>
       </div>
     )
