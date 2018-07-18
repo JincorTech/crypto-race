@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import s from './styles.css';
 
-import routes from 'routes';
+import routes from '../../routes';
 import Garage from '../Garage';
 import Fuel from '../Fuel';
 import Header from './Header';
@@ -12,21 +12,15 @@ import Game from '../Game';
 import MainPage from '../MainPage';
 import ScrollToTop from './ScrollToTop';
 
-const withHeader = (WrappedComponent) => {
-  return class extends React.Component {
-    render() {
-      return (
-        <React.Fragment>
-          <Header />
-          <div className={s.main}>
-            <WrappedComponent />
-          </div>
-          <Footer />
-        </React.Fragment>
-      )
-    }
-  }
-}
+const withHeader = (WrappedComponent) => (
+  <React.Fragment>
+    <Header />
+    <div className={s.main}>
+      <WrappedComponent />
+    </div>
+    <Footer />
+  </React.Fragment>
+);
 
 export default class App extends React.Component {
   render() {
@@ -42,6 +36,6 @@ export default class App extends React.Component {
           </div>
         </ScrollToTop>
       </Router>
-    )
+    );
   }
 }
