@@ -19,7 +19,7 @@ export default class RaceItem extends React.Component {
       capacity
     } = this.props.data;
 
-    const { type } = this.props;
+    const { type, isActive } = this.props;
 
     return (
       <div className={s.container}>
@@ -40,7 +40,7 @@ export default class RaceItem extends React.Component {
         </div>
         <div className={s.buttons}>
           <div className={s.showButton}><img src={ShowIcon} /></div>
-          <Link to={routes.fuel} className={s.addButton}><img src={PlusIcon} /></Link>
+          {!isActive && <Link to={routes.fuel} className={s.addButton}><img src={PlusIcon} /></Link>}
         </div>
       </div>
     )

@@ -26,7 +26,7 @@ export default class Races extends React.Component {
           <div className={s.racesColumn}>
             <div className={s.activeCaption}>ACTIVE</div>
             {ActiveRacesMock.map((item) => (
-              <RaceItem key={item.number} type={'active'} data={item} />
+              <RaceItem key={item.number} type={'active'} data={item} isActive />
             ))}
           </div>
           <div className={s.racesColumn}>
