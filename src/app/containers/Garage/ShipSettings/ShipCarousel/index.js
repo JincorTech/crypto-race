@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import s from './styles.css';
 
 const PlaceImg = '/assets/images/your_ship/place.png';
-const ShipImg = '/assets/images/your_ship/ship.png';
+const ShipImg = '/assets/images/your_ship/ship.gif';
 const ArrowLeftImg = '/assets/images/your_ship/arrow_left.png';
 const ArrowRightImg = '/assets/images/your_ship/arrow_right.png';
 

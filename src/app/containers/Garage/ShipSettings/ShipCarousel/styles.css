@@ -16,8 +16,8 @@
 
 .ship {
   display: block;
-  margin: 24px auto 0 auto;
-  width: 150px;
+  margin: auto;
+  width: 235px;
 }
 
 .arrow {
