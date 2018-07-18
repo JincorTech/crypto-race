@@ -2,53 +2,36 @@
   position: relative;
 }
 
-.container img {
-  position: absolute;
+.item {
+  height: 230px;
 }
 
 .place {
   width: 220px;
+  position: absolute;
   left: 0;
   right: 0;
   margin: auto;
 }
 
 .ship {
+  display: block;
+  margin: 24px auto 0 auto;
   width: 150px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 23px;
+}
+
+.arrow {
+  position: absolute;
+  height: 34px;
+  top: 229px;
+  cursor: pointer;
 }
 
 .arrowLeft {
-  height: 34px;
   left: -23px;
-  top: 96px;
+  
 }
 
 .arrowRight {
-  height: 34px;
   right: -23px;
-  top: 96px;
-}
-
-.pages {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 250px;
-}
-
-.pageItem {
-  display: inline-block;
-  border-radius: 5px;
-  width: 5px;
-  background-color: #01f9f9;
-  height: 5px;
-  margin: 0 3px;
-}
-
-.pageItem.active {
-  background-color: #fff;
 }
