@@ -5,25 +5,11 @@ import routes from '../../routes';
 
 import Garage from '../Garage';
 import Fuel from '../Fuel';
-import Header from '../../components/main/Header';
-import Footer from '../../components/main/Footer';
 import Game from '../Game';
 import MainPage from '../MainPage';
 // import ScrollToTop from './ScrollToTop';
 
 import s from './styles.css';
-
-// TODO FIX THAT
-
-const withHeader = (WrappedComponent) => (
-  <React.Fragment>
-    <Header />
-      <div className={s.main}>
-        <WrappedComponent/>
-      </div>
-    <Footer />
-  </React.Fragment>
-);
 
 class Main extends Component {
   render() {
