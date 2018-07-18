@@ -1,12 +1,13 @@
 .container {
-  height: 600px;
-  width: 425px;
+  height: 780px;
+  max-width: 425px;
   margin: auto;
   margin-top: 50px;
+  padding: 0 21px;
 }
 
 .indicators {
-  height: 215px;
+  margin-right: 21px;
 }
 
 .body {
@@ -37,6 +38,27 @@
   position: absolute;
 }
 
+.station {
+  width: 326px;
+  left: 339px;
+  top: -164px;
+  position: absolute;
+}
+
 .totalIndicator {
   padding-top: 220px;
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 40px auto;
+}
+
+.avatarText {
+  color: #02f9f9;
+  width: 500px;
+  font-size: 12px;
+  margin: 0 21px 0 10px;
 }

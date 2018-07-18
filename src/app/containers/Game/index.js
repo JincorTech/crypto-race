@@ -5,11 +5,12 @@ import io from 'socket.io-client';
 import Game from './scenes/Game';
 import Topbar from '../../components/Game/Topbar';
 import Map from '../../components/Game/Map';
+import Chat from '../../components/Game/Chat';
 import Profile from '../../components/Game/Profile';
 import s from './styles.css';
 import { getId } from '../../utils/auth';
 
-const socket = io('http://localhost:4000');
+const socket = io('http://localhost:4000/game');
 
 const startTS = 1531908000 * 1000;
 const endTS = 1531918000 * 1000;
@@ -70,8 +71,10 @@ export default class GameContainer extends React.Component {
     return (
       <div>
         <div className={s.topbar}><Topbar startTS={startTS} endTS={endTS}/></div>
+        <div className={s.chat}><Chat/></div>
         <div className={s.map}><Map startTS={startTS} endTS={endTS}/></div>
         <div className={s.profile}><Profile/></div>
+        <div className={s.backdrop}/>
         <div className={s.container} id="content"></div>
       </div>
     );

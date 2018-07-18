@@ -9,6 +9,7 @@
   background-size: 1600px;
   background-position-x: center;
   background-repeat: repeat;
+  background-color: #171727;
   background-image: url(/assets/images/main_page/bg-stars.png);
 }
 
@@ -17,17 +18,20 @@
 }
 
 .topSection {
+  position: relative;
   height: 538px;
+  margin: 0 45px;
 }
 
 .startSection {
-  margin-bottom: 75px;
+  position: relative;
+  margin-bottom: 105px;
   background-color: #fff;
-  padding: 80px 0 90px;
+  padding: 80px 45px 90px 45px;
 }
 
 .bottomSection {
-  height: 490px;
+  padding: 0 45px 45px;
 }
 
 .shipContainer {
@@ -38,6 +42,7 @@
 
 .ship {
   width: 150px;
+  height: 160px;
   display: inline-flex;
   background-size: 100%;
   background-position: center;
@@ -50,7 +55,6 @@
   justify-content: space-around;
   margin: auto;
   max-width: 660px;
-  height: 170px;
 }
 
 .shipImg {
@@ -136,12 +140,13 @@
 
 .subscribeForm {
   margin: auto;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .subscribeInput {
   display: block;
-  width: 378px;
+  width: calc(100% - 20px);
   height: 30px;
   border-radius: 30px;
   padding: 0 10px;
@@ -157,7 +162,7 @@
   font-size: 22px;
   font-weight: 600;
   height: 50px;
-  width: 250px;
+  max-width: 250px;
   border-radius: 50px;
   margin: auto;
   line-height: 2.3;
@@ -178,4 +183,50 @@
 .subscribeSuccess {
   color: green;
   text-align: center;
+}
+
+.logo {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 200px;
+  left: 0;
+  right: 0;
+  max-width: 375px;
+  width: 100%;
+}
+
+.waves {
+  position: absolute;
+  bottom: -98px;
+  width: 860px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .shipsContainer {
+    flex-flow: column;
+    width: 150px;
+  }
+
+  .shipContainer {
+    margin-bottom: 75px;
+  }
+
+  .bg {
+    background-size: 1600px 2000px;
+  }
+}
+
+@media (max-width: 425px) {
+  .scoreImgContainer {
+    display: none;
+  }
+
+  .scoreNumber {
+    margin-right: 10px;
+  }
 }

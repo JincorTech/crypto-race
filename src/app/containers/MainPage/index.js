@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
+import {post} from 'utils/fetch';
 import s from './styles.css';
 
 const Ship1 = '/assets/images/main_page/ship-1.png';
@@ -10,13 +11,16 @@ const ShipSmall1 = '/assets/images/main_page/ship-small-1.png';
 const ShipSmall2 = '/assets/images/main_page/ship-small-2.png';
 const ShipSmall3 = '/assets/images/main_page/ship-small-3.png';
 
+const LogoImg = '/assets/images/main_page/logo.png';
+const WavesImg = '/assets/images/main_page/waves-1.png';
+
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       message: null,
-      email: null,
+      email: '',
       success: false
     }
   }
@@ -64,10 +68,19 @@ export default class MainPage extends React.Component {
         <div className={s.subscribeButton} type="submit" onClick={() => {
           if (!email.match(validationRegexp)) {
             this.setState({message: 'Invalid email'})
-          } else if (success) {
-            this.setState({message: 'Already sent'})
           } else {
-            this.setState({success: true, message: null});
+            post('https://game-api.secrettech.io/game/early', {email}).then((res) => {
+              if (res.status === 200) {
+                this.setState({success: true, message: null});
+              } else {
+                this.setState({
+                  success: false,
+                  message: res.message.includes('email dup key')
+                    ? 'This email has already been sent'
+                    : res.message
+                });
+              }
+            })
           }
         }}>Request early access</div>
       </div>
@@ -79,9 +92,11 @@ export default class MainPage extends React.Component {
       <div className={s.bg}>
         <div className={s.container}>
           <div className={s.topSection}>
+            <img className={s.logo} src={LogoImg}/>
           </div>
           <div className={s.startSection}>
             {this.renderSubscribeForm()}
+            <img className={s.waves} src={WavesImg} />
           </div>
           <div className={s.bottomSection}>
             <div className={s.shipsContainer}>
@@ -90,9 +105,9 @@ export default class MainPage extends React.Component {
               {this.renderShip(Ship3, 3, 'VLADBITCOIN')}
             </div>
             <div className={s.scoreBoard}>
-              {this.renderScoreLine(ShipSmall1, 1, 'LEIMAN', 250691)}
-              {this.renderScoreLine(ShipSmall2, 2, 'ROMBROMB', 244300)}
-              {this.renderScoreLine(ShipSmall3, 3, 'ROCKSTAR91', 244300)}
+              {this.renderScoreLine(ShipSmall1, 4, 'LEIMAN', 250691)}
+              {this.renderScoreLine(ShipSmall2, 5, 'ROMBROMB', 244300)}
+              {this.renderScoreLine(ShipSmall3, 6, 'ROCKSTAR91', 244300)}
             </div>
           </div>
         </div>

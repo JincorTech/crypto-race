@@ -1,13 +1,13 @@
 .container {
+  display: flex;
   width: 930px;
-  height: 400px;
   margin: auto;
 }
 
 .column {
   float: left;
-  padding: 0 25px;
-  width: 260px;
+  padding: 0 24px;
+  width: 261px;
   text-align: center;
 }
 
@@ -44,4 +44,23 @@
   border-radius: 50px;
   margin: auto;
   line-height: 2.3;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-flow: column;
+    width: 100%;
+  }
+
+  .column {
+    margin: 0 auto 50px;
+  }
+  
+  .yourShip {
+    height: 350px;
+  }
+}
+
+@media (max-width: 512px) {
+  
 }

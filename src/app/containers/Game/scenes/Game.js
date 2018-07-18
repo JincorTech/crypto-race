@@ -5,7 +5,7 @@ import isEqual from 'deep-equal';
 import fns from '../utils/players';
 import { getId } from '../../../utils/auth';
 
-const socket = io.connect('http://localhost:4000');
+const socket = io.connect('http://localhost:4000/game');
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;
@@ -75,6 +75,7 @@ export default class Game extends Phaser.Scene {
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
+    console.log(this.commonContext);
 
     socket.on('strafeSync', (data) => {
       const enemy = this.enemies.children.get('id', data.id);

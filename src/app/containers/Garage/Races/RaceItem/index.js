@@ -23,8 +23,8 @@ export default class RaceItem extends React.Component {
 
     return (
       <div className={s.container}>
-        <div style={{ backgroundColor: type === 'active' ? '#39ef99' : '#3593eb' }} className={s.number}>{number}</div>
         <div className={s.info}>
+          <div style={{ backgroundColor: type === 'active' ? '#39ef99' : '#3593eb' }} className={s.number}>{number}</div>
           <div className={s.duration}>
             <img src={DurationIcon} />
             <span className={s.infoValue}>{`${duration}.00`}</span>
@@ -38,8 +38,10 @@ export default class RaceItem extends React.Component {
             <span className={s.infoValue}>{`${participants}/${capacity}`}</span>
           </div>
         </div>
-        <div className={s.showButton}><img src={ShowIcon} /></div>
-        <Link to={routes.fuel} className={s.addButton}><img src={PlusIcon} /></Link>
+        <div className={s.buttons}>
+          <div className={s.showButton}><img src={ShowIcon} /></div>
+          <Link to={routes.fuel} className={s.addButton}><img src={PlusIcon} /></Link>
+        </div>
       </div>
     )
   }

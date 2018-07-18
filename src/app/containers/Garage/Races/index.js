@@ -22,17 +22,19 @@ export default class Races extends React.Component {
         <div className={s.column}>
           <div className={s.caption}>RACES</div>
         </div>
-        <div className={s.racesColumn}>
-          <div className={s.activeCaption}>ACTIVE</div>
-          {ActiveRacesMock.map((item) => (
-            <RaceItem key={item.number} type={'active'} data={item} />
-          ))}
-        </div>
-        <div className={s.racesColumn}>
-          <div className={s.awaitingCaption}>AWAITING</div>
-          {AwaitingRacesMock.map((item) => (
-            <RaceItem key={item.number} type={'awaiting'} data={item} />
-          ))}
+        <div className={s.racesContainer}>
+          <div className={s.racesColumn}>
+            <div className={s.activeCaption}>ACTIVE</div>
+            {ActiveRacesMock.map((item) => (
+              <RaceItem key={item.number} type={'active'} data={item} />
+            ))}
+          </div>
+          <div className={s.racesColumn}>
+            <div className={s.awaitingCaption}>AWAITING</div>
+            {AwaitingRacesMock.map((item) => (
+              <RaceItem key={item.number} type={'awaiting'} data={item} />
+            ))}
+          </div>
         </div>
       </div>
     )

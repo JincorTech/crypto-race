@@ -1,16 +1,18 @@
 import * as React from 'react';
 import s from './styles.css';
-import Caption from 'components/Caption';
+import Caption from './Caption';
 import Indicator from 'components/Indicator';
 import Button from 'components/Button';
+import Avatar from 'components/Avatar';
 import routes from 'routes';
 
 const FuelImg = '/assets/images/fuel/fuel.png';
 const ShipImg = '/assets/images/fuel/ship.png';
+const StationImg = '/assets/images/fuel/station.png';
 
 const Indicators = [
   { name: 'BITCOIN', thumbClass: 'btc', color: '#fff', level: 30 },
-  { name: 'ETHERIUM', thumbClass: 'eth', color: '#3df2a1', level: 50 },
+  { name: 'ETHEREUM', thumbClass: 'eth', color: '#3df2a1', level: 50 },
   { name: 'RIPPLE', thumbClass: 'rpl', color: '#42b6ef', level: 40 },
   { name: 'BTC CASH', thumbClass: 'bcc', color: '#ffc122', level: 80 },
   { name: 'LITECOIN', thumbClass: 'ltc', color: '#b7b9b8', level: 30 },
@@ -52,6 +54,12 @@ export default class Fuel extends React.Component {
     return (
       <div className={s.container}>
         <Caption icon={FuelImg} text='CHOOSE FUEL' />
+        <div className={s.avatarContainer}>
+          <Avatar />
+          <div className={s.avatarText}>
+            Fill your ship and go to the moon!
+          </div>
+        </div>
         <div className={s.body}>
           <div className={s.indicators}>
             {Indicators.map((item, index) => (
@@ -62,17 +70,18 @@ export default class Fuel extends React.Component {
             <div className={s.totalIndicator}>
               <Indicator name={'TOTAL'} level={100 - this.getTotal(levels)} length={20} color={'#fff'} />
             </div>
-            <div className={s.text}>
+            {/* <div className={s.text}>
               Fill your ship
-            </div>
+            </div> */}
             <div className={s.buttons}>
-              <div className={s.addButton}>
+              {/* <div className={s.addButton}>
                 <Button text="+ADD" color="#3593eb" />
-              </div>
+              </div> */}
               <Button to={routes.game} text="2THEMOON" color="#ed1c24" />
             </div>
           </div>
           <img className={s.ship} src={ShipImg} />
+          <img className={s.station} src={StationImg} />
         </div>
       </div>
     )

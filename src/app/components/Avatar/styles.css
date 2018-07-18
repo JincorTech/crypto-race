@@ -1,0 +1,9 @@
+.avatar {
+  margin-right: 14px;
+}
+
+.avatarImage {
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid #02f9f9;
+}
