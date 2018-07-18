@@ -25,13 +25,14 @@
   height: 34px;
   top: 229px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .arrowLeft {
-  left: -23px;
+  left: 0px;
   
 }
 
 .arrowRight {
-  right: -23px;
+  right: 0px;
 }
