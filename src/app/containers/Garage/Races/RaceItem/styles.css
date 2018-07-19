@@ -51,7 +51,7 @@
   border: 1px solid #19f4f2;
   border-radius: 40px;
   width: 57px;
-  margin: 0 5px;
+  margin: 0 12px;
 }
 
 .showButton img {
@@ -95,6 +95,8 @@
 }
 
 .buttons {
+  display: flex;
+  justify-content: space-between;
   width: 140px;
   margin: auto;
 }
