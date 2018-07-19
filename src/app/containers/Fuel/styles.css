@@ -1,5 +1,5 @@
 .container {
-  height: 780px;
+  min-height: calc(100vh - 350px);
   max-width: 425px;
   margin: auto;
   margin-top: 50px;
@@ -12,6 +12,7 @@
 
 .body {
   position: relative;
+  height: 480px;
   width: 300px;
   margin: auto;
 }
