@@ -57,9 +57,8 @@ export default class Fuel extends React.Component {
         <div className={s.avatarContainer}>
           <Avatar />
           <div className={s.avatarText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-            </div>
+            Fill your ship and go to the moon!
+          </div>
         </div>
         <div className={s.body}>
           <div className={s.indicators}>
@@ -71,13 +70,13 @@ export default class Fuel extends React.Component {
             <div className={s.totalIndicator}>
               <Indicator name={'TOTAL'} level={100 - this.getTotal(levels)} length={20} color={'#fff'} />
             </div>
-            <div className={s.text}>
+            {/* <div className={s.text}>
               Fill your ship
-            </div>
+            </div> */}
             <div className={s.buttons}>
-              <div className={s.addButton}>
+              {/* <div className={s.addButton}>
                 <Button text="+ADD" color="#3593eb" />
-              </div>
+              </div> */}
               <Button to={routes.game} text="2THEMOON" color="#ed1c24" />
             </div>
           </div>

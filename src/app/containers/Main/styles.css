@@ -1,0 +1,10 @@
+.container {
+  font-family: 'Roboto', sans-serif;
+  background-color: #161618;
+  background-size: 2500px;
+  background-image: url(/assets/images/bg.png);
+}
+
+.main {
+  min-height: calc(100vh - 350px);
+}

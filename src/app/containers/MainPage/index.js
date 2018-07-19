@@ -1,6 +1,9 @@
 import * as React from 'react';
-import cx from 'classnames';
-import {post} from 'utils/fetch';
+
+import Header from '../../components/main/Header';
+import Footer from '../../components/main/Footer';
+
+import { post } from '../../utils/fetch';
 import s from './styles.css';
 
 const Ship1 = '/assets/images/main_page/ship-1.png';
@@ -22,7 +25,7 @@ export default class MainPage extends React.Component {
       message: null,
       email: '',
       success: false
-    }
+    };
   }
 
   renderShip = (image, number, text) => {
@@ -34,7 +37,7 @@ export default class MainPage extends React.Component {
         </div>
         <div className={s.shipCaption}>{text}</div>
       </div>
-    )
+    );
   }
 
   renderScoreLine = (image, number, text, score) => {
@@ -48,7 +51,7 @@ export default class MainPage extends React.Component {
         <div className={s.scoreSpacer}/>
         <div className={s.scoreValue}>{score}</div>
       </div>
-    )
+    );
   }
 
   renderSubscribeForm = () => {
@@ -58,20 +61,20 @@ export default class MainPage extends React.Component {
       success
     } = this.state;
 
-    const validationRegexp = /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
+    const validationRegexp = /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/;
 
     return (
       <div className={s.subscribeForm}>
-        <input placeholder={'Enter your email'} className={s.subscribeInput} value={email} onChange={(event) => this.setState({email: event.target.value})} type="text" />
+        <input placeholder={'Enter your email'} className={s.subscribeInput} value={email} onChange={(event) => this.setState({ email: event.target.value })} type="text" />
         {success && !message && <div className={s.subscribeSuccess}>{'Early access was requested'}</div>}
         {message && <div className={s.subscribeMessage}>{message}</div>}
         <div className={s.subscribeButton} type="submit" onClick={() => {
           if (!email.match(validationRegexp)) {
-            this.setState({message: 'Invalid email'})
+            this.setState({ message: 'Invalid email' });
           } else {
-            post('https://game-api.secrettech.io/game/early', {email}).then((res) => {
+            post('https://game-api.secrettech.io/game/early', { email }).then((res) => {
               if (res.status === 200) {
-                this.setState({success: true, message: null});
+                this.setState({ success: true, message: null });
               } else {
                 this.setState({
                   success: false,
@@ -80,38 +83,44 @@ export default class MainPage extends React.Component {
                     : res.message
                 });
               }
-            })
+            });
           }
         }}>Request early access</div>
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     return (
-      <div className={s.bg}>
-        <div className={s.container}>
-          <div className={s.topSection}>
-            <img className={s.logo} src={LogoImg}/>
-          </div>
-          <div className={s.startSection}>
-            {this.renderSubscribeForm()}
-            <img className={s.waves} src={WavesImg} />
-          </div>
-          <div className={s.bottomSection}>
-            <div className={s.shipsContainer}>
-              {this.renderShip(Ship1, 1, 'SUPERZAP')}
-              {this.renderShip(Ship2, 2, 'CRYPTOBOY')}
-              {this.renderShip(Ship3, 3, 'VLADBITCOIN')}
-            </div>
-            <div className={s.scoreBoard}>
-              {this.renderScoreLine(ShipSmall1, 4, 'LEIMAN', 250691)}
-              {this.renderScoreLine(ShipSmall2, 5, 'ROMBROMB', 244300)}
-              {this.renderScoreLine(ShipSmall3, 6, 'ROCKSTAR91', 244300)}
+      <div>
+        <Header/>
+        <div className={s.main}>
+          <div className={s.bg}>
+            <div className={s.container}>
+              <div className={s.topSection}>
+                <img className={s.logo} src={LogoImg}/>
+              </div>
+              <div className={s.startSection}>
+                {this.renderSubscribeForm()}
+                <img className={s.waves} src={WavesImg} />
+              </div>
+              <div className={s.bottomSection}>
+                <div className={s.shipsContainer}>
+                  {this.renderShip(Ship1, 1, 'SUPERZAP')}
+                  {this.renderShip(Ship2, 2, 'CRYPTOBOY')}
+                  {this.renderShip(Ship3, 3, 'VLADBITCOIN')}
+                </div>
+                <div className={s.scoreBoard}>
+                  {this.renderScoreLine(ShipSmall1, 4, 'LEIMAN', 250691)}
+                  {this.renderScoreLine(ShipSmall2, 5, 'ROMBROMB', 244300)}
+                  {this.renderScoreLine(ShipSmall3, 6, 'ROCKSTAR91', 244300)}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
-    )
+    );
   }
 }
