@@ -4,19 +4,22 @@ import Slider from 'react-slick';
 import s from './styles.css';
 
 const PlaceImg = '/assets/images/your_ship/place.png';
-const ShipImg = '/assets/images/your_ship/ship.gif';
 const ArrowLeftImg = '/assets/images/your_ship/arrow_left.png';
 const ArrowRightImg = '/assets/images/your_ship/arrow_right.png';
 
+const Ship1Img = '/assets/images/your_ship/ship-1.gif';
+const Ship2Img = '/assets/images/your_ship/ship-2.gif';
+const Ship3Img = '/assets/images/your_ship/ship-3.gif';
+
 function NextArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
     <img className={cx(s.arrow, s.arrowRight)} src={ArrowRightImg} onClick={onClick}/>
   );
 }
 
 function PrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
     <img className={cx(s.arrow, s.arrowLeft)} src={ArrowLeftImg} onClick={onClick}/>
   );
@@ -34,9 +37,9 @@ const ShipCarousel = () => {
   };
 
   const ships = [
-    ShipImg,
-    ShipImg,
-    ShipImg,
+    Ship1Img,
+    Ship2Img,
+    Ship3Img,
   ]
 
   return (
