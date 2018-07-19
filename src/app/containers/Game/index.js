@@ -25,42 +25,66 @@ export default class GameContainer extends React.Component {
   }
 
   componentDidMount() {
-    socket.on('connect', () => {
-      socket.emit('requestInitData', getId());
+    const player1 = {
+      id: '0x0',
+      owner: true,
+      progress: 50,
+      positionX: 33,
+      ship: {
+        type: 'ship:nova'
+      }
+    };
 
-      socket.on('responseInitData', (players) => {
-        window.game = new Phaser.Game({
-          type: Phaser.AUTO,
-          width: window.innerWidth,
-          height: window.innerHeight,
-          physics: {
-            default: 'arcade',
-            arcade: {
-              gravity: { y: 0 },
-              debug: true
-            }
-          },
-          parent: 'content',
-          scene: [
-            Game
-          ]
-        });
+    const player2 = {
+      id: '0x1',
+      owner: false,
+      progress: 50,
+      positionX: 66,
+      ship: {
+        type: 'ship:nova'
+      }
+    };
 
-        window.game.scene.start('game', players);
-      });
+    const players = [player1, player2];
 
-      socket.on('update', (player) => {
-        window.game.scene.keys.game.enemies.getChildren().forEach((otherPlayer) => {
-          if (otherPlayer.id === player.id) {
-            const percHeight = (window.innerHeight - 256 - 130) / 100;
-            const percWidth = (window.innerWidth - 130) / 100;
-            const y = (player.progress * percHeight) + 256 + 65;
-            const x = (player.x * percWidth) - 65;
-            otherPlayer.setPosition(x, y);
-          }
-        });
-      });
+    window.game = new Phaser.Game({
+      type: Phaser.AUTO,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 0 },
+          debug: true
+        }
+      },
+      parent: 'content',
+      scene: [
+        Game
+      ]
     });
+
+    window.game.scene.start('game', players);
+
+    // socket.on('connect', () => {
+    //   socket.emit('requestInitData', getId());
+    //
+    //   socket.on('responseInitData', (players) => {
+    //
+    //   });
+    //
+    //   socket.on('update', (player) => {
+    //     window.game.scene.keys.game.enemies.getChildren().forEach((otherPlayer) => {
+    //       if (otherPlayer.id === player.id) {
+    //         const percHeight = (window.innerHeight - 256 - 130) / 100;
+    //         const percWidth = (window.innerWidth - 130) / 100;
+    //         const y = (player.progress * percHeight) + 256 + 65;
+    //         const x = (player.x * percWidth) - 65;
+    //         otherPlayer.setPosition(x, y);
+    //       }
+    //     });
+    //   });
+    // });
   }
 
   componentWillUnmount() {

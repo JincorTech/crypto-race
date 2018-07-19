@@ -1,6 +1,7 @@
-// import { isAuth, getToken, removeToken } from '../auth';
+import { isAuth, getToken, removeToken } from '../auth';
 
-const { API_HOST } = process.env;
+// const { API_HOST } = process.env;
+const API_HOST = 'https://game-api.secrettech.io';
 
 export class RequestError extends Error {
   constructor(error) {
@@ -40,15 +41,15 @@ export const parseJSON = (res) => {
     return res.json();
   }
 
-  // if (res.statusCode === 401) {
-  //   removeToken();
-  // }
+  if (res.statusCode === 401) {
+    removeToken();
+  }
 
   throw new RequestError(res);
 };
 
-// export function authHeader() {
-//   return isAuth()
-//     ? { Authorization: `Bearer ${getToken()}` }
-//     : {};
-// }
+export function authHeader() {
+  return isAuth()
+    ? { Authorization: `Bearer ${getToken()}` }
+    : {};
+}

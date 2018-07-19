@@ -1,5 +1,8 @@
 import 'whatwg-fetch';
-import { pathCreator, checkHttpStatus, parseJSON } from './helpers';
+import { pathCreator, checkHttpStatus, parseJSON, authHeader } from './helpers';
+
+// const { API_HOST } = process.env;
+// const API_HOST = '';
 
 /**
  * Fetch wrapper function
@@ -9,20 +12,16 @@ import { pathCreator, checkHttpStatus, parseJSON } from './helpers';
  * @returns       - promise
  */
 
-const apiFetch = (path, options = {}) => fetch(
-  path,
-  // pathCreator(path),
-  {
-    headers: {
-      'Accept': 'application/json', // eslint-disable-line
-      'Content-Type': 'application/json',
-      // ...authHeader()
-    },
+const apiFetch = (path, options = {}) => fetch(pathCreator(path), {
+  headers: {
+    'Accept': 'application/json', // eslint-disable-line
+    'Content-Type': 'application/json',
+    ...authHeader()
+  },
   ...options
-  }
-)
-// .then(checkHttpStatus)
-.then(parseJSON);
+})
+  .then(checkHttpStatus)
+  .then(parseJSON);
 
 /**
  * Fetch wrapper for GET requests

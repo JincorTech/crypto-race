@@ -1,7 +1,12 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+
+import FacebookLogin from 'react-facebook-login';
 
 import Header from '../../components/main/Header';
 import Footer from '../../components/main/Footer';
+
+import { login } from '../../redux/modules/app/app';
 
 import { post } from '../../utils/fetch';
 import s from './styles.css';
@@ -17,7 +22,7 @@ const ShipSmall3 = '/assets/images/main_page/ship-small-3.png';
 const LogoImg = '/assets/images/main_page/logo.png';
 const WavesImg = '/assets/images/main_page/waves-1.png';
 
-export default class MainPage extends React.Component {
+class MainPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -91,6 +96,10 @@ export default class MainPage extends React.Component {
   };
 
   render() {
+    const {
+      login
+    } = this.props;
+
     return (
       <div>
         <Header/>
@@ -102,6 +111,11 @@ export default class MainPage extends React.Component {
               </div>
               <div className={s.startSection}>
                 {this.renderSubscribeForm()}
+                {/* <FacebookLogin
+                  appId="1643728252419717"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={(res) => login(res.accessToken)}/> */}
                 <img className={s.waves} src={WavesImg} />
               </div>
               <div className={s.bottomSection}>
@@ -124,3 +138,7 @@ export default class MainPage extends React.Component {
     );
   }
 }
+
+export default connect(null, {
+  login
+})(MainPage);
