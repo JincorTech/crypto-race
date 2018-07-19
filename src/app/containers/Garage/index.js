@@ -6,14 +6,12 @@ import Footer from 'components/main/Footer';
 import Layout from './Layout';
 
 
-export default class Garage extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Header />
-        <Layout />
-        <Footer />
-      </React.Fragment>
-    )
-  }
-}
+const Garage = () => (
+  <React.Fragment>
+    <Header />
+    <Layout />
+    <Footer />
+  </React.Fragment>
+)
+
+export default Garage;

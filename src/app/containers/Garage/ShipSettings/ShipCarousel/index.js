@@ -22,35 +22,35 @@ function PrevArrow(props) {
   );
 }
 
-export default class ShipCarousel extends React.Component {
-  render() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      nextArrow: <NextArrow />,
-      prevArrow: <PrevArrow />
-    };
+const ShipCarousel = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
+  };
 
-    const ships = [
-      ShipImg,
-      ShipImg,
-      ShipImg,
-    ]
-    
-    return (
-      <div className={s.container}>
-        <img className={s.place} src={PlaceImg} />
-        <Slider {...settings}>
-          {ships.map((ship, index) => (
-            <div key={index} className={s.item}>
-              <img className={s.ship} src={ship} />
-            </div>
-          ))}
-        </Slider>
-      </div>
-    )
-  }
+  const ships = [
+    ShipImg,
+    ShipImg,
+    ShipImg,
+  ]
+
+  return (
+    <div className={s.container}>
+      <img className={s.place} src={PlaceImg} />
+      <Slider {...settings}>
+        {ships.map((ship, index) => (
+          <div key={index} className={s.item}>
+            <img className={s.ship} src={ship} />
+          </div>
+        ))}
+      </Slider>
+    </div>
+  )
 }
+
+export default ShipCarousel;
