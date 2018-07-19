@@ -1,0 +1,108 @@
+.topbarWrapper {
+  height: 50px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.topbar {
+  width: 930px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.divider {
+  position: relative;
+  width: 3px;
+  height: 3px;
+  background-color: #01f9f9;
+  border-radius: 50%;
+}
+
+.divider:before {
+  content: '';
+  width: 3px;
+  height: 3px;
+  background-color: #01f9f9;
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+}
+
+.divider:after {
+  content: '';
+  width: 3px;
+  height: 3px;
+  background-color: #01f9f9;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+}
+
+.name {
+  font-family: 'Roboto';
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.moonIcon {
+  height: 30px;
+}
+
+.moonValue {
+  font-family: 'Roboto';
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.currIcon {
+  height: 30px;
+  margin: 0 5px 0 10px;
+}
+
+.curr {
+  font-family: 'Roboto';
+  color: #39ef99;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.timer {
+  font-family: 'Roboto';
+  color: #01f9f9;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.timer > span {
+  color: #fff;
+}
+
+.nav > a {
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  padding: 0 10px;
+  border-right: 2px solid #fff;
+}
+
+.nav > a:last-child {
+  border-right: none;
+  color: #39ef99;
+}
