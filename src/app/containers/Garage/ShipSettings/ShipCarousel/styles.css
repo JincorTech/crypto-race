@@ -33,9 +33,15 @@
 }
 
 .ship2 {
-  width: 303px;
-  margin-left: -24px;
-  margin-top: -49px;
+  width: 293px;
+  margin-left: -21px;
+  margin-top: -40px;
+}
+
+.ship3 {
+  width: 275px;
+  margin-left: -12px;
+  margin-top: -24px;
 }
 
 .arrow {
