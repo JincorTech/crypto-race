@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Phaser from 'phaser';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 import Game from './scenes/Game';
 import Topbar from '../../components/Game/Topbar';
@@ -8,9 +8,9 @@ import Map from '../../components/Game/Map';
 import Chat from '../../components/Game/Chat';
 import Profile from '../../components/Game/Profile';
 import s from './styles.css';
-import { getId } from '../../utils/auth';
+// import { getId } from '../../utils/auth';
 
-const socket = io('http://localhost:4000/game');
+// const socket = io('http://localhost:4000/game');
 
 const startTS = 1531908000 * 1000;
 const endTS = 1531918000 * 1000;

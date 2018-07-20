@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import s from './styles.css';
+import { getToken } from '../../../utils/auth';
 
-const socket = io('http://localhost:4000/chat');
+const socket = io('https://game-api.secrettech.io/chat', { query: `auth_token=${getToken()}` });
 
 class Chat extends Component {
   constructor(props) {

@@ -30,6 +30,23 @@
   padding: 80px 45px 90px 45px;
 }
 
+.loginButtonWrapper {
+  text-align: center;
+}
+
+.loginButton {
+  background-color: #3593eb;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: 50px;
+  margin: auto;
+  line-height: 2.3;
+  margin-top: 30px;
+  outline: none;
+  padding: 2px 70px;
+}
+
 .bottomSection {
   padding: 0 45px 45px;
 }
