@@ -1,11 +1,11 @@
 import Phaser from 'phaser';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import isEqual from 'deep-equal';
 
 import fns from '../utils/players';
 import { getId } from '../../../utils/auth';
 
-const socket = io.connect('http://localhost:4000/game');
+// const socket = io.connect('http://localhost:4000/game');
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;
@@ -75,29 +75,28 @@ export default class Game extends Phaser.Scene {
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
-    console.log(this.commonContext);
 
-    socket.on('strafeSync', (data) => {
-      const enemy = this.enemies.children.get('id', data.id);
-
-      if (this.player.id === data.id) {
-        if (data.left) {
-          this.player.setVelocityX(-1 * PlayerSpeed);
-        } else if (data.right) {
-          this.player.setVelocityX(PlayerSpeed);
-        } else {
-          this.player.setVelocityX(0);
-        }
-      } else {
-        if (data.left) {
-          this.enemies.children.get('id', data.id).setVelocityX(-1 * PlayerSpeed);
-        } else if (data.right) {
-          this.enemies.children.get('id', data.id).setVelocityX(PlayerSpeed);
-        } else {
-          this.enemies.children.get('id', data.id).setVelocityX(0);
-        }
-      }
-    });
+    // socket.on('strafeSync', (data) => {
+    //   const enemy = this.enemies.children.get('id', data.id);
+    //
+    //   if (this.player.id === data.id) {
+    //     if (data.left) {
+    //       this.player.setVelocityX(-1 * PlayerSpeed);
+    //     } else if (data.right) {
+    //       this.player.setVelocityX(PlayerSpeed);
+    //     } else {
+    //       this.player.setVelocityX(0);
+    //     }
+    //   } else {
+    //     if (data.left) {
+    //       this.enemies.children.get('id', data.id).setVelocityX(-1 * PlayerSpeed);
+    //     } else if (data.right) {
+    //       this.enemies.children.get('id', data.id).setVelocityX(PlayerSpeed);
+    //     } else {
+    //       this.enemies.children.get('id', data.id).setVelocityX(0);
+    //     }
+    //   }
+    // });
   }
 
   update() {
@@ -145,7 +144,7 @@ export default class Game extends Phaser.Scene {
     if (!isEqual(this.state, newState)) {
       this.state.left = newState.left;
       this.state.right = newState.right;
-      socket.emit('strafe', this.state);
+      // socket.emit('strafe', this.state);
     }
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;

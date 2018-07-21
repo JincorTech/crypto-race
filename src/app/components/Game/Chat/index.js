@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import s from './styles.css';
-
-const socket = io('http://localhost:4000/chat');
+import { getToken } from '../../../utils/auth';
 
 class Chat extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class Chat extends Component {
   _handleSubmit(e) {
     e.preventDefault();
     if (this.state.message) {
-      socket.emit('message', this.state.message);
+      this.socket.emit('message', this.state.message);
       this.setState({ message: '' });
     }
   }
@@ -51,10 +50,12 @@ class Chat extends Component {
     this._scrollToBottom();
     document.addEventListener('keydown', this._handlePressKey, false);
 
-    socket.on('connect', () => {
-      socket.emit('requestInitData');
-      socket.on('responseInitData', (messages) => this.setState({ messages }));
-      socket.on('update', (messages) => this.setState({ messages }, this._scrollToBottom()));
+    this.socket = io.connect('https://game-api.secrettech.io/chat', { query: `token=${getToken()}` });
+
+    this.socket.on('connect', () => {
+      this.socket.emit('requestInitData');
+      this.socket.on('responseInitData', (messages) => this.setState({ messages }));
+      this.socket.on('update', (messages) => this.setState({ messages }, this._scrollToBottom()));
     });
   }
 

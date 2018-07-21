@@ -1,13 +1,17 @@
 import React from 'react';
 import s from './styles.css';
 
-const Profile = () => {
+const Profile = (props) => {
+  const {
+    player
+  } = props;
+
   return (
     <div className={s.profile}>
       <div className={s.container}>
         <div className={s.summary}>
           <div className={s.firstRow}>
-            <div className={s.name}>STARLORD / </div>
+            <div className={s.name}>{player.id} / </div>
             <div className={s.xp}>
               <div className={s.filled}/><div/><div/><div/><div/><div/><div/><div/>
             </div>

@@ -1,11 +1,14 @@
-import { combineReducers, routerReducer } from 'redux-seamless-immutable';
+import { combineReducers } from 'redux';
 
 import app from './modules/app/app';
+import game from './modules/game/game';
 
 export default combineReducers({
-  routing: routerReducer,
-
   app: combineReducers({
     app
   }),
+
+  game: combineReducers({
+    game
+  })
 });

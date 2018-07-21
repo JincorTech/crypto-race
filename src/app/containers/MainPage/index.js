@@ -6,7 +6,7 @@ import FacebookLogin from 'react-facebook-login';
 import Header from '../../components/main/Header';
 import Footer from '../../components/main/Footer';
 
-import { login } from '../../redux/modules/app/app';
+import { signIn } from '../../redux/modules/app/app';
 
 import { post } from '../../utils/fetch';
 import s from './styles.css';
@@ -97,7 +97,7 @@ class MainPage extends React.Component {
 
   render() {
     const {
-      login
+      signIn
     } = this.props;
 
     return (
@@ -110,12 +110,16 @@ class MainPage extends React.Component {
                 <img className={s.logo} src={LogoImg}/>
               </div>
               <div className={s.startSection}>
-                {this.renderSubscribeForm()}
-                {/* <FacebookLogin
-                  appId="1643728252419717"
-                  autoLoad={true}
-                  fields="name,email,picture"
-                  callback={(res) => login(res.accessToken)}/> */}
+                {/* this.renderSubscribeForm() */}
+                <div className={s.loginButtonWrapper}>
+                  <FacebookLogin
+                    cssClass={s.loginButton}
+                    textButton="Start"
+                    appId="1643728252419717"
+                    autoLoad={true}
+                    fields="name,email,picture"
+                    callback={(res) => signIn(res.accessToken)}/>
+                </div>
                 <img className={s.waves} src={WavesImg} />
               </div>
               <div className={s.bottomSection}>
@@ -140,5 +144,5 @@ class MainPage extends React.Component {
 }
 
 export default connect(null, {
-  login
+  signIn
 })(MainPage);
