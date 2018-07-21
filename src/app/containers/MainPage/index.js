@@ -114,7 +114,7 @@ class MainPage extends React.Component {
                 <div className={s.loginButtonWrapper}>
                   <FacebookLogin
                     cssClass={s.loginButton}
-                    textButton="Start"
+                    textButton=""
                     appId="1643728252419717"
                     autoLoad={true}
                     fields="name,email,picture"
