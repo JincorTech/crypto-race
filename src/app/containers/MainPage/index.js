@@ -97,7 +97,7 @@ class MainPage extends React.Component {
 
   render() {
     const {
-      login
+      signIn
     } = this.props;
 
     return (
@@ -110,7 +110,7 @@ class MainPage extends React.Component {
                 <img className={s.logo} src={LogoImg}/>
               </div>
               <div className={s.startSection}>
-                {this.renderSubscribeForm()}
+                {/* this.renderSubscribeForm() */}
                 <div className={s.loginButtonWrapper}>
                   <FacebookLogin
                     cssClass={s.loginButton}

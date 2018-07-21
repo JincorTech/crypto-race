@@ -12,6 +12,7 @@ class Map extends Component {
 
   componentDidMount() {
     this.setState({ timePass: Date.now() - this.props.startTS });
+    console.log(Date.now(), this.props.startTS, Date.now() - this.props.startTS);
     this.timer = setInterval(this._tick, 1000);
   }
 
