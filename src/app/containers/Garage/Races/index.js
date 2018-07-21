@@ -30,7 +30,7 @@ export default class Races extends React.Component {
             ))}
           </div>
           <div className={s.racesColumn}>
-            <div className={s.awaitingCaption}>AWAITING</div>
+            <div className={s.awaitingCaption}>AWAITING YOU</div>
             {AwaitingRacesMock.map((item) => (
               <RaceItem key={item.number} type={'awaiting'} data={item} />
             ))}
