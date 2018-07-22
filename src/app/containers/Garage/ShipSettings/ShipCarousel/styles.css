@@ -2,53 +2,66 @@
   position: relative;
 }
 
-.container img {
-  position: absolute;
+.item {
+  height: 230px;
 }
 
 .place {
   width: 220px;
+  position: absolute;
   left: 0;
   right: 0;
   margin: auto;
 }
 
 .ship {
-  width: 150px;
-  left: 0;
-  right: 0;
+  display: block;
   margin: auto;
-  top: 23px;
+  width: 100%;
+}
+
+.ship0 {
+  width: 367px;
+  margin-left: -45px;
+  margin-top: -81px;
+}
+
+.ship1 {
+  width: 352px;
+  margin-left: -50px;
+  margin-top: -81px;
+}
+
+.ship2 {
+  margin-left: -3px;
+  margin-top: -19px;
+  width: 276px;
+}
+
+.ship3 {
+  width: 293px;
+  margin-left: -21px;
+  margin-top: -40px;
+}
+
+.ship4 {
+  width: 275px;
+  margin-left: -12px;
+  margin-top: -24px;
+}
+
+.arrow {
+  position: absolute;
+  height: 34px;
+  top: 229px;
+  cursor: pointer;
 }
 
 .arrowLeft {
-  height: 34px;
   left: -23px;
-  top: 96px;
+  
 }
 
 .arrowRight {
-  height: 34px;
   right: -23px;
-  top: 96px;
-}
-
-.pages {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 250px;
-}
-
-.pageItem {
-  display: inline-block;
-  border-radius: 5px;
-  width: 5px;
-  background-color: #01f9f9;
-  height: 5px;
-  margin: 0 3px;
-}
-
-.pageItem.active {
-  background-color: #fff;
 }

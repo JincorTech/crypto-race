@@ -27,7 +27,7 @@
   position: relative;
   margin-bottom: 105px;
   background-color: #fff;
-  padding: 80px 45px 90px 45px;
+  padding: 5px 45px 90px 45px;
 }
 
 .loginButtonWrapper {
@@ -35,16 +35,28 @@
 }
 
 .loginButton {
-  background-color: #3593eb;
-  color: #fff;
-  font-size: 22px;
-  font-weight: 600;
-  border-radius: 50px;
-  margin: auto;
-  line-height: 2.3;
-  margin-top: 30px;
-  outline: none;
-  padding: 2px 70px;
+  width: 172px;
+  height: 190px;
+  background-image: url(/assets/images/main_page/start-button.png);
+  background-color: #fff;
+  background-position: -180px -5px;
+  background-size: 356px;
+  border: none;
+}
+
+.loginButton:hover {
+  width: 172px;
+  height: 190px;
+  background-image: url(/assets/images/main_page/start-button.png);
+  background-color: #fff;
+  background-position: -358px -5px;
+  background-size: 356px;
+  border: none;
+  cursor: pointer;
+}
+
+.loginButton:focus {
+  outline: 0;
 }
 
 .bottomSection {

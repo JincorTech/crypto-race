@@ -17,7 +17,7 @@ export default class ShipSettings extends React.Component {
   render() {
     return (
       <div className={s.container}>
-        <div className={s.column}>
+        <div className={cx(s.column)}>
           <Caption text='TUNING' />
           <Indicator name="CAPACITY" level={30} length={13} color="#39ef99"
             icon={CapacityIcon} />
