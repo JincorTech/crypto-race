@@ -1,18 +1,20 @@
 import ships from './ships';
 
-const spawnPlayers = (self, player, enemies, percentHight) => {
-  const getY = (position) => (position === 0 ? 30 * percentHight : 60 * percentHight);
+const spawnPlayers = (self, player, enemies, percentHight, percentWidth) => {
+  const getY = (position) => (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
+  console.log(30 * percentHight, percentHight);
 
   const spawnPlayer = (player) => {
-    self.player = self.physics.add.sprite(player.x, getY(player.position), player.ship.type);
+    self.player = self.physics.add.sprite(player.x * percentWidth, getY(player.position), player.ship.type);
     self.player.setCollideWorldBounds(true);
     self.player.id = player.id;
     ships.createShipAnimation(self, player);
   };
 
   const spawnEnemy = (enemy) => {
-    const obj = self.physics.add.sprite(enemy.x, getY(enemy.position), enemy.ship.type);
+    const obj = self.physics.add.sprite(enemy.x * percentWidth, getY(enemy.position), enemy.ship.type);
     obj.id = enemy.id;
+    obj.setCollideWorldBounds(true);
     self.enemies.add(obj);
     ships.createShipAnimation(self, enemy);
   };

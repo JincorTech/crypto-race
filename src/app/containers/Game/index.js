@@ -26,13 +26,6 @@ class GameContainer extends React.Component {
     window.globalSocket = io('https://game-api.secrettech.io/race', { query: `token=${getToken()}` });
 
     window.globalSocket.on('connect', () => {
-      // console.log('connected index');
-      // window.globalSocket.emit('test', 'hello!');
-
-      // window.globalSocket.on('moveXupdate', (data) => {
-      //   console.log('on', data);
-      // });
-
       window.globalSocket.on('init', (data) => {
         const { players, ...rest } = data;
         const player = players.filter((p) => p.email === getEmail())[0];
@@ -58,18 +51,6 @@ class GameContainer extends React.Component {
 
         window.game.scene.start('game', { player, enemies });
       });
-
-      // window.globalSocket.on('update', (player) => {
-      //   window.game.scene.keys.game.enemies.getChildren().forEach((otherPlayer) => {
-      //     if (otherPlayer.id === player.id) {
-      //       const percHeight = (window.innerHeight - 256 - 130) / 100;
-      //       const percWidth = (window.innerWidth - 130) / 100;
-      //       const y = (player.progress * percHeight) + 256 + 65;
-      //       const x = (player.x * percWidth) - 65;
-      //       otherPlayer.setPosition(x, y);
-      //     }
-      //   });
-      // });
     });
   }
 

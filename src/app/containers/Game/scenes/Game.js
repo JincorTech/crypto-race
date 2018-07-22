@@ -69,23 +69,18 @@ export default class Game extends Phaser.Scene {
     this.planets.earth = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:earth').setOrigin(0);
     this.moon = this.add.tileSprite((this.screenWidth / 2) - 180, -180, 360, 360, 'planet:moon').setOrigin(0);
 
-    const percHeight = (window.innerHeight - 256 - 130) / 100;
-    players.spawnPlayers(this, data.player, data.enemies, percHeight);
+    const percHeight = (window.innerHeight - 180 - 130) / 100;
+    const percWidth = (window.innerWidth) / 100;
+    players.spawnPlayers(this, data.player, data.enemies, percHeight, percWidth);
+
+    console.log(this.player, this.enemies);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
     this.state.id = this.player.id;
 
-    // this.socket = io('https://game-api.secrettech.io/race', { query: `token=${getToken()}` });
-    // console.log(window.globalSocket);
     window.globalSocket.on('error', (e) => console.log(e));
-    // window.globalSocket.on('init', (data) => console.log(data));
-    // window.globalSocket.on('joined', (data) => console.log(data));
-    // window.globalSocket.emit('moveX', this.state);
-    // window.globalSocket.on('moveXupdate', (data) => {
-    //   console.log('on', data);
-    // });
 
     window.globalSocket.on('moveXupdate', (data) => {
       console.log('on', data);
