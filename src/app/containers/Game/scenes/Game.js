@@ -50,7 +50,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('asteroid-5', '/assets/game/asteroids/asteroid-5.png');
     this.load.image('asteroid-6', '/assets/game/asteroids/asteroid-6.png');
 
-    this.load.image('space', '/assets/game/background/space3.png');
+    // this.load.image('space', '/assets/game/background/space3.png');
     this.load.image('space2', '/assets/game/background/space3-1.png');
     this.load.image('space3', '/assets/game/background/space3-2.png');
     this.load.image('hole', '/assets/game/background/hole.png');
@@ -63,7 +63,7 @@ export default class Game extends Phaser.Scene {
     this.enemies = this.physics.add.group();
     this.planets = this.add.group();
 
-    this.backgroundSpace = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'space').setOrigin(0);
+    // this.backgroundSpace = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'space').setOrigin(0);
     this.backgroundSpace2 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'space2').setOrigin(0);
     this.backgroundSpace3 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'space3').setOrigin(0);
     this.planets.agebeeny = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:agebeeny').setOrigin(0);
@@ -163,7 +163,7 @@ export default class Game extends Phaser.Scene {
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;
     const getRandX = () => (Math.random() * (0.01 - 0.1)) + 0.1;
 
-    this.backgroundSpace.tilePositionY -= BgSpeed;
+    // this.backgroundSpace.tilePositionY -= BgSpeed;
     this.backgroundSpace2.tilePositionY -= BgSpeed * 1.5;
     this.backgroundSpace3.tilePositionY -= BgSpeed * 2;
     this.planets.agebeeny.tilePositionY -= getRandY();
