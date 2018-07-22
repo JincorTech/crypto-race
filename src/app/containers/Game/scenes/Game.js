@@ -121,6 +121,10 @@ export default class Game extends Phaser.Scene {
         }
       });
     });
+
+    setTimeout(() => {
+      window.location.replace('/garage');
+    }, 30000);
   }
 
   update() {
