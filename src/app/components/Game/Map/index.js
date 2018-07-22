@@ -23,7 +23,7 @@ class Map extends Component {
   _tick() {
     const raceTime = this.props.endTS - this.props.startTS;
     const percent = raceTime / 100;
-    const progress = (Date.now() - this.props.startTS) / percent;
+    const progress = 87//(Date.now() - this.props.startTS) / percent;
     this.setState({
       progress,
       timePass: Date.now() - this.props.startTS
