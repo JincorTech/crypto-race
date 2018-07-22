@@ -100,12 +100,13 @@ export default class Game extends Phaser.Scene {
         }
       } else {
         if (data.left) {
-          console.log(this.enemies, data.id);
-          this.enemies.children.get('id', data.id).setVelocityX(-1 * PlayerSpeed);
+          console.log(this.enemies);
+          console.log(this.enemies.children.get('id', data.id), data.id);
+          this.enemies.children.entries[0].setVelocityX(-1 * PlayerSpeed);
         } else if (data.right) {
-          this.enemies.children.get('id', data.id).setVelocityX(PlayerSpeed);
+          this.enemies.children.entries[0].setVelocityX(PlayerSpeed);
         } else {
-          this.enemies.children.get('id', data.id).setVelocityX(0);
+          this.enemies.children.entries[0].setVelocityX(0);
         }
       }
     });
