@@ -24,9 +24,12 @@ class GameContainer extends React.Component {
   }
 
   componentDidMount() {
+    window.globalSocket = io.connect('https://game-api.secrettech.io/race', { query: `token=${getToken()}` });
+
     window.globalSocket.on('connect', () => {
       window.globalSocket.on('init', (data) => {
         const { players, ...rest } = data;
+        console.log(data);
         const player = players.filter((p) => p.email === getEmail())[0];
         const enemies = players.filter((p) => p.email !== getEmail())[0];
         this.props.fetchInitialData({ player, enemies, ...rest });
