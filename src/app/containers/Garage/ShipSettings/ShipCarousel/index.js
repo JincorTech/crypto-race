@@ -12,6 +12,7 @@ const Ship2Img = '/assets/images/your_ship/ship-2.gif';
 const Ship3Img = '/assets/images/your_ship/ship-3.gif';
 const Ship4Img = '/assets/images/your_ship/ship-4.gif';
 const Ship5Img = '/assets/images/your_ship/ship-5.gif';
+const Ship6Img = '/assets/images/your_ship/ship-6.gif';
 
 // temporary ship size hack
 function getClassNameByIndex(index) {
@@ -45,6 +46,7 @@ const ShipCarousel = () => {
 
   const ships = [
     Ship5Img,
+    Ship6Img,
     Ship1Img,
     Ship2Img,
     Ship3Img,
