@@ -53,6 +53,7 @@
     "immutable": "^3.8.2",
     "jwt-decode": "^2.2.0",
     "phaser": "^3.10.1",
+    "query-string": "^6.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-facebook-login": "^4.0.1",

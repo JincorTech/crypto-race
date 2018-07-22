@@ -2,7 +2,6 @@ import ships from './ships';
 
 const spawnPlayers = (self, player, enemies, percentHight, percentWidth) => {
   const getY = (position) => (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
-  console.log(30 * percentHight, percentHight);
 
   const spawnPlayer = (player) => {
     self.player = self.physics.add.sprite(player.x * percentWidth, getY(player.position), player.ship.type);

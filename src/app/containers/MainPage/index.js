@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import FacebookLogin from 'react-facebook-login';
@@ -97,7 +98,8 @@ class MainPage extends React.Component {
 
   render() {
     const {
-      signIn
+      signIn,
+      history
     } = this.props;
 
     return (
@@ -118,7 +120,10 @@ class MainPage extends React.Component {
                     appId="1643728252419717"
                     autoLoad={true}
                     fields="name,email,picture"
-                    callback={(res) => signIn(res.accessToken)}/>
+                    callback={(res) => {
+                      signIn(res.accessToken);
+                      history.push('/garage');
+                    }}/>
                 </div>
                 <img className={s.waves} src={WavesImg} />
               </div>
@@ -143,6 +148,6 @@ class MainPage extends React.Component {
   }
 }
 
-export default connect(null, {
+export default withRouter(connect(null, {
   signIn
-})(MainPage);
+})(MainPage));
