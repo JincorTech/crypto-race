@@ -18,8 +18,8 @@ class Races extends Component {
   }
 
   render() {
-    const activeTracks = this.props.tracks.filter((track) => track.status === 'active');
-    const awaitingTracks = this.props.tracks.filter((track) => track.status === 'awaiting');
+    const activeTracks = this.props.tracks ? this.props.tracks.filter((track) => track.status === 'active') : [];
+    const awaitingTracks = this.props.tracks ? this.props.tracks.filter((track) => track.status === 'awaiting') : [];
 
     return (
       <div className={s.container}>
