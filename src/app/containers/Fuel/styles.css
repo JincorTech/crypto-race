@@ -50,7 +50,7 @@
 .moon {
   width: 345px;
   left: 339px;
-  top: -515px;
+  top: -525px;
   position: absolute;
 }
 
@@ -66,8 +66,8 @@
 }
 
 .avatarText {
-  color: #02f9f9;
-  width: 500px;
-  font-size: 12px;
-  margin: 0 21px 0 10px;
+  color: #fff;
+  width: 343px;
+  font-size: 14px;
+  margin: 0 18px 0 10px;
 }

@@ -62,7 +62,7 @@ export default class Fuel extends React.Component {
           <div className={s.avatarContainer}>
             <Avatar />
             <div className={s.avatarText}>
-              Fill your ship and go to the moon!
+              Fill your tank and go to the moon!
           </div>
           </div>
           <div className={s.body}>
