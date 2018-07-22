@@ -1,11 +1,9 @@
 import Phaser from 'phaser';
-// import io from 'socket.io-client';
+import io from 'socket.io-client';
 import isEqual from 'deep-equal';
 
-import fns from '../utils/players';
-import { getId } from '../../../utils/auth';
-
-// const socket = io.connect('http://localhost:4000/game');
+import players from '../utils/players';
+import { getToken } from '../../../utils/auth';
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;
@@ -21,9 +19,10 @@ export default class Game extends Phaser.Scene {
     super({ key: 'game' });
 
     this.state = {
-      id: getId(),
+      id: '',
       left: false,
-      right: false
+      right: false,
+      x: 23
     };
 
     this.commonContext = {};
@@ -53,11 +52,11 @@ export default class Game extends Phaser.Scene {
     this.load.image('space3', '/assets/game/background/space3-2.png');
     this.load.image('hole', '/assets/game/background/hole.png');
 
-    this.load.spritesheet('ship:nova', '/assets/game/ships/nova.png', { frameWidth: 130, frameHeight: 132 });
-    this.load.spritesheet('ship:omega', '/assets/game/ships/omega.png', { frameWidth: 130, frameHeight: 132 });
+    this.load.spritesheet('nova', '/assets/game/ships/nova.png', { frameWidth: 130, frameHeight: 132 });
+    this.load.spritesheet('omega', '/assets/game/ships/omega.png', { frameWidth: 130, frameHeight: 132 });
   }
 
-  create(players) {
+  create(data) {
     this.enemies = this.physics.add.group();
     this.planets = this.add.group();
 
@@ -71,80 +70,95 @@ export default class Game extends Phaser.Scene {
     this.moon = this.add.tileSprite((this.screenWidth / 2) - 180, -180, 360, 360, 'planet:moon').setOrigin(0);
 
     const percHeight = (window.innerHeight - 256 - 130) / 100;
-    fns.spawnPlayers(this, players, percHeight, window.innerWidth);
+    players.spawnPlayers(this, data.player, data.enemies, percHeight);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
-    // socket.on('strafeSync', (data) => {
-    //   const enemy = this.enemies.children.get('id', data.id);
-    //
-    //   if (this.player.id === data.id) {
-    //     if (data.left) {
-    //       this.player.setVelocityX(-1 * PlayerSpeed);
-    //     } else if (data.right) {
-    //       this.player.setVelocityX(PlayerSpeed);
-    //     } else {
-    //       this.player.setVelocityX(0);
-    //     }
-    //   } else {
-    //     if (data.left) {
-    //       this.enemies.children.get('id', data.id).setVelocityX(-1 * PlayerSpeed);
-    //     } else if (data.right) {
-    //       this.enemies.children.get('id', data.id).setVelocityX(PlayerSpeed);
-    //     } else {
-    //       this.enemies.children.get('id', data.id).setVelocityX(0);
-    //     }
-    //   }
+    this.state.id = this.player.id;
+
+    // this.socket = io('https://game-api.secrettech.io/race', { query: `token=${getToken()}` });
+    // console.log(window.globalSocket);
+    window.globalSocket.on('error', (e) => console.log(e));
+    // window.globalSocket.on('init', (data) => console.log(data));
+    // window.globalSocket.on('joined', (data) => console.log(data));
+    // window.globalSocket.emit('moveX', this.state);
+    // window.globalSocket.on('moveXupdate', (data) => {
+    //   console.log('on', data);
     // });
+
+    window.globalSocket.on('moveXupdate', (data) => {
+      console.log('on', data);
+      // const enemy = this.enemies.children.get('id', data.id);
+
+      if (this.player.id === data.id) {
+        if (data.left) {
+          this.player.setVelocityX(-1 * PlayerSpeed);
+        } else if (data.right) {
+          this.player.setVelocityX(PlayerSpeed);
+        } else {
+          this.player.setVelocityX(0);
+        }
+      } else {
+        if (data.left) {
+          this.enemies.children.get('id', data.id).setVelocityX(-1 * PlayerSpeed);
+        } else if (data.right) {
+          this.enemies.children.get('id', data.id).setVelocityX(PlayerSpeed);
+        } else {
+          this.enemies.children.get('id', data.id).setVelocityX(0);
+        }
+      }
+    });
   }
 
   update() {
     const newState = {
-      id: getId(),
+      id: this.player.id,
       left: false,
-      right: false
+      right: false,
+      x: 23
     };
 
     if (this.commonContext.cursors.left.isDown) {
       newState.left = true;
       newState.right = false;
 
-      if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_left' || this.player.anims.currentFrame.index < 8) {
-        this.player.anims.play('player_left', true);
-      } else {
-        this.player.anims.stop('player_left');
-      }
+      // if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_left' || this.player.anims.currentFrame.index < 8) {
+      //   this.player.anims.play('player_left', true);
+      // } else {
+      //   this.player.anims.stop('player_left');
+      // }
     } else if (this.commonContext.cursors.right.isDown) {
       newState.left = false;
       newState.right = true;
 
-      if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_right' || this.player.anims.currentFrame.index < 10) {
-        this.player.anims.play('player_right', true);
-      } else {
-        this.player.anims.stop('player_right');
-      }
+      // if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_right' || this.player.anims.currentFrame.index < 10) {
+      //   this.player.anims.play('player_right', true);
+      // } else {
+      //   this.player.anims.stop('player_right');
+      // }
     } else {
       newState.left = false;
       newState.right = false;
 
-      if (leftStartFrame < this.player.frame.name
-        && this.player.frame.name <= leftEndFrame) {
-        this.player.anims.play('player_left_back', true);
-      } else if (rightStartFrame < this.player.frame.name
-        && this.player.frame.name <= rightEndFrame) {
-        this.player.anims.play('player_right_back', true);
-      } else {
-        this.player.anims.stop('player_left_back');
-        this.player.anims.stop('player_right_back');
-        this.player.setFrame(0);
-      }
+      // if (leftStartFrame < this.player.frame.name
+      //   && this.player.frame.name <= leftEndFrame) {
+      //   this.player.anims.play('player_left_back', true);
+      // } else if (rightStartFrame < this.player.frame.name
+      //   && this.player.frame.name <= rightEndFrame) {
+      //   this.player.anims.play('player_right_back', true);
+      // } else {
+      //   this.player.anims.stop('player_left_back');
+      //   this.player.anims.stop('player_right_back');
+      //   this.player.setFrame(0);
+      // }
     }
 
     if (!isEqual(this.state, newState)) {
       this.state.left = newState.left;
       this.state.right = newState.right;
-      // socket.emit('strafe', this.state);
+      window.globalSocket.emit('moveX', this.state);
+      console.log('emit', this.state);
     }
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;
