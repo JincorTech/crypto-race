@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import isEqual from 'deep-equal';
 
 import players from '../utils/players';
-import { getToken } from '../../../utils/auth';
+import { getToken, getEmail } from '../../../utils/auth';
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;
@@ -78,12 +78,14 @@ export default class Game extends Phaser.Scene {
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
-    this.state.id = this.player.id;
+    this.state.id = getEmail();
 
     window.globalSocket.on('error', (e) => console.log(e));
 
     window.globalSocket.on('moveXupdate', (data) => {
       console.log('on', data);
+      console.log(this.player);
+      console.log(this.enemies);
       // const enemy = this.enemies.children.get('id', data.id);
 
       if (this.player.id === data.id) {
@@ -108,7 +110,7 @@ export default class Game extends Phaser.Scene {
 
   update() {
     const newState = {
-      id: this.player.id,
+      id: getEmail(),
       left: false,
       right: false,
       x: 23
