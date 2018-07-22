@@ -1,10 +1,12 @@
+import { getEmail } from '../../../utils/auth';
+
 const leftStartFrame = 11;
 const leftEndFrame = 18;
 const rightStartFrame = 1;
 const rightEndFrame = 10;
 
 function getKey(player) {
-  if (player.owner) {
+  if (player.email === getEmail()) {
     return {
       left: 'player_left',
       leftBack: 'player_left_back',
