@@ -10,7 +10,8 @@ import routes from 'routes';
 
 const FuelImg = '/assets/images/fuel/fuel.png';
 const ShipImg = '/assets/images/fuel/ship.png';
-const StationImg = '/assets/images/fuel/station.png';
+// const StationImg = '/assets/images/fuel/station.png';
+const MoonImg = '/assets/images/fuel/moon.png';
 
 const Indicators = [
   { name: 'BITCOIN', thumbClass: 'btc', color: '#fff', level: 30 },
@@ -85,7 +86,8 @@ export default class Fuel extends React.Component {
               </div>
             </div>
             <img className={s.ship} src={ShipImg} />
-            <img className={s.station} src={StationImg} />
+            {/* <img className={s.station} src={StationImg} /> */}
+            <img className={s.moon} src={MoonImg}/>
           </div>
         </div>
         <Footer />

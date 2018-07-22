@@ -47,6 +47,13 @@
   position: absolute;
 }
 
+.moon {
+  width: 345px;
+  left: 339px;
+  top: -515px;
+  position: absolute;
+}
+
 .totalIndicator {
   padding-top: 220px;
 }
