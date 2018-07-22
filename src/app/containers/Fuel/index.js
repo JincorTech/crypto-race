@@ -1,4 +1,5 @@
 import * as React from 'react';
+import queryString from 'query-string';
 import s from './styles.css';
 import Caption from './Caption';
 import Indicator from 'components/Indicator';
@@ -34,19 +35,26 @@ export default class Fuel extends React.Component {
   getTotal = (levels) => {
     return levels.reduce((acc, current) => acc + current, 0);
   }
-  
+
   handleChangeIndicator = (value, index) => {
     const levels = this.state.levels;
     levels[index] = +value;
 
     const newTotal = this.getTotal(levels);
-    
+
     if (newTotal <= 100) {
       this.setState({levels: levels});
     } else {
       levels[index] = 100 - (newTotal - +value);
       this.setState({levels: levels});
     }
+  }
+
+  _joinTrack = () => {
+    window.tracksSocket.emit('joinTrack', {
+      trackId: queryString.parse(this.props.location.search).trackId,
+      fuel: this.state.levels
+    });
   }
 
   render() {
@@ -82,7 +90,7 @@ export default class Fuel extends React.Component {
                 {/* <div className={s.addButton}>
                 <Button text="+ADD" color="#3593eb" />
               </div> */}
-                <Button to={routes.game} text="2THEMOON" color="#ed1c24" />
+                <Button text="2THEMOON" color="#ed1c24" onClick={() => this._joinTrack()} />
               </div>
             </div>
             <img className={s.ship} src={ShipImg} />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import routes from 'routes';
 import s from './styles.css';
 
@@ -12,39 +12,40 @@ const PlusIcon = '/assets/images/races/plus.png';
 const RaceItem = ({
   type,
   isActive,
-  data
+  data,
+  index
 }) => {
   const {
-    number,
+    id,
     duration,
-    prize,
-    participants,
-    capacity
+    numPlayers,
+    maxPlayers,
+    betAmount
   } = data;
 
   return (
     <div className={s.container}>
       <div className={s.info}>
-        <div style={{ backgroundColor: type === 'active' ? '#39ef99' : '#3593eb' }} className={s.number}>{number}</div>
+        <div style={{ backgroundColor: type === 'active' ? '#39ef99' : '#3593eb' }} className={s.number}>{index + 1}</div>
         <div className={s.duration}>
-          <img src={DurationIcon} />
-          <span className={s.infoValue}>{`${duration}.00`}</span>
+          <img src={DurationIcon}/>
+          <span className={s.infoValue}>{`${duration} s`}</span>
         </div>
         <div className={s.prize}>
-          <img src={PrizeIcon} />
-          <span className={s.infoValue}>{`${prize}$`}</span>
+          <img src={PrizeIcon}/>
+          <span className={s.infoValue}>{`${betAmount} ETH`}</span>
         </div>
         <div className={s.participants}>
-          <img src={ParticipantsIcon} />
-          <span className={s.infoValue}>{`${participants}/${capacity}`}</span>
+          <img src={ParticipantsIcon}/>
+          <span className={s.infoValue}>{`${numPlayers}/${maxPlayers}`}</span>
         </div>
       </div>
       <div className={s.buttons}>
-        <div className={s.showButton}><img src={ShowIcon} /></div>
-        {!isActive && <Link to={routes.fuel} className={s.addButton}>GET IN</Link>}
+        <div className={s.showButton}><img src={ShowIcon}/></div>
+        {!isActive && <Link to={`/fuel?trackId=${id}`} className={s.addButton}>GET IN</Link>}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RaceItem;

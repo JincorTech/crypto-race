@@ -5,7 +5,7 @@ import s from './styles.css';
 export default class Button extends React.Component {
   render() {
     const {to} = this.props;
-    
+
     return to ? this.renderLink() : this.renderButton();
   }
 
@@ -20,10 +20,10 @@ export default class Button extends React.Component {
   }
 
   renderButton = () => {
-    const {text, color} = this.props;
+    const {text, color, ...rest} = this.props;
 
     return (
-      <div style={{ backgroundColor: color }} className={s.button}>
+      <div style={{ backgroundColor: color }} className={s.button} {...rest}>
         {text}
       </div>
     )
