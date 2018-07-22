@@ -8,7 +8,7 @@
 
 .level {
   display: inline-block;
-  min-width: 33px;
+  min-width: 47px;
   font-size: 19px;
   margin-left: 8px;
   font-weight: 900;
@@ -20,7 +20,7 @@
 } 
  
 .caption { 
-  margin-right: 14px; 
+  margin-right: 5px; 
   line-height: 1.1; 
 } 
  
