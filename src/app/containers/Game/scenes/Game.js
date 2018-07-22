@@ -39,6 +39,9 @@ export default class Game extends Phaser.Scene {
     this.load.image('planet:noveria', '/assets/game/planets/noveria.png');
     this.load.image('planet:toontaw', '/assets/game/planets/toontaw.png');
     this.load.image('planet:tuchanka', '/assets/game/planets2/tuchanka.png');
+    this.load.image('planet:planet1', '/assets/game/planets3/planet1.png');
+    this.load.image('planet:planet2', '/assets/game/planets3/planet2.png');
+    this.load.image('planet:planet3', '/assets/game/planets3/planet3.png');
 
     this.load.image('asteroid-1', '/assets/game/asteroids/asteroid-1.png');
     this.load.image('asteroid-2', '/assets/game/asteroids/asteroid-2.png');
@@ -67,6 +70,9 @@ export default class Game extends Phaser.Scene {
     this.planets.illium = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:illium').setOrigin(0);
     this.planets.tuchanka = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:tuchanka').setOrigin(0);
     this.planets.earth = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:earth').setOrigin(0);
+    this.planets.planet1 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:planet1').setOrigin(0);
+    this.planets.planet2 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:planet2').setOrigin(0);
+    this.planets.planet3 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:planet3').setOrigin(0);
     this.moon = this.add.tileSprite((this.screenWidth / 2) - 180, -180, 360, 360, 'planet:moon').setOrigin(0);
 
     const percHeight = (window.innerHeight - 180 - 130) / 100;
@@ -172,5 +178,11 @@ export default class Game extends Phaser.Scene {
     this.planets.tuchanka.tilePositionX -= getRandX();
     this.planets.earth.tilePositionY -= getRandY();
     this.planets.earth.tilePositionX += getRandX();
+    this.planets.planet1.tilePositionY -= getRandY();
+    this.planets.planet1.tilePositionX -= getRandX();
+    this.planets.planet2.tilePositionY -= getRandY();
+    this.planets.planet2.tilePositionX -= getRandX();
+    this.planets.planet3.tilePositionY -= getRandY();
+    this.planets.planet3.tilePositionX -= getRandX();
   }
 }
