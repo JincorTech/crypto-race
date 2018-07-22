@@ -79,8 +79,6 @@ export default class Game extends Phaser.Scene {
     const percWidth = (window.innerWidth) / 100;
     players.spawnPlayers(this, data.player, data.enemies, percHeight, percWidth);
 
-    console.log(this.player, this.enemies);
-
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
@@ -89,7 +87,7 @@ export default class Game extends Phaser.Scene {
     window.globalSocket.on('error', (e) => console.log(e));
 
     window.globalSocket.on('moveXupdate', (data) => {
-      console.log(data);
+      // console.log(data);
       if (this.player.id === data.id) {
         if (data.left) {
           this.player.setVelocityX(-1 * PlayerSpeed);
@@ -100,8 +98,8 @@ export default class Game extends Phaser.Scene {
         }
       } else {
         if (data.left) {
-          console.log(this.enemies);
-          console.log(this.enemies.children.get('id', data.id), data.id);
+          // console.log(this.enemies);
+          // console.log(this.enemies.children.get('id', data.id), this.player);
           this.enemies.children.entries[0].setVelocityX(-1 * PlayerSpeed);
         } else if (data.right) {
           this.enemies.children.entries[0].setVelocityX(PlayerSpeed);
@@ -109,6 +107,20 @@ export default class Game extends Phaser.Scene {
           this.enemies.children.entries[0].setVelocityX(0);
         }
       }
+    });
+
+    window.globalSocket.on('positionUpdate', (data) => {
+      console.log(data);
+      const percentHight = (window.innerHeight - 180 - 130) / 100;
+      const getY = (position) =>
+        (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
+      data.forEach((dat) => {
+        if (dat.id === this.player.id) {
+          this.player.y = getY(dat.position);
+        } else {
+          this.enemies.children.entries[0].y = getY(dat.position);
+        }
+      });
     });
   }
 
@@ -159,7 +171,7 @@ export default class Game extends Phaser.Scene {
       this.state.left = newState.left;
       this.state.right = newState.right;
       window.globalSocket.emit('moveX', this.state);
-      console.log('emit', this.state);
+      // console.log('emit', this.state);
     }
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;
