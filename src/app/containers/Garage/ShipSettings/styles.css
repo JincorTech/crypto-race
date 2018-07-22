@@ -46,10 +46,6 @@
   line-height: 2.3;
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 @media (max-width: 1024px) {
   .container {
     flex-flow: column;
@@ -62,9 +58,5 @@
   
   .yourShip {
     height: 350px;
-  }
-
-  .hidden {
-    display: none;
   }
 }
