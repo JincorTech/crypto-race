@@ -50,7 +50,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('asteroid-5', '/assets/game/asteroids/asteroid-5.png');
     this.load.image('asteroid-6', '/assets/game/asteroids/asteroid-6.png');
 
-    this.load.image('space', '/assets/game/background/space3.png');
+    this.load.image('space', '/assets/game/background/space4.png');
     this.load.image('space2', '/assets/game/background/space3-1.png');
     this.load.image('space3', '/assets/game/background/space3-2.png');
     this.load.image('hole', '/assets/game/background/hole.png');
