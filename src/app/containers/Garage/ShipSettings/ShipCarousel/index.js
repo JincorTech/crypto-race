@@ -13,7 +13,7 @@ const Ship3Img = '/assets/images/your_ship/ship-3.gif';
 const Ship4Img = '/assets/images/your_ship/ship-4.gif';
 
 // temporary ship size hack
-function getclassNameByIndex(index) {
+function getClassNameByIndex(index) {
   return `ship${index}`
 }
 
@@ -55,7 +55,7 @@ const ShipCarousel = () => {
       <Slider {...settings}>
         {ships.map((ship, index) => (
           <div key={index} className={s.item}>
-            <img className={cx(s.ship, s[getclassNameByIndex(index)])} src={ship} />
+            <img className={cx(s.ship, s[getClassNameByIndex(index)])} src={ship} />
           </div>
         ))}
       </Slider>
