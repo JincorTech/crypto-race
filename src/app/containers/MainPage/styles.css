@@ -38,8 +38,8 @@
   width: 172px;
   height: 190px;
   background-image: url(/assets/images/main_page/start-button.png);
-  background-position: -181px -5px;
-  background-size: 355px;
+  background-position: -180px -5px;
+  background-size: 356px;
   border: none;
 }
 
@@ -47,8 +47,8 @@
   width: 172px;
   height: 190px;
   background-image: url(/assets/images/main_page/start-button.png);
-  background-position: -359px -5px;
-  background-size: 355px;
+  background-position: -358px -5px;
+  background-size: 356px;
   border: none;
   cursor: pointer;
 }
