@@ -16,7 +16,7 @@
 }
 
 .name {
-  margin: 12px 0 20px;
+  margin: 12px 0 15px;
   font-size: 27px;
   font-weight: 900;
 }
@@ -24,9 +24,9 @@
 .balance {
   font-size: 13px;
   border: 1px solid #01f9f9;
-  border-radius: 12px;
-  line-height: 1.8;
-  margin-left: 42px;
+  border-radius: 17px;
+  line-height: 2.3;
+  margin-left: 28px;
 }
 
 .indicator {
@@ -45,7 +45,7 @@
 }
 
 .buttons {
-  float: right;
+  text-align: center;
   margin-top: 10px;
 }
 
@@ -55,11 +55,15 @@
 }
 
 .balanceCaption {
-  color: #03ebec;
+  color: #f2b145;
 }
 
 .balanceEth {
   color: #39ef99;
+}
+
+.totalWins {
+  color: #01f9f9;
 }
 
 @media (max-width: 475px) {
