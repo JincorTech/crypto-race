@@ -3,6 +3,7 @@
   background-color: #161618;
   background-size: 1658px;
   background-image: url(/assets/images/bg.jpg);
+  overflow: hidden;
 }
 
 .main {

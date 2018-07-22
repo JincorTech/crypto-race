@@ -27,8 +27,16 @@ export default class Indicator extends React.Component {
     return (
       <div className={s.value}>
         <input onChange={(event) => onChange(event.target.value)} value={level} style={{ backgroundColor: color }} className={s[thumbClass]} type="range" id="start" name="volume" min="0" max="100" />
-        <span style={{ color }} className={s.level}>{level}</span>
+        {this.renderLevel()}
       </div>
+    )
+  }
+
+  renderLevel = () => {
+    const { level, color, units } = this.props;
+
+    return (
+      <span style={{ color }} className={s.level}>{`${level}${units || ''}`}</span>
     )
   }
 
@@ -44,7 +52,7 @@ export default class Indicator extends React.Component {
               className={s.point}
             />))
           }
-          <span style={{ color }} className={s.level}>{level}</span>
+          {this.renderLevel()}
         </div>
     )
   }

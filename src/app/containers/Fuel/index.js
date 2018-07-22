@@ -69,11 +69,11 @@ export default class Fuel extends React.Component {
             <div className={s.indicators}>
               {Indicators.map((item, index) => (
                 <div key={item.name} className={s.indicator}>
-                  <Indicator isInput onChange={(value) => this.handleChangeIndicator(value, index)} thumbClass={item.thumbClass} name={item.name} level={levels[index]} length={20} color={item.color} />
+                  <Indicator isInput units="%" onChange={(value) => this.handleChangeIndicator(value, index)} thumbClass={item.thumbClass} name={item.name} level={levels[index]} length={20} color={item.color} />
                 </div>
               ))}
               <div className={s.totalIndicator}>
-                <Indicator name={'TOTAL'} level={100 - this.getTotal(levels)} length={20} color={'#fff'} />
+                <Indicator units="%" name={'TOTAL'} level={100 - this.getTotal(levels)} length={20} color={'#fff'} />
               </div>
               {/* <div className={s.text}>
               Fill your ship
