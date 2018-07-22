@@ -21,36 +21,42 @@
 }
 
 .ship0 {
+  width: 325px;
+  margin-left: -26px;
+  margin-top: -18px;
+}
+
+.ship1 {
   width: 367px;
   margin-left: -45px;
   margin-top: -81px;
 }
 
-.ship1 {
+.ship2 {
   width: 344px;
   margin-left: -50px;
   margin-top: -61px;
 }
 
-.ship2 {
+.ship3 {
   width: 352px;
   margin-left: -50px;
   margin-top: -81px;
 }
 
-.ship3 {
+.ship4 {
   margin-left: -3px;
   margin-top: -19px;
   width: 276px;
 }
 
-.ship4 {
+.ship5 {
   width: 293px;
   margin-left: -21px;
   margin-top: -40px;
 }
 
-.ship5 {
+.ship6 {
   width: 275px;
   margin-left: -12px;
   margin-top: -24px;
