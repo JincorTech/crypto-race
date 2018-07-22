@@ -38,6 +38,7 @@
   width: 172px;
   height: 190px;
   background-image: url(/assets/images/main_page/start-button.png);
+  background-color: #fff;
   background-position: -180px -5px;
   background-size: 356px;
   border: none;
@@ -47,6 +48,7 @@
   width: 172px;
   height: 190px;
   background-image: url(/assets/images/main_page/start-button.png);
+  background-color: #fff;
   background-position: -358px -5px;
   background-size: 356px;
   border: none;
