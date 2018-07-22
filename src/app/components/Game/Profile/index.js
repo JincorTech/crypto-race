@@ -6,12 +6,19 @@ const Profile = (props) => {
     player
   } = props;
 
+  const renderFuel = (fuel) => fuel.map((f) => (
+    <div className={s.el} key={f.name}>
+      <img src={`/assets/images/game_icons/curr/${f.name}.png`}/>
+      <span>{f.value}%</span>
+    </div>
+  ));
+
   return (
     <div className={s.profile}>
       <div className={s.container}>
         <div className={s.summary}>
           <div className={s.firstRow}>
-            <div className={s.name}>{player.id} / </div>
+            <div className={s.name}>{player.name} / </div>
             <div className={s.xp}>
               <div className={s.filled}/><div/><div/><div/><div/><div/><div/><div/>
             </div>
@@ -22,36 +29,13 @@ const Profile = (props) => {
 
           <div className={s.secondRow}>
             <div className={s.avatar}>
-              <img src="/assets/images/user_info/avatar.png"/>
+              <img src={player.picture || '/assets/images/user_info/avatar.png'}/>
             </div>
             <div className={s.fuel}>
               <div className={s.label}>
                 FUEL:
               </div>
-              <div className={s.el}>
-                <img src="/assets/images/game_icons/curr/btc.png"/>
-                <span>20%</span>
-              </div>
-              <div className={s.el}>
-                <img src="/assets/images/game_icons/curr/eth.png"/>
-                <span>20%</span>
-              </div>
-              <div className={s.el}>
-                <img src="/assets/images/game_icons/curr/rpl.png"/>
-                <span>20%</span>
-              </div>
-              <div className={s.el}>
-                <img src="/assets/images/game_icons/curr/bch.png"/>
-                <span>20%</span>
-              </div>
-              <div className={s.el}>
-                <img src="/assets/images/game_icons/curr/ltc.png"/>
-                <span>20%</span>
-              </div>
-              <div className={s.el}>
-                <img src="/assets/images/game_icons/curr/rnd.png"/>
-                <span>20%</span>
-            </div>
+              {renderFuel(player.fuel)}
             </div>
           </div>
         </div>

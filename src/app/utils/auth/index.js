@@ -14,7 +14,7 @@ export const getEmail = () => {
 
   if (token) {
     const decoded = jwtDecode(token);
-    return decoded.login.split(':')[1];
+    return decoded.login;
   }
 
   return null;
