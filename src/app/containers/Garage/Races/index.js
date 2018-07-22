@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import s from './styles.css';
@@ -14,6 +15,7 @@ class Races extends Component {
 
     window.tracksSocket.on('connect', () => {
       window.tracksSocket.on('init', (tracks) => this.props.fetchTracks(tracks));
+      window.tracksSocket.on('start', () => this.props.history.push('/game'));
     });
   }
 
@@ -43,11 +45,11 @@ class Races extends Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   (state) => ({
     ...state.garage.tracks
   }),
   {
     fetchTracks
   }
-)(Races);
+)(Races));

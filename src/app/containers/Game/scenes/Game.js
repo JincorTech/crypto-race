@@ -100,6 +100,7 @@ export default class Game extends Phaser.Scene {
         }
       } else {
         if (data.left) {
+          console.log(this.enemies, data.id);
           this.enemies.children.get('id', data.id).setVelocityX(-1 * PlayerSpeed);
         } else if (data.right) {
           this.enemies.children.get('id', data.id).setVelocityX(PlayerSpeed);

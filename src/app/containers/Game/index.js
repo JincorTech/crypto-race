@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import Phaser from 'phaser';
 import io from 'socket.io-client';
+import queryString from 'query-string';
 
 import { fetchInitialData } from '../../redux/modules/game/game';
 
@@ -23,8 +24,6 @@ class GameContainer extends React.Component {
   }
 
   componentDidMount() {
-    window.globalSocket = io('https://game-api.secrettech.io/race', { query: `token=${getToken()}` });
-
     window.globalSocket.on('connect', () => {
       window.globalSocket.on('init', (data) => {
         const { players, ...rest } = data;
