@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Phaser from 'phaser';
 import io from 'socket.io-client';
 import queryString from 'query-string';
@@ -80,11 +81,11 @@ class GameContainer extends React.Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   (state) => ({
     ...state.game.game
   }),
   {
     fetchInitialData
   }
-)(GameContainer);
+)(GameContainer));

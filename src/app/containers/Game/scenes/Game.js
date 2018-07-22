@@ -110,7 +110,6 @@ export default class Game extends Phaser.Scene {
     });
 
     window.globalSocket.on('positionUpdate', (data) => {
-      console.log(data);
       const percentHight = (window.innerHeight - 180 - 130) / 100;
       const getY = (position) =>
         (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
