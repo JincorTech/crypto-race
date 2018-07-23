@@ -20,6 +20,17 @@ const ShipSmall1 = '/assets/images/main_page/ship-small-1.png';
 const ShipSmall2 = '/assets/images/main_page/ship-small-2.png';
 const ShipSmall3 = '/assets/images/main_page/ship-small-3.png';
 
+const CoinImgs = [ 
+  '/assets/images/main_page/crypto-1.png', 
+  '/assets/images/main_page/crypto-2.png', 
+  '/assets/images/main_page/crypto-3.png', 
+  '/assets/images/main_page/crypto-4.png', 
+  '/assets/images/main_page/crypto-5.png', 
+  '/assets/images/main_page/crypto-6.png', 
+  '/assets/images/main_page/crypto-7.png', 
+  '/assets/images/main_page/crypto-8.png' 
+]
+
 const LogoImg = '/assets/images/main_page/logo.png';
 const WavesImg = '/assets/images/main_page/waves-1.png';
 
