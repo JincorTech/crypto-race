@@ -35,6 +35,12 @@ const CoinImgs = [
 const LogoImg = '/assets/images/main_page/logo.png';
 const WavesImg = '/assets/images/main_page/waves-1.png';
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +48,27 @@ class MainPage extends React.Component {
     this.state = {
       message: null,
       email: '',
-      success: false
+      success: false,
+      coinsAnimTriggered: [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+      ],
+      coinsX: [
+        getRandomInt(0, document.documentElement.clientWidth),
+        getRandomInt(0, document.documentElement.clientWidth),
+        getRandomInt(0, document.documentElement.clientWidth),
+        getRandomInt(0, document.documentElement.clientWidth),
+        getRandomInt(0, document.documentElement.clientWidth),
+        getRandomInt(0, document.documentElement.clientWidth),
+        getRandomInt(0, document.documentElement.clientWidth),
+        getRandomInt(0, document.documentElement.clientWidth)
+      ]
     };
   }
 
@@ -52,17 +78,18 @@ class MainPage extends React.Component {
   renderCoins = () => {
     return CoinImgs.map((img, index) => {
       return (
-        <Motion key={index} style={{ y: spring(this.state.triggered ? document.documentElement.clientHeight : 0) }}>
-          {({ y }) => (
+        <Motion key={index} style={{ y: this.state.coinsAnimTriggered[index] ? spring(document.documentElement.clientHeight, {stiffness: getRandomInt(20, 50)}) : 0 }} onRest={() => {
+          this.setState((prevState) => ({coinsAnimTriggered: prevState.coinsAnimTriggered.map((_, coinIndex) => coinIndex === index ? !prevState.coinsAnimTriggered[index] : prevState.coinsAnimTriggered[index])}))
+        }}>
+          {({ y }) => {
+            return (
             <div className={s.coin} style={{
-              WebkitTransform: `translate3d(0, ${y}px, 0)`,
-              transform: `translate3d(0, ${y}px, 0)`,
-            }} onClick={() => {
-              this.setState((prevState) => ({ triggered: !prevState.triggered }))
+              WebkitTransform: `translate3d(${this.state.coinsX[index]}px, ${y}px, 0)`,
+              transform: `translate3d(${this.state.coinsX[index]}px, ${y}px, 0)`,
             }}>
-              <img src={CoinImgs[index]} />
+              <img src={img} />
             </div>
-          )}
+          )}}
         </Motion>
       )
     })
