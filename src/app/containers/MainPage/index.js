@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {Motion, spring} from 'react-motion';
 
 import FacebookLogin from 'react-facebook-login';
 
@@ -44,28 +43,6 @@ class MainPage extends React.Component {
       email: '',
       success: false
     };
-  }
-
-  componentDidMount() {
-  }
-
-  renderCoins = () => {
-    return CoinImgs.map((img, index) => {
-      return (
-        <Motion key={index} style={{ y: spring(this.state.triggered ? document.documentElement.clientHeight : 0) }}>
-          {({ y }) => (
-            <div className={s.coin} style={{
-              WebkitTransform: `translate3d(0, ${y}px, 0)`,
-              transform: `translate3d(0, ${y}px, 0)`,
-            }} onClick={() => {
-              this.setState((prevState) => ({ triggered: !prevState.triggered }))
-            }}>
-              <img src={CoinImgs[index]} />
-            </div>
-          )}
-        </Motion>
-      )
-    })
   }
 
   renderShip = (image, number, text) => {
@@ -142,7 +119,6 @@ class MainPage extends React.Component {
         <div className={s.main}>
           <div className={s.bg}>
             <div className={s.container}>
-              {this.renderCoins()}
               <div className={s.topSection}>
                 <img className={s.logo} src={LogoImg}/>
               </div>
