@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+import io from 'socket.io-client';
 import s from './styles.css';
 import Caption from './Caption';
 import Indicator from 'components/Indicator';
@@ -58,7 +59,10 @@ class Fuel extends React.Component {
       ship: this.props.ship
     });
 
-    window.tracksSocket.join(queryString.parse(this.props.location.search).trackId);
+    window.tracksSocket.emit('joined', (socket) => {
+      console.log(socket);
+      socket.join(queryString.parse(this.props.location.search).trackId);
+    });
   }
 
   render() {
