@@ -59,8 +59,7 @@ class Fuel extends React.Component {
       ship: this.props.ship
     });
 
-    window.tracksSocket.emit('joined', (socket) => {
-      console.log(socket);
+    window.tracksSocket.on('connection', (socket) => {
       socket.join(queryString.parse(this.props.location.search).trackId);
     });
   }
