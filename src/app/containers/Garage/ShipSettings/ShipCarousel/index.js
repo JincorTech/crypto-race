@@ -1,6 +1,8 @@
-import * as React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import cx from 'classnames';
 import Slider from 'react-slick';
+import { setupShip } from '../../../../redux/modules/garage/setup';
 import s from './styles.css';
 
 const PlaceImg = '/assets/images/your_ship/place.png';
@@ -15,9 +17,8 @@ const Ship5Img = '/assets/images/your_ship/ship-5.gif';
 const Ship6Img = '/assets/images/your_ship/ship-6.gif';
 const Ship7Img = '/assets/images/your_ship/ship-7.gif';
 
-// temporary ship size hack
 function getClassNameByIndex(index) {
-  return `ship${index}`
+  return `ship${index}`;
 }
 
 function NextArrow(props) {
@@ -34,15 +35,16 @@ function PrevArrow(props) {
   );
 }
 
-const ShipCarousel = () => {
+const ShipCarousel = (props) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
+    nextArrow: <NextArrow/>,
+    prevArrow: <PrevArrow/>,
+    beforeChange: (current, next) => props.setupShip(next)
   };
 
   const ships = [
@@ -53,7 +55,7 @@ const ShipCarousel = () => {
     Ship2Img,
     Ship3Img,
     Ship4Img
-  ]
+  ];
 
   return (
     <div className={s.container}>
@@ -66,7 +68,12 @@ const ShipCarousel = () => {
         ))}
       </Slider>
     </div>
-  )
+  );
 }
 
-export default ShipCarousel;
+export default connect(
+  null,
+  {
+    setupShip
+  }
+)(ShipCarousel);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import queryString from 'query-string';
 import s from './styles.css';
 import Caption from './Caption';
@@ -23,7 +24,7 @@ const Indicators = [
   { name: 'RANDOM', thumbClass: 'rnd', color: '#ff4103', level: 40 }
 ]
 
-export default class Fuel extends React.Component {
+class Fuel extends React.Component {
   constructor(props) {
     super(props);
 
@@ -53,8 +54,11 @@ export default class Fuel extends React.Component {
   _joinTrack = () => {
     window.tracksSocket.emit('joinTrack', {
       trackId: queryString.parse(this.props.location.search).trackId,
-      fuel: this.state.levels
+      fuel: this.state.levels,
+      ship: this.props.ship
     });
+
+    window.tracksSocket.join(queryString.parse(this.props.location.search).trackId);
   }
 
   render() {
@@ -103,3 +107,5 @@ export default class Fuel extends React.Component {
     )
   }
 }
+
+export default connect((state) => ({ ship: state.garage.setup }))(Fuel);

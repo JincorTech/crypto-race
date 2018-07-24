@@ -1,24 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import io from 'socket.io-client';
 import s from './styles.css';
-import { getToken } from '../../../utils/auth';
-
-import { fetchTracks } from '../../../redux/modules/garage/tracks';
 
 import RaceItem from './RaceItem';
 
 class Races extends Component {
-  componentDidMount() {
-    window.tracksSocket = io.connect('https://game-api.secrettech.io/tracks', { query: `token=${getToken()}` });
-
-    window.tracksSocket.on('connect', () => {
-      window.tracksSocket.on('init', (tracks) => this.props.fetchTracks(tracks));
-      window.tracksSocket.on('start', () => this.props.history.push('/game'));
-    });
-  }
-
   render() {
     const activeTracks = this.props.tracks ? this.props.tracks.filter((track) => track.status === 'active') : [];
     const awaitingTracks = this.props.tracks ? this.props.tracks.filter((track) => track.status === 'awaiting') : [];
@@ -49,7 +36,5 @@ export default withRouter(connect(
   (state) => ({
     ...state.garage.tracks
   }),
-  {
-    fetchTracks
-  }
+  null
 )(Races));
