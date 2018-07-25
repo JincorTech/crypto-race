@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 
 import FacebookLogin from 'react-facebook-login';
 
-import Header from '../../components/main/Header';
-import Footer from '../../components/main/Footer';
+import Header from '../../../components/main/Header';
+import Footer from '../../../components/main/Footer';
 
-import { signIn } from '../../redux/modules/app/app';
+import { signIn } from '../../../redux/modules/app/app';
 
-import { post } from '../../utils/fetch';
+import { post } from '../../../utils/fetch';
 import s from './styles.css';
 
 const Ship1 = '/assets/images/main_page/ship-1.png';
@@ -98,8 +98,7 @@ class MainPage extends React.Component {
 
   render() {
     const {
-      signIn,
-      history
+      signIn
     } = this.props;
 
     return (
@@ -122,7 +121,6 @@ class MainPage extends React.Component {
                     fields="name,email,picture"
                     callback={(res) => {
                       signIn(res.accessToken);
-                      history.push('/garage');
                     }}/>
                 </div>
                 <img className={s.waves} src={WavesImg} />

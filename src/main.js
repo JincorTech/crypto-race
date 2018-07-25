@@ -8,7 +8,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { getToken } from './app/utils/auth';
 
 import configureStore, { history } from './app/redux/configureStore';
-import Main from './app/containers/Main';
+import Main from './app/containers/app/Main';
 
 const initialState = {};
 const store = configureStore(initialState);
