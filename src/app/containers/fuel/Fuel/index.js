@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import s from './styles.css';
 import Caption from '../../../components/fuel/Caption';
-import Indicator from '../../../components/Indicator';
-import Button from '../../../components/Button';
-import Avatar from '../../../components/Avatar';
-import Header from '../../../components/main/Header';
-import Footer from '../../../components/main/Footer';
+import Indicator from '../../../components/common/Indicator';
+import Button from '../../../components/common/Button';
+import Avatar from '../../../components/common/Avatar';
+import Header from '../../../components/common/Header';
+import Footer from '../../../components/common/Footer';
 
 const FuelImg = '/assets/images/fuel/fuel.png';
 const ShipImg = '/assets/images/fuel/ship.png';

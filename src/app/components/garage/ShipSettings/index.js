@@ -2,8 +2,8 @@ import * as React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
 
-import Indicator from '../../Indicator';
-import Caption from '../../Caption';
+import Indicator from '../../common/Indicator';
+import Caption from '../../common/Caption';
 import ColorPicker from '../ColorPicker';
 import UpgradesPicker from '../UpgradesPicker';
 import ShipCarousel from '../ShipCarousel';

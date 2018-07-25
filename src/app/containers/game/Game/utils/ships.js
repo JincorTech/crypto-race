@@ -1,4 +1,4 @@
-import { getEmail } from '../../../utils/auth';
+import { getEmail } from '../../../../utils/auth';
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;

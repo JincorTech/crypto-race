@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import isEqual from 'deep-equal';
 
 import players from '../utils/players';
-import { getToken, getEmail } from '../../../utils/auth';
+import { getToken, getEmail } from '../../../../utils/auth';
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;

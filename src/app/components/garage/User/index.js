@@ -1,8 +1,8 @@
 import * as React from 'react';
 import s from './styles.css';
 
-import Button from '../../Button';
-import Avatar from '../../Avatar';
+import Button from '../../common/Button';
+import Avatar from '../../common/Avatar';
 import HealthIndicator from '../HealthIndicator';
 
 const User = () => (

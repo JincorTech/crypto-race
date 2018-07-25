@@ -4,15 +4,15 @@ import { withRouter } from 'react-router-dom';
 import Phaser from 'phaser';
 import io from 'socket.io-client';
 
-import { fetchInitialData } from '../../redux/modules/game/game';
+import { fetchInitialData } from '../../../redux/modules/game/game';
 
 import Game from './scenes/Game';
-import Topbar from '../../components/game/Topbar';
-import Map from '../../components/game/Map';
-import Chat from '../../components/game/Chat';
-import Profile from '../../components/game/Profile';
+import Topbar from '../../../components/game/Topbar';
+import Map from '../../../components/game/Map';
+import Chat from '../../../components/game/Chat';
+import Profile from '../../../components/game/Profile';
 import s from './styles.css';
-import { getToken, getEmail } from '../../utils/auth';
+import { getToken, getEmail } from '../../../utils/auth';
 
 class GameContainer extends React.Component {
   constructor(props) {

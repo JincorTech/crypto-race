@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import Garage from '../../garage/Garage';
-import Fuel from '../../Fuel';
-import Game from '../../Game';
+import Fuel from '../../fuel/Fuel';
+import Game from '../../game/Game';
 
 class Main extends Component {
   render() {
