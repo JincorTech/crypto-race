@@ -1,10 +1,9 @@
 import * as React from 'react';
-import cx from 'classnames';
 import s from './styles.css';
 
 export default class Caption extends React.Component {
   render() {
-    const {text, icon} = this.props;
+    const { text, icon } = this.props;
 
     return (
       <div className={s.container}>

@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Phaser from 'phaser';
 import io from 'socket.io-client';
-import queryString from 'query-string';
 
 import { fetchInitialData } from '../../redux/modules/game/game';
 
 import Game from './scenes/Game';
-import Topbar from '../../components/Game/Topbar';
-import Map from '../../components/Game/Map';
-import Chat from '../../components/Game/Chat';
-import Profile from '../../components/Game/Profile';
+import Topbar from '../../components/game/Topbar';
+import Map from '../../components/game/Map';
+import Chat from '../../components/game/Chat';
+import Profile from '../../components/game/Profile';
 import s from './styles.css';
 import { getToken, getEmail } from '../../utils/auth';
 

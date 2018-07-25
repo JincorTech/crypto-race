@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-import io from 'socket.io-client';
 import s from './styles.css';
-import Caption from './Caption';
-import Indicator from 'components/Indicator';
-import Button from 'components/Button';
-import Avatar from 'components/Avatar';
-import Header from 'components/main/Header';
-import Footer from 'components/main/Footer';
-import routes from 'routes';
+import Caption from '../../../components/fuel/Caption';
+import Indicator from '../../../components/Indicator';
+import Button from '../../../components/Button';
+import Avatar from '../../../components/Avatar';
+import Header from '../../../components/main/Header';
+import Footer from '../../../components/main/Footer';
 
 const FuelImg = '/assets/images/fuel/fuel.png';
 const ShipImg = '/assets/images/fuel/ship.png';
@@ -23,7 +21,7 @@ const Indicators = [
   { name: 'BTC CASH', thumbClass: 'bcc', color: '#ffc122', level: 80 },
   { name: 'LITECOIN', thumbClass: 'ltc', color: '#b7b9b8', level: 30 },
   { name: 'RANDOM', thumbClass: 'rnd', color: '#ff4103', level: 40 }
-]
+];
 
 class Fuel extends React.Component {
   constructor(props) {
@@ -39,16 +37,16 @@ class Fuel extends React.Component {
   }
 
   handleChangeIndicator = (value, index) => {
-    const levels = this.state.levels;
+    const { levels } = this.state;
     levels[index] = +value;
 
     const newTotal = this.getTotal(levels);
 
     if (newTotal <= 100) {
-      this.setState({levels: levels});
+      this.setState({ levels });
     } else {
       levels[index] = 100 - (newTotal - +value);
-      this.setState({levels: levels});
+      this.setState({ levels });
     }
   }
 
