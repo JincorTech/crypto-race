@@ -58,10 +58,6 @@ class Fuel extends React.Component {
       fuel: this.state.levels,
       ship: this.props.ship
     });
-
-    window.tracksSocket.on('connection', (socket) => {
-      socket.join(queryString.parse(this.props.location.search).trackId);
-    });
   }
 
   render() {

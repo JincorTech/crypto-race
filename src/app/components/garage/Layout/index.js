@@ -3,7 +3,7 @@ import s from './styles.css';
 
 import User from '../User';
 import ShipSettings from '../ShipSettings';
-import Races from '../Races';
+import Races from '../../../containers/garage/Races';
 
 export default class Layout extends React.Component {
   render() {

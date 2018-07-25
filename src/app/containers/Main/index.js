@@ -7,7 +7,6 @@ import Garage from '../Garage';
 import Fuel from '../Fuel';
 import Game from '../Game';
 import MainPage from '../MainPage';
-// import ScrollToTop from './ScrollToTop';
 
 import s from './styles.css';
 
@@ -25,5 +24,4 @@ class Main extends Component {
   }
 }
 
-const ComponentWithRouter = withRouter(Main);
-export default ComponentWithRouter;
+export default withRouter(Main);

@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import routes from 'routes';
 import s from './styles.css';
 
 const DurationIcon = '/assets/images/races/duration.png';
 const PrizeIcon = '/assets/images/races/prize.png';
 const ParticipantsIcon = '/assets/images/races/participants.png';
 const ShowIcon = '/assets/images/races/show.png';
-const PlusIcon = '/assets/images/races/plus.png';
+// const PlusIcon = '/assets/images/races/plus.png';
 
 const RaceItem = ({
   type,

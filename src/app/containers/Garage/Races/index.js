@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import { fetchTracks } from '../../../redux/modules/garage/tracks';
+
+import RaceItem from '../../../components/garage/RaceItem';
+
 import s from './styles.css';
 
-import RaceItem from './RaceItem';
-
 class Races extends Component {
+  componentDidMount() {
+    console.log(window.socket);
+    window.socket.on('tracks', (tracks) => this.props.fetchTracks(tracks));
+    window.socket.emit('getTracks');
+  }
+
   render() {
     const activeTracks = this.props.tracks ? this.props.tracks.filter((track) => track.status === 'active') : [];
     const awaitingTracks = this.props.tracks ? this.props.tracks.filter((track) => track.status === 'awaiting') : [];
@@ -36,5 +45,7 @@ export default withRouter(connect(
   (state) => ({
     ...state.garage.tracks
   }),
-  null
+  {
+    fetchTracks
+  }
 )(Races));

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 import Slider from 'react-slick';
-import { setupShip } from '../../../../redux/modules/garage/setup';
+import { setupShip } from '../../../redux/modules/garage/setup';
 import s from './styles.css';
 
 const PlaceImg = '/assets/images/your_ship/place.png';
