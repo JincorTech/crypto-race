@@ -51,11 +51,15 @@ class Fuel extends React.Component {
   }
 
   _joinTrack = () => {
-    window.tracksSocket.emit('joinTrack', {
+    const joinData = {
       trackId: queryString.parse(this.props.location.search).trackId,
       fuel: this.state.levels,
       ship: this.props.ship
-    });
+    };
+
+    window.socket.on('joinedTrack', (data) => console.log(data));
+    window.socket.emit('joinTrack', joinData);
+    console.log('joinTrack', joinData);
   }
 
   render() {

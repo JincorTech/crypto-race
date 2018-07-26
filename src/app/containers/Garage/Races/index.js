@@ -11,8 +11,12 @@ import s from './styles.css';
 class Races extends Component {
   componentDidMount() {
     console.log(window.socket);
-    window.socket.on('tracks', (tracks) => this.props.fetchTracks(tracks));
+    window.socket.on('initTracks', (tracks) => this.props.fetchTracks(tracks));
     window.socket.emit('getTracks');
+
+    window.socket.on('pong2', (data) => console.log('PONG2', data));
+    console.log('PING2');
+    window.socket.emit('ping2', Date.now());
   }
 
   render() {

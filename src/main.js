@@ -13,7 +13,8 @@ import Main from './app/containers/app/Main';
 const initialState = {};
 const store = configureStore(initialState);
 
-window.socket = io.connect('https://game-api.secrettech.io/global', { query: `token=${getToken()}` });
+window.socket = io.connect('https://game-api.secrettech.io/', { query: `token=${getToken()}` });
+window.socket.on('error', (error) => console.log(error));
 
 ReactDOM.render(
   <Provider store={store}>
