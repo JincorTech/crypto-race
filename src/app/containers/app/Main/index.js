@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import AppRoute from '../../../components/app/AppRoute';
 import AppWrapper from '../AppWrapper';
@@ -11,8 +11,10 @@ class Main extends Component {
   render() {
     return (
       <div className={s.container}>
-        <Route exact path="/" component={MainPage} />
-        <AppRoute component={AppWrapper}/>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <AppRoute component={AppWrapper}/>
+        </Switch>
       </div>
     );
   }
