@@ -31,18 +31,23 @@ class MovingCoins extends Component {
     }
   }
 
+  throwCoin = () => {
+    const coinWidth = getRandomInt(20, 50)
+    this.setState((prevState) => ({
+      coins: prevState.coins.concat({
+        id: this.id++,
+        img: CoinImgs[getRandomInt(0, CoinImgs.length)],
+        x: getRandomInt(0, window.innerWidth - coinWidth),
+        width: coinWidth,
+      })
+    }))
+  }
+
   componentDidMount() {
+    this.throwCoin();
     this.timer = setInterval(() => {
-      const coinWidth = getRandomInt(20, 80)
-      this.setState((prevState) => ({
-        coins: prevState.coins.concat({
-          id: this.id++,
-          img: CoinImgs[getRandomInt(0, CoinImgs.length)],
-          x: getRandomInt(0, window.innerWidth - coinWidth),
-          width: coinWidth,
-        })
-      }))
-    }, 2000)
+      this.throwCoin();
+    }, 1500)
   }
 
   componentWillUnmount() {
@@ -53,7 +58,7 @@ class MovingCoins extends Component {
     return (
       this.state.coins.map((coin) => {
         return (
-          <VelocityComponent key={coin.id} animation={{top: 500, opacity: 0}} duration={4000} runOnMount complete={(elements) => {
+          <VelocityComponent key={coin.id} animation={{top: 600, opacity: 0}} duration={7000} runOnMount complete={() => {
             this.setState((prevState) => ({
               coins: prevState.coins.filter(oneCoin => oneCoin.id !== coin.id)
             }))
