@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {VelocityComponent} from 'velocity-react';
 import s from './styles.css';
 
 const CoinImgs = [ 
@@ -19,11 +20,48 @@ function getRandomInt(min, max) {
 }
 
 class MovingCoins extends Component {
+  constructor(props) {
+    super(props)
+
+    this.id = 0;
+    this.timer = null;
+
+    this.state = {
+      coins: []
+    }
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      const coinWidth = getRandomInt(20, 80)
+      this.setState((prevState) => ({
+        coins: prevState.coins.concat({
+          id: this.id++,
+          img: CoinImgs[getRandomInt(0, CoinImgs.length)],
+          x: getRandomInt(0, window.innerWidth - coinWidth),
+          width: coinWidth,
+        })
+      }))
+    }, 2000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   render() {
     return (
-      <div className={s.coin}>
-        <img src={CoinImgs[0]}/>
-      </div>
+      this.state.coins.map((coin) => {
+        return (
+          <VelocityComponent key={coin.id} animation={{top: 500, opacity: 0}} duration={4000} runOnMount complete={(elements) => {
+            this.setState((prevState) => ({
+              coins: prevState.coins.filter(oneCoin => oneCoin.id !== coin.id)
+            }))
+          }}>
+            <img className={s.coin} src={coin.img} style={{left: `${coin.x}px`, top: `-${coin.width}px`, width: `${coin.width}px`}}/>
+          </VelocityComponent>
+        )
+      })
     )
   }
 }
