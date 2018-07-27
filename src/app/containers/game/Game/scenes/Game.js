@@ -1,9 +1,8 @@
 import Phaser from 'phaser';
-import io from 'socket.io-client';
 import isEqual from 'deep-equal';
 
 import players from '../utils/players';
-import { getToken, getEmail } from '../../../../utils/auth';
+import { getEmail } from '../../../../utils/auth';
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;
@@ -22,7 +21,9 @@ export default class Game extends Phaser.Scene {
       id: '',
       left: false,
       right: false,
-      x: 23
+      x: 23,
+      email: '',
+      trackId: ''
     };
 
     this.commonContext = {};
@@ -60,7 +61,6 @@ export default class Game extends Phaser.Scene {
   }
 
   create(data) {
-    console.log(data);
     this.enemies = this.physics.add.group();
     this.planets = this.add.group();
 
@@ -79,17 +79,20 @@ export default class Game extends Phaser.Scene {
     const percHeight = (window.innerHeight - 180 - 130) / 100;
     const percWidth = (window.innerWidth) / 100;
 
-    const player = data.filter((p) => p.email === getEmail())[0];
-    const enemies = data.filter((p) => p.email !== getEmail())[0];
+    const player = data.players.filter((p) => p.email === getEmail())[0];
+    const enemies = data.players.filter((p) => p.email !== getEmail())[0];
     players.spawnPlayers(this, player, enemies, percHeight, percWidth);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
     this.state.id = this.player.id;
+    this.state.trackId = data.trackId;
+    this.state.email = getEmail();
 
     window.socket.on('moveXupdate', (data) => {
-      // console.log(data);
+      console.log(data);
+      console.log(this.player);
       if (this.player.id === data.id) {
         if (data.left) {
           this.player.setVelocityX(-1 * PlayerSpeed);
@@ -123,10 +126,6 @@ export default class Game extends Phaser.Scene {
         }
       });
     });
-
-    setTimeout(() => {
-      window.location.replace('/garage');
-    }, 30000);
   }
 
   update() {
@@ -134,7 +133,9 @@ export default class Game extends Phaser.Scene {
       id: this.player.id,
       left: false,
       right: false,
-      x: 23
+      x: 23,
+      email: getEmail(),
+      trackId: this.state.trackId
     };
 
     if (this.commonContext.cursors.left.isDown) {
@@ -176,7 +177,7 @@ export default class Game extends Phaser.Scene {
       this.state.left = newState.left;
       this.state.right = newState.right;
       window.socket.emit('moveX', this.state);
-      // console.log('emit', this.state);
+      console.log('emit', this.state);
     }
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;

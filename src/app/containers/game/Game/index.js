@@ -35,16 +35,19 @@ class GameContainer extends React.Component {
       ]
     });
 
+    const { trackId } = queryString.parse(this.props.location.search);
+    const { players } = this.props;
+
     console.log('game container mounted ------------------------------------------------');
     console.log('game: ', window.game);
-    console.log('props: ', this.props);
-    console.log('track id: ', queryString.parse(this.props.location.search).trackId);
+    console.log('players: ', players);
+    console.log('track id: ', trackId);
 
 
     if (!this.props.players.length > 0) {
-      window.socket.emit('loadTrack', { trackId: queryString.parse(this.props.location.search).trackId });
+      window.socket.emit('loadTrack', { trackId });
     } else {
-      window.game.scene.start('game', this.props.players);
+      window.game.scene.start('game', { trackId, players: this.props.players });
     }
 
 
@@ -85,7 +88,8 @@ class GameContainer extends React.Component {
       if (!window.game.scene.isProcessing) {
         console.log('if game not started - start it with new props');
         console.log(this.props.players);
-        window.game.scene.start('game', this.props.players);
+        const { trackId } = queryString.parse(this.props.location.search);
+        window.game.scene.start('game', { trackId, players: this.props.players });
       }
     }
   }
