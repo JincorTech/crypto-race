@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Phaser from 'phaser';
 import queryString from 'query-string';
 // import io from 'socket.io-client';
+import isArrayEqual from 'array-equal';
 
 import { fetchInitialData } from '../../../redux/modules/game/game';
 
@@ -39,7 +40,12 @@ class GameContainer extends React.Component {
     console.log('props: ', this.props);
     console.log('track id: ', queryString.parse(this.props.location.search).trackId);
 
-    // window.game.scene.start('game', { player, enemies });
+
+    if (!this.props.players.length > 0) {
+      window.socket.emit('loadTrack', { trackId: queryString.parse(this.props.location.search).trackId });
+    } else {
+      window.game.scene.start('game', this.props.players);
+    }
 
 
     // window.globalSocket = io.connect('https://game-api.secrettech.io/race', { query: `token=${getToken()}` });
@@ -71,6 +77,17 @@ class GameContainer extends React.Component {
     //     window.game.scene.start('game', { player, enemies });
     //   });
     // });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!isArrayEqual(this.props.players, prevProps.players)) {
+      console.log('new props arrived');
+      if (!window.game.scene.isProcessing) {
+        console.log('if game not started - start it with new props');
+        console.log(this.props.players);
+        window.game.scene.start('game', this.props.players);
+      }
+    }
   }
 
   componentWillUnmount() {

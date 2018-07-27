@@ -60,6 +60,7 @@ export default class Game extends Phaser.Scene {
   }
 
   create(data) {
+    console.log(data);
     this.enemies = this.physics.add.group();
     this.planets = this.add.group();
 
@@ -77,16 +78,17 @@ export default class Game extends Phaser.Scene {
 
     const percHeight = (window.innerHeight - 180 - 130) / 100;
     const percWidth = (window.innerWidth) / 100;
-    players.spawnPlayers(this, data.player, data.enemies, percHeight, percWidth);
+
+    const player = data.filter((p) => p.email === getEmail())[0];
+    const enemies = data.filter((p) => p.email !== getEmail())[0];
+    players.spawnPlayers(this, player, enemies, percHeight, percWidth);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
     this.state.id = this.player.id;
 
-    window.globalSocket.on('error', (e) => console.log(e));
-
-    window.globalSocket.on('moveXupdate', (data) => {
+    window.socket.on('moveXupdate', (data) => {
       // console.log(data);
       if (this.player.id === data.id) {
         if (data.left) {
@@ -109,7 +111,7 @@ export default class Game extends Phaser.Scene {
       }
     });
 
-    window.globalSocket.on('positionUpdate', (data) => {
+    window.socket.on('positionUpdate', (data) => {
       const percentHight = (window.innerHeight - 180 - 130) / 100;
       const getY = (position) =>
         (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
@@ -173,7 +175,7 @@ export default class Game extends Phaser.Scene {
     if (!isEqual(this.state, newState)) {
       this.state.left = newState.left;
       this.state.right = newState.right;
-      window.globalSocket.emit('moveX', this.state);
+      window.socket.emit('moveX', this.state);
       // console.log('emit', this.state);
     }
 

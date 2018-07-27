@@ -61,8 +61,6 @@ class Chat extends Component {
   render() {
     const { messages } = this.state;
 
-    console.log(this.state);
-
     const renderMessage = (message) => (
       <div className={s.message} key={message.ts}>
         <span className={s.author}>{message.author}:</span>
