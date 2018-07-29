@@ -15,6 +15,57 @@ import Chat from '../../../components/game/Chat';
 import Profile from '../../../components/game/Profile';
 import s from './styles.css';
 
+const PLAYERS_MOCK = [
+  {
+    email: 'amazing.space.invader@gmail.com',
+    fuel: [],
+    id: '5b5cc3cbcbbeae012934cbd0',
+    name: 'Aidar Ibatullin',
+    picture: '',
+    position: 0,
+    ship: {
+      type: 'ship1'
+    },
+    x: 20
+  },
+  {
+    email: 'amazing.space.invader@yandex.ru',
+    fuel: [],
+    id: '5b5cc3cbcbbeae012934cbd1',
+    name: 'Autobot',
+    picture: '',
+    position: 1,
+    ship: {
+      type: 'ship1'
+    },
+    x: 40
+  },
+  {
+    email: 'amazing.space.invader@mail.ru',
+    fuel: [],
+    id: '5b5cc3cbcbbeae012934cbd2',
+    name: 'Autobot',
+    picture: '',
+    position: 2,
+    ship: {
+      type: 'ship1'
+    },
+    x: 60
+  },
+  {
+    email: 'amazing.space.invader@rambler.ru',
+    fuel: [],
+    id: '5b5cc3cbcbbeae012934cbd3',
+    name: 'Autobot',
+    picture: '',
+    position: 3,
+    ship: {
+      type: 'ship1'
+    },
+    x: 80
+  }
+];
+
 class GameContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -56,10 +107,10 @@ class GameContainer extends React.Component {
       window.game.scene.start('game', { trackId, players: this.props.players });
     }
 
-    window.socket.on('gameover', (players) => {
-      this.setState({ gameover: true, players });
-      window.game.scene.pause('game');
-    });
+    // window.socket.on('gameover', (players) => {
+    //   this.setState({ gameover: true, players });
+    //   window.game.scene.pause('game');
+    // });
   }
 
   componentDidUpdate(prevProps) {
@@ -69,7 +120,7 @@ class GameContainer extends React.Component {
         console.log('if game not started - start it with new props');
         console.log(this.props.players);
         const { trackId } = queryString.parse(this.props.location.search);
-        window.game.scene.start('game', { trackId, players: this.props.players });
+        window.game.scene.start('game', { trackId, players: PLAYERS_MOCK });
       }
     }
   }
@@ -84,6 +135,8 @@ class GameContainer extends React.Component {
       end,
       player
     } = this.props;
+
+    console.log('rerender');
 
     return (
       <div>

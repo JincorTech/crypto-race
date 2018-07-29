@@ -4,7 +4,7 @@ import s from './styles.css';
 
 const GameOverPopup = (props) => {
   const renderPlayer = (player) => (
-    <div className={s.player}>
+    <div className={s.player} key={player.position}>
       #{player.position} {player.name} | {player.score} pts | {player.prize} ETH
     </div>
   );
