@@ -94,6 +94,7 @@ export default class Game extends Phaser.Scene {
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_left`, true);
+          console.log(player.anims);
         } else {
           player.anims.stop(`${player.id}_left`);
         }
@@ -116,6 +117,8 @@ export default class Game extends Phaser.Scene {
         //   player.anims.stop(`${player.id}_left_back`);
         //   player.anims.stop(`${player.id}_right_back`);
         player.setFrame(0);
+        player.anims.stop(`${player.id}_right`);
+        player.anims.stop(`${player.id}_left`);
         // }
       }
     });
