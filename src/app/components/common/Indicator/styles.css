@@ -14,21 +14,21 @@
   font-weight: 900;
 }
 
-.icon { 
+.icon {
   margin-right: 4px;
-  height: 14px; 
-} 
- 
-.caption { 
-  margin-right: 5px; 
-  line-height: 1.1; 
-} 
- 
-.name { 
-  margin-top: 2px; 
-  float: left; 
-  clear: both; 
-} 
+  height: 14px;
+}
+
+.caption {
+  margin-right: 5px;
+  line-height: 1.1;
+}
+
+.name {
+  margin-top: 2px;
+  float: left;
+  clear: both;
+}
 
 .value {
   float: right;
@@ -62,7 +62,7 @@ input[type="range"].btc::-webkit-slider-thumb {
   background-image: url('./assets/btc.png')
 }
 
-input[type="range"].bcc::-webkit-slider-thumb {
+input[type="range"].bch::-webkit-slider-thumb {
   background-image: url('./assets/bcc.png')
 }
 
@@ -74,7 +74,7 @@ input[type="range"].ltc::-webkit-slider-thumb {
   background-image: url('./assets/ltc.png')
 }
 
-input[type="range"].rpl::-webkit-slider-thumb {
+input[type="range"].xrp::-webkit-slider-thumb {
   background-image: url('./assets/rpl.png')
 }
 
