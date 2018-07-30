@@ -92,31 +92,31 @@ export default class Game extends Phaser.Scene {
       if (data.left) {
         player.setVelocityX(-1 * PlayerSpeed);
 
-        if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
-          player.anims.play(`${player.id}_left`, true);
-        } else {
-          player.anims.stop(`${player.id}_left`);
-        }
+        // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
+        //   player.anims.play(`${player.id}_left`, true);
+        // } else {
+        //   player.anims.stop(`${player.id}_left`);
+        // }
       } else if (data.right) {
         player.setVelocityX(PlayerSpeed);
 
-        if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
-          player.anims.play(`${player.id}_right`, true);
-        } else {
-          player.anims.stop(`${player.id}_right`);
-        }
+        // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
+        //   player.anims.play(`${player.id}_right`, true);
+        // } else {
+        //   player.anims.stop(`${player.id}_right`);
+        // }
       } else {
         player.setVelocityX(0);
 
-        if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
-          player.anims.play(`${player.id}_left_back`, true);
-        } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
-          player.anims.play(`${player.id}_right_back`, true);
-        } else {
-          player.anims.stop(`${player.id}_left_back`);
-          player.anims.stop(`${player.id}_right_back`);
-          player.setFrame(0);
-        }
+        // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
+        //   player.anims.play(`${player.id}_left_back`, true);
+        // } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
+        //   player.anims.play(`${player.id}_right_back`, true);
+        // } else {
+        //   player.anims.stop(`${player.id}_left_back`);
+        //   player.anims.stop(`${player.id}_right_back`);
+        //   player.setFrame(0);
+        // }
       }
     });
 
@@ -143,39 +143,39 @@ export default class Game extends Phaser.Scene {
       trackId: this.state.trackId
     };
 
-    // const player = this.players.children.get('id', this.state.id);
+    const player = this.players.children.get('id', this.state.id);
 
     if (this.commonContext.cursors.left.isDown) {
       newState.left = true;
       newState.right = false;
 
-      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
-      //   player.anims.play(`${player.id}_left`, true);
-      // } else {
-      //   player.anims.stop(`${player.id}_left`);
-      // }
+      if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
+        player.anims.play(`${player.id}_left`, true);
+      } else {
+        player.anims.stop(`${player.id}_left`);
+      }
     } else if (this.commonContext.cursors.right.isDown) {
       newState.left = false;
       newState.right = true;
 
-      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
-      //   player.anims.play(`${player.id}_right`, true);
-      // } else {
-      //   player.anims.stop(`${player.id}_right`);
-      // }
+      if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
+        player.anims.play(`${player.id}_right`, true);
+      } else {
+        player.anims.stop(`${player.id}_right`);
+      }
     } else {
       newState.left = false;
       newState.right = false;
 
-      // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
-      //   player.anims.play(`${player.id}_left_back`, true);
-      // } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
-      //   player.anims.play(`${player.id}_right_back`, true);
-      // } else {
-      //   player.anims.stop(`${player.id}_left_back`);
-      //   player.anims.stop(`${player.id}_right_back`);
-      //   player.setFrame(0);
-      // }
+      if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
+        player.anims.play(`${player.id}_left_back`, true);
+      } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
+        player.anims.play(`${player.id}_right_back`, true);
+      } else {
+        player.anims.stop(`${player.id}_left_back`);
+        player.anims.stop(`${player.id}_right_back`);
+        player.setFrame(0);
+      }
     }
 
     if (!isEqual(this.state, newState)) {
