@@ -6,6 +6,7 @@ import FacebookLogin from 'react-facebook-login';
 
 import Header from '../../../components/common/Header';
 import Footer from '../../../components/common/Footer';
+import MovingCoins from '../../../components/main/MovingCoins';
 
 import { signIn } from '../../../redux/modules/app/app';
 
@@ -107,6 +108,7 @@ class MainPage extends React.Component {
         <div className={s.main}>
           <div className={s.bg}>
             <div className={s.container}>
+              <MovingCoins />
               <div className={s.topSection}>
                 <img className={s.logo} src={LogoImg}/>
               </div>
