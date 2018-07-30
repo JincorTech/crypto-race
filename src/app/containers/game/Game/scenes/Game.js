@@ -125,15 +125,53 @@ export default class Game extends Phaser.Scene {
     });
 
     window.socket.on('positionUpdate', (data) => {
-      const percentHight = (window.innerHeight - 180 - 130) / 100;
-      const getY = (position) =>
-        (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
-      data.forEach((dat) => {
-        if (dat.id === this.player.id) {
-          this.player.y = getY(dat.position);
-        } else {
-          this.enemies.children.entries[0].y = getY(dat.position);
-        }
+      const area = window.innerHeight - 180 - 130;
+
+      const getY = (pos, playersLen) => {
+        const row = area / (playersLen + 1);
+        return (row * (pos + 1)) + 180;
+      };
+
+      console.log(data); // id, postition
+      data.forEach((p) => {
+        const player = this.players.children.get('id', p.id);
+        const targetPosition = getY(p.position, data.length);
+
+        console.log('target y', targetPosition);
+        console.log('curr y', player.y);
+
+        console.log(this);
+
+        // const tween = this.add(player);
+        // tween.to({ y: targetPosition }, 2000, Phaser.Easing.Bounce.Out, true);
+
+        this.tweens.add({
+          targets: player,
+          y: targetPosition,
+          ease: 'Power1',
+          duration: 2000,
+          repeat: 0,
+          onStart: () => console.log('tween start'),
+          onComplete: () => console.log('tween end')
+        });
+
+        // if (targetPosition < player.y) {
+        //   player.setVelocityY(-PlayerSpeed);
+        // } else if (targetPosition > player.y) {
+        //   player.setVelocityY(PlayerSpeed);
+        // } else {
+        //   player.setVelocityY(0);
+        // }
+
+        // if (player.y < targetPosition) {
+        //   while (player.y < targetPosition) {
+        //     player.y += 0.01;
+        //   }
+        // } else if (player.y > targetPosition) {
+        //   while (player.y > targetPosition) {
+        //     player.y -= 0.01;
+        //   }
+        // }
       });
     });
   }
@@ -188,7 +226,6 @@ export default class Game extends Phaser.Scene {
       this.state.left = newState.left;
       this.state.right = newState.right;
       window.socket.emit('moveX', this.state);
-      console.log('emit', this.state);
     }
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;
