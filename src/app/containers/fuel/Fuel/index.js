@@ -17,8 +17,8 @@ const MoonImg = '/assets/images/fuel/moon.png';
 const Indicators = [
   { name: 'BITCOIN', thumbClass: 'btc', color: '#fff', level: 30 },
   { name: 'ETHEREUM', thumbClass: 'eth', color: '#3df2a1', level: 50 },
-  { name: 'RIPPLE', thumbClass: 'rpl', color: '#42b6ef', level: 40 },
-  { name: 'BTC CASH', thumbClass: 'bcc', color: '#ffc122', level: 80 },
+  { name: 'RIPPLE', thumbClass: 'xrp', color: '#42b6ef', level: 40 },
+  { name: 'BTC CASH', thumbClass: 'bch', color: '#ffc122', level: 80 },
   { name: 'LITECOIN', thumbClass: 'ltc', color: '#b7b9b8', level: 30 },
   { name: 'RANDOM', thumbClass: 'rnd', color: '#ff4103', level: 40 }
 ];

@@ -107,10 +107,10 @@ class GameContainer extends React.Component {
       window.game.scene.start('game', { trackId, players: this.props.players });
     }
 
-    // window.socket.on('gameover', (players) => {
-    //   this.setState({ gameover: true, players });
-    //   window.game.scene.pause('game');
-    // });
+    window.socket.on('gameover', (players) => {
+      this.setState({ gameover: true, players });
+      window.game.scene.pause('game');
+    });
   }
 
   componentDidUpdate(prevProps) {

@@ -28,7 +28,7 @@ const RaceItem = ({
         <div style={{ backgroundColor: type === 'active' ? '#39ef99' : '#3593eb' }} className={s.number}>{index + 1}</div>
         <div className={s.duration}>
           <img src={DurationIcon}/>
-          <span className={s.infoValue}>{`${duration} s`}</span>
+          <span className={s.infoValue}>{`${duration / 1000} s`}</span>
         </div>
         <div className={s.prize}>
           <img src={PrizeIcon}/>
