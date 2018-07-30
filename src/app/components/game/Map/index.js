@@ -36,7 +36,7 @@ class Map extends Component {
       <div className={s.map}>
         <img className={s.moon} src="/assets/images/game_icons/map/moon.png"/>
         <div className={s.line}>
-          <div className={s.progress} style={{ height: `${this.state.progress}%` }}/>
+          <div className={s.progress} style={{ height: `${this.state.progress > 100 ? 100 : this.state.progress}%` }}/>
         </div>
         <div className={s.timer}>
           <div className={s.numbers}>
