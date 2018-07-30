@@ -94,9 +94,10 @@ export default class Game extends Phaser.Scene {
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_left`, true);
-          console.log(player.anims);
+          console.log('play happend');
         } else {
           player.anims.stop(`${player.id}_left`);
+          console.log('stop happend');
         }
       } else if (data.right) {
         player.setVelocityX(PlayerSpeed);
@@ -183,7 +184,7 @@ export default class Game extends Phaser.Scene {
       // }
     }
 
-    if (!isEqual(this.state, newState)) {
+    if (true) {
       this.state.left = newState.left;
       this.state.right = newState.right;
       window.socket.emit('moveX', this.state);
