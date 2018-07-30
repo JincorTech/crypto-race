@@ -24,7 +24,7 @@ const PLAYERS_MOCK = [
     picture: '',
     position: 0,
     ship: {
-      type: 'ship1'
+      type: 0
     },
     x: 20
   },
@@ -36,7 +36,7 @@ const PLAYERS_MOCK = [
     picture: '',
     position: 1,
     ship: {
-      type: 'ship1'
+      type: 1
     },
     x: 40
   },
@@ -48,7 +48,7 @@ const PLAYERS_MOCK = [
     picture: '',
     position: 2,
     ship: {
-      type: 'ship1'
+      type: 2
     },
     x: 60
   },
@@ -60,7 +60,7 @@ const PLAYERS_MOCK = [
     picture: '',
     position: 3,
     ship: {
-      type: 'ship1'
+      type: 3
     },
     x: 80
   }
@@ -100,6 +100,8 @@ class GameContainer extends React.Component {
     console.log('game: ', window.game);
     console.log('players: ', players);
     console.log('track id: ', trackId);
+
+    // window.game.scene.start('game', { trackId, players: PLAYERS_MOCK });
 
     if (!this.props.players.length > 0) {
       window.socket.emit('loadTrack', { trackId });

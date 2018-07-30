@@ -2,14 +2,12 @@ import Phaser from 'phaser';
 import isEqual from 'deep-equal';
 
 import players from '../utils/_players';
-import ships from '../utils/ships';
 import { getEmail } from '../../../../utils/auth';
 
-const leftStartFrame = 11;
-const leftEndFrame = 18;
-
-const rightStartFrame = 1;
-const rightEndFrame = 10;
+const leftStartFrame = 30;
+const leftEndFrame = 59;
+const rightStartFrame = 0;
+const rightEndFrame = 29;
 
 const PlayerSpeed = 400;
 const BgSpeed = 1.5;
@@ -56,9 +54,10 @@ export default class Game extends Phaser.Scene {
     this.load.image('space3', '/assets/game/background/space3-2.png');
     this.load.image('hole', '/assets/game/background/hole.png');
 
-    this.load.spritesheet('nova', '/assets/game/ships/nova.png', { frameWidth: 130, frameHeight: 132 });
-    this.load.spritesheet('omega', '/assets/game/ships/omega.png', { frameWidth: 130, frameHeight: 132 });
-    this.load.spritesheet('ship1', 'assets/game/ships/ship1.png', { frameWidth: 127, frameHeight: 130 });
+    this.load.spritesheet('ship1', 'assets/game/ships/ship1.png', { frameWidth: 130, frameHeight: 133 });
+    this.load.spritesheet('ship2', 'assets/game/ships/ship2.png', { frameWidth: 130, frameHeight: 133 });
+    this.load.spritesheet('ship3', 'assets/game/ships/ship3.png', { frameWidth: 130, frameHeight: 84 });
+    this.load.spritesheet('ship4', 'assets/game/ships/ship4.png', { frameWidth: 130, frameHeight: 141 });
   }
 
   create(data) {
@@ -77,14 +76,11 @@ export default class Game extends Phaser.Scene {
     this.planets.planet3 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:planet3').setOrigin(0);
     this.moon = this.add.tileSprite((this.screenWidth / 2) - 180, -180, 360, 360, 'planet:moon').setOrigin(0);
 
-    // const percHeight = (window.innerHeight - 180 - 130) / 100;
-    // const percWidth = (window.innerWidth) / 100;
     players.spawnPlayers(this, data.players);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
-    this.state.id = data.players[0].id;
     this.state.id = data.players.filter((player) => player.email === getEmail())[0].id;
     this.state.trackId = data.trackId;
 
@@ -96,15 +92,17 @@ export default class Game extends Phaser.Scene {
       if (data.left) {
         player.setVelocityX(-1 * PlayerSpeed);
 
-        if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'left' || player.anims.currentFrame.index < 8) {
+        if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_left`, true);
+          console.log('play happend');
         } else {
           player.anims.stop(`${player.id}_left`);
+          console.log('stop happend');
         }
       } else if (data.right) {
         player.setVelocityX(PlayerSpeed);
 
-        if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'right' || player.anims.currentFrame.index < 10) {
+        if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_right`, true);
         } else {
           player.anims.stop(`${player.id}_right`);
@@ -112,28 +110,68 @@ export default class Game extends Phaser.Scene {
       } else {
         player.setVelocityX(0);
 
-        if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
-          player.anims.play(`${player.id}_left_back`, true);
-        } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
-          player.anims.play(`${player.id}_right_back`, true);
-        } else {
-          player.anims.stop(`${player.id}_left_back`);
-          player.anims.stop(`${player.id}_right_back`);
-          player.setFrame(0);
-        }
+        // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
+        //   player.anims.play(`${player.id}_left_back`, true);
+        // } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
+        //   player.anims.play(`${player.id}_right_back`, true);
+        // } else {
+        //   player.anims.stop(`${player.id}_left_back`);
+        //   player.anims.stop(`${player.id}_right_back`);
+        player.setFrame(0);
+        player.anims.stop(`${player.id}_right`);
+        player.anims.stop(`${player.id}_left`);
+        // }
       }
     });
 
     window.socket.on('positionUpdate', (data) => {
-      const percentHight = (window.innerHeight - 180 - 130) / 100;
-      const getY = (position) =>
-        (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
-      data.forEach((dat) => {
-        if (dat.id === this.player.id) {
-          this.player.y = getY(dat.position);
-        } else {
-          this.enemies.children.entries[0].y = getY(dat.position);
-        }
+      const area = window.innerHeight - 180 - 130;
+
+      const getY = (pos, playersLen) => {
+        const row = area / (playersLen + 1);
+        return (row * (pos + 1)) + 180;
+      };
+
+      console.log(data); // id, postition
+      data.forEach((p) => {
+        const player = this.players.children.get('id', p.id);
+        const targetPosition = getY(p.position, data.length);
+
+        console.log('target y', targetPosition);
+        console.log('curr y', player.y);
+
+        console.log(this);
+
+        // const tween = this.add(player);
+        // tween.to({ y: targetPosition }, 2000, Phaser.Easing.Bounce.Out, true);
+
+        this.tweens.add({
+          targets: player,
+          y: targetPosition,
+          ease: 'Power1',
+          duration: 2000,
+          repeat: 0,
+          onStart: () => console.log('tween start'),
+          onComplete: () => console.log('tween end')
+        });
+
+        // if (targetPosition < player.y) {
+        //   player.setVelocityY(-PlayerSpeed);
+        // } else if (targetPosition > player.y) {
+        //   player.setVelocityY(PlayerSpeed);
+        // } else {
+        //   player.setVelocityY(0);
+        // }
+
+        // if (player.y < targetPosition) {
+        //   while (player.y < targetPosition) {
+        //     player.y += 0.01;
+        //   }
+        // } else if (player.y > targetPosition) {
+        //   while (player.y > targetPosition) {
+        //     player.y -= 0.01;
+        //   }
+        // }
       });
     });
   }
@@ -153,35 +191,25 @@ export default class Game extends Phaser.Scene {
       newState.left = true;
       newState.right = false;
 
-      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'left' || player.anims.currentFrame.index < 8) {
+      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 30) {
       //   player.anims.play(`${player.id}_left`, true);
       // } else {
       //   player.anims.stop(`${player.id}_left`);
-      // }
-
-      // if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_left' || this.player.anims.currentFrame.index < 8) {
-      //   this.player.anims.play('player_left', true);
-      // } else {
-      //   this.player.anims.stop('player_left');
       // }
     } else if (this.commonContext.cursors.right.isDown) {
       newState.left = false;
       newState.right = true;
 
-      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'right' || player.anims.currentFrame.index < 10) {
+      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 30) {
       //   player.anims.play(`${player.id}_right`, true);
       // } else {
       //   player.anims.stop(`${player.id}_right`);
       // }
-
-      // if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_right' || this.player.anims.currentFrame.index < 10) {
-      //   this.player.anims.play('player_right', true);
-      // } else {
-      //   this.player.anims.stop('player_right');
-      // }
     } else {
       newState.left = false;
       newState.right = false;
+
+      // player.setFrame(0);
 
       // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
       //   player.anims.play(`${player.id}_left_back`, true);
@@ -192,25 +220,12 @@ export default class Game extends Phaser.Scene {
       //   player.anims.stop(`${player.id}_right_back`);
       //   player.setFrame(0);
       // }
-
-      // if (leftStartFrame < this.player.frame.name
-      //   && this.player.frame.name <= leftEndFrame) {
-      //   this.player.anims.play('player_left_back', true);
-      // } else if (rightStartFrame < this.player.frame.name
-      //   && this.player.frame.name <= rightEndFrame) {
-      //   this.player.anims.play('player_right_back', true);
-      // } else {
-      //   this.player.anims.stop('player_left_back');
-      //   this.player.anims.stop('player_right_back');
-      //   this.player.setFrame(0);
-      // }
     }
 
-    if (!isEqual(this.state, newState)) {
+    if (true) {
       this.state.left = newState.left;
       this.state.right = newState.right;
       window.socket.emit('moveX', this.state);
-      console.log('emit', this.state);
     }
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;

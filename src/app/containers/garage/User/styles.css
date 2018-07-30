@@ -8,7 +8,7 @@
 .avatar {
   float: left;
   width: 90px;
-  margin-right: 14px;
+  margin-right: 5px;
 }
 
 .info {
@@ -19,10 +19,11 @@
   margin: 12px 0 13px;
   font-size: 27px;
   font-weight: 900;
+  text-transform: uppercase;
 }
 
 .balance {
-  font-size: 13px;
+  font-size: 11px;
   border: 1px solid #01f9f9;
   border-radius: 17px;
   line-height: 2.3;
