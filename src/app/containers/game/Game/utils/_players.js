@@ -11,7 +11,7 @@ const getY = (pos, playersLen) => {
 
 const spawnPlayers = (self, players) => {
   const spawnSinglePlayer = (player) => {
-    const playerObject = self.physics.add.sprite(player.x * percWidth, getY(player.position, players.length), 'ship1');
+    const playerObject = self.physics.add.sprite(player.x * percWidth, getY(player.position, players.length), `ship${player.ship.type}`);
     playerObject.id = player.id;
     playerObject.isPlayer = player.email === getEmail();
 
