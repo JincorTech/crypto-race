@@ -1,0 +1,25 @@
+.container {
+  margin-bottom: 34px;
+}
+
+.caption {
+  text-align: center;
+  color: #01f9f9;
+  font-size: 27px;
+  font-weight: 900;
+  line-height: 2;
+  text-shadow: 0px 0px 35px #00b5b5;
+}
+
+.icon {
+  margin-right: 14px;
+  height: 23px;
+}
+
+.line{
+  display:block;
+  border:none;
+  height:1px;
+  background:black;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 235, from(#01f9f9), to(rgb(0,0,0,0)));
+}

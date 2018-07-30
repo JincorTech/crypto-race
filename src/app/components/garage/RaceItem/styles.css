@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 15px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  min-width: 275px;
+  border-radius: 31px;
+  height: 34px;
+  color: #fff;
+  font-size: 14px;
+  border-top: 1px solid #19f4f2;
+  border-bottom: 1px solid #19f4f2;
+  border-right: 1px solid #19f4f2;
+  text-align: left;
+  margin: auto;
+}
+
+.infoValue {
+  position: absolute;
+  top: 3px;
+  left: 27px;
+}
+
+.info div {
+  position: relative;
+  display: inline-block;
+}
+
+.info img {
+  height: 20px;
+}
+
+.number {
+  margin-right: 10px;
+  font-size: 19px;
+  width: 34px;
+  height: 34px;
+  border-radius: 40px;
+  display: inline-block;
+  line-height: 1.9;
+  text-align: center;
+  color: #000;
+}
+
+.showButton {
+  display: inline-block;
+  height: 34px;
+  border: 1px solid #19f4f2;
+  border-radius: 40px;
+  width: 57px;
+  margin: 0 12px;
+}
+
+.showButton img {
+  width: 35px;
+  margin-top: 9px;
+}
+
+.showButton:hover {
+  cursor: pointer;
+  background-color: #39ef99;
+}
+
+.addButton {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.9;
+  text-decoration: none;
+  display: inline-block;
+  height: 34px;
+  border-radius: 40px;
+  width: 90px;
+  background-color: #ed1c24;
+}
+
+.addButton img {
+  width: 20px;
+  margin-top: 9px;
+}
+
+.addButton:hover {
+  cursor: pointer;
+  background-color: #9a060c;
+}
+
+.duration {
+  width: 78px;
+}
+
+.prize {
+  width: 109px;
+}
+
+.participants {
+  width: 72px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+@media (max-width: 475px) {
+  .container {
+    flex-flow: column;
+  }
+
+  .info {
+    margin-bottom: 15px;
+  }
+
+  .buttons {
+    margin: 0 auto 23px;
+  }
+}

@@ -1,0 +1,261 @@
+.container {
+  background-size: 1600px;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/main_page/bg.png);
+}
+
+.bg {
+  background-size: 1600px;
+  background-position-x: center;
+  background-repeat: repeat;
+  background-color: #171727;
+  background-image: url(/assets/images/main_page/bg-stars.png);
+}
+
+.topBg {
+  height: 500px;
+}
+
+.topSection {
+  position: relative;
+  height: 538px;
+  margin: 0 45px;
+}
+
+.startSection {
+  position: relative;
+  margin-bottom: 105px;
+  background-color: #fff;
+  padding: 5px 45px 90px 45px;
+}
+
+.loginButtonWrapper {
+  text-align: center;
+}
+
+.loginButton {
+  width: 172px;
+  height: 190px;
+  background-image: url(/assets/images/main_page/start-button.png);
+  background-color: #fff;
+  background-position: -180px -5px;
+  background-size: 356px;
+  border: none;
+}
+
+.loginButton:hover {
+  width: 172px;
+  height: 190px;
+  background-image: url(/assets/images/main_page/start-button.png);
+  background-color: #fff;
+  background-position: -358px -5px;
+  background-size: 356px;
+  border: none;
+  cursor: pointer;
+}
+
+.loginButton:focus {
+  outline: 0;
+}
+
+.bottomSection {
+  padding: 0 45px 45px;
+}
+
+.shipContainer {
+  position: relative;
+  width: 150px;
+  display: inline-flex;
+}
+
+.ship {
+  width: 150px;
+  height: 160px;
+  display: inline-flex;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/main_page/circle.png);
+}
+
+.shipsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 660px;
+}
+
+.shipImg {
+  width: 85px;
+  display: block;
+  margin: auto;
+}
+
+.shipNumber {
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  position: absolute;
+  line-height: 2;
+  background-color: #39ef99;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+.shipCaption {
+  position: absolute;
+  color: #fff;
+  border: 1px solid #00ffff;
+  border-radius: 20px;
+  padding: 5px 14px;
+  bottom: -37px;
+  left: 0;
+  right: 0;
+  margin: 0 15px 0 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.scoreBoard {
+  margin: auto;
+  max-width: 750px;
+  padding-top: 100px;
+}
+
+.scoreNumber {
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 2;
+  background-color: #39ef99;
+  border-radius: 50%;
+  font-weight: 600;
+  color: #000;
+  font-size: 16px;
+}
+
+.scoreLine {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.scoreImgContainer {
+  width: 100px;
+  text-align: center;
+}
+
+.scoreImg {
+  height: 45px;
+}
+
+.scoreSpacer {
+  flex-grow: 1;
+  border-bottom: 1px dotted #fff;
+  height: 8px;
+  margin: 0 25px 0 10px;
+}
+
+.scoreValue {
+  /* margin-left: auto; */
+}
+
+.subscribeForm {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.subscribeInput {
+  display: block;
+  width: calc(100% - 20px);
+  height: 30px;
+  border-radius: 30px;
+  padding: 0 10px;
+  box-shadow: none;
+  border: 1px solid #3593eb;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.subscribeButton {
+  background-color: #3593eb;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  height: 50px;
+  max-width: 250px;
+  border-radius: 50px;
+  margin: auto;
+  line-height: 2.3;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.subscribeButton:hover {
+  cursor: pointer;
+  background-color: #8cbfef;
+}
+
+.subscribeMessage {
+  color: red;
+  text-align: center;
+}
+
+.subscribeSuccess {
+  color: green;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 200px;
+  left: 0;
+  right: 0;
+  max-width: 375px;
+  width: 100%;
+}
+
+.waves {
+  position: absolute;
+  bottom: -98px;
+  width: 860px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .shipsContainer {
+    flex-flow: column;
+    width: 150px;
+  }
+
+  .shipContainer {
+    margin-bottom: 75px;
+  }
+
+  .bg {
+    background-size: 1600px 2000px;
+  }
+}
+
+@media (max-width: 425px) {
+  .scoreImgContainer {
+    display: none;
+  }
+
+  .scoreNumber {
+    margin-right: 10px;
+  }
+}

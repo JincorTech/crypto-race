@@ -1,0 +1,73 @@
+.container {
+  min-height: calc(100vh - 350px);
+  max-width: 425px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 0 21px;
+}
+
+.indicators {
+  margin-right: 21px;
+}
+
+.body {
+  position: relative;
+  height: 480px;
+  width: 310px;
+  margin: auto;
+}
+
+.text {
+  clear: both;
+  padding-top: 20px;
+  color: #44fce4;
+}
+
+.buttons {
+  float: right;
+  margin-top: 40px;
+}
+
+.addButton {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.ship {
+  width: 390px;
+  left: -393px;
+  top: 159px;
+  position: absolute;
+}
+
+.station {
+  width: 326px;
+  left: 339px;
+  top: -164px;
+  position: absolute;
+}
+
+.moon {
+  width: 345px;
+  left: 339px;
+  top: -525px;
+  position: absolute;
+}
+
+.totalIndicator {
+  padding-top: 220px;
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 40px auto;
+}
+
+.avatarText {
+  color: #fff;
+  width: 343px;
+  font-size: 14px;
+  margin: 0 18px 0 10px;
+}
