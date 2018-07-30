@@ -34,13 +34,7 @@ class User extends Component {
             </div>
           </div>
           <div className={s.balance}>
-            <span><span className={s.balanceCaption}>BALANCE: </span><span className={s.balanceEth}>{this.props.balance} ETH</span></span>
-          </div>
-          <div className={s.buttons}>
-            <div className={s.addButton}>
-              <Button text="+ADD" color="#3593eb"/>
-            </div>
-            <Button text="WITHDRAW" color="#ed1c24"/>
+            <span><span className={s.balanceCaption}></span><span className={s.balanceEth}>{this.props.balance} ETH</span> | {this.props.address}</span>
           </div>
         </div>
         <div className={s.buttons}>
