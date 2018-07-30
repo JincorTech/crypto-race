@@ -1,9 +1,12 @@
 // TODO fix animation keys
 
-const leftStartFrame = 16;
-const leftEndFrame = 29;
-const rightStartFrame = 1;
-const rightEndFrame = 15;
+const leftStartFrame = 30;
+const leftEndFrame = 59;
+
+const rightStartFrame = 0;
+const rightEndFrame = 29;
+
+const playerFrameRate = 60;
 
 function getKey(player) {
   return {
@@ -20,7 +23,7 @@ function createShipAnimation(self, player) {
     frames: self.anims.generateFrameNumbers(player.ship.type, {
       start: leftStartFrame, end: leftEndFrame
     }),
-    frameRate: 30,
+    frameRate: playerFrameRate,
     repeat: -1
   });
 
@@ -29,8 +32,8 @@ function createShipAnimation(self, player) {
     frames: self.anims.generateFrameNumbers(player.ship.type, {
       start: leftStartFrame, end: leftEndFrame
     }),
-    frameRate: 30,
-    repeat: 1
+    frameRate: playerFrameRate,
+    repeat: -1
   });
 
   self.anims.create({
@@ -38,7 +41,7 @@ function createShipAnimation(self, player) {
     frames: self.anims.generateFrameNumbers(player.ship.type, {
       start: rightStartFrame, end: rightEndFrame
     }),
-    frameRate: 30,
+    frameRate: playerFrameRate,
     repeat: -1
   });
 
@@ -47,7 +50,7 @@ function createShipAnimation(self, player) {
     frames: self.anims.generateFrameNumbers(player.ship.type, {
       start: rightStartFrame, end: rightEndFrame
     }),
-    frameRate: 30,
+    frameRate: playerFrameRate,
     repeat: -1
   });
 }

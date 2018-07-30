@@ -11,7 +11,7 @@ const spawnPlayers = (self, player, enemies, percentHight, percentWidth) => {
   };
 
   const spawnEnemy = (enemy) => {
-    const obj = self.physics.add.sprite(enemy.x * percentWidth, getY(enemy.position), 'omega');
+    const obj = self.physics.add.sprite(enemy.x * percentWidth, getY(enemy.position), 'ship2');
     obj.id = enemy.id;
     obj.setCollideWorldBounds(true);
     self.enemies.add(obj);
