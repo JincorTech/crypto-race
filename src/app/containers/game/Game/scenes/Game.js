@@ -77,14 +77,11 @@ export default class Game extends Phaser.Scene {
     this.planets.planet3 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:planet3').setOrigin(0);
     this.moon = this.add.tileSprite((this.screenWidth / 2) - 180, -180, 360, 360, 'planet:moon').setOrigin(0);
 
-    // const percHeight = (window.innerHeight - 180 - 130) / 100;
-    // const percWidth = (window.innerWidth) / 100;
     players.spawnPlayers(this, data.players);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
-    this.state.id = data.players[0].id;
     this.state.id = data.players.filter((player) => player.email === getEmail())[0].id;
     this.state.trackId = data.trackId;
 

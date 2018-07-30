@@ -101,6 +101,8 @@ class GameContainer extends React.Component {
     console.log('players: ', players);
     console.log('track id: ', trackId);
 
+    // window.game.scene.start('game', { trackId, players: PLAYERS_MOCK });
+
     if (!this.props.players.length > 0) {
       window.socket.emit('loadTrack', { trackId });
     } else {
