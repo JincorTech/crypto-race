@@ -40,7 +40,7 @@ const RaceItem = ({
         </div>
       </div>
       <div className={s.buttons}>
-        <div className={s.showButton}><img src={ShowIcon}/></div>
+        <div className={s.showButton} style={{visibility: isActive ? 'hidden' : 'visible'}}><img src={ShowIcon}/></div>}
         {!isActive && <Link to={`/fuel?trackId=${id}`} className={s.addButton}>GET IN</Link>}
       </div>
     </div>
