@@ -4,6 +4,7 @@ import app from './modules/app/app';
 import game from './modules/game/game';
 import tracks from './modules/garage/tracks';
 import setup from './modules/garage/setup';
+import profile from './modules/garage/profile';
 
 export default combineReducers({
   app: combineReducers({
@@ -16,6 +17,7 @@ export default combineReducers({
 
   garage: combineReducers({
     tracks,
-    setup
+    setup,
+    profile
   })
 });

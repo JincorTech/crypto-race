@@ -1,7 +1,7 @@
 import * as React from 'react';
 import s from './styles.css';
 
-import User from '../User';
+import User from '../../../containers/garage/User';
 import ShipSettings from '../ShipSettings';
 import Races from '../../../containers/garage/Races';
 
