@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import io from 'socket.io-client';
-import s from './styles.css';
-import { getToken } from '../../../utils/auth';
 
 import { fetchTracks } from '../../../redux/modules/garage/tracks';
 
-import RaceItem from './RaceItem';
+import RaceItem from '../../../components/garage/RaceItem';
+
+import s from './styles.css';
 
 class Races extends Component {
   componentDidMount() {
-    window.tracksSocket = io.connect('https://game-api.secrettech.io/tracks', { query: `token=${getToken()}` });
+    console.log(window.socket);
+    window.socket.on('initTracks', (tracks) => this.props.fetchTracks(tracks));
+    window.socket.emit('getTracks');
 
-    window.tracksSocket.on('connect', () => {
-      window.tracksSocket.on('init', (tracks) => this.props.fetchTracks(tracks));
-      window.tracksSocket.on('start', () => this.props.history.push('/game'));
-    });
+    window.socket.on('pong2', (data) => console.log('PONG2', data));
+    console.log('PING2');
+    window.socket.emit('ping2', Date.now());
   }
 
   render() {
