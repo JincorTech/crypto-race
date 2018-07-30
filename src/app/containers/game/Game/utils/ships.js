@@ -1,4 +1,4 @@
-import { getEmail } from '../../../../utils/auth';
+// TODO fix animation keys
 
 const leftStartFrame = 16;
 const leftEndFrame = 29;

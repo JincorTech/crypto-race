@@ -90,6 +90,8 @@ export default class Game extends Phaser.Scene {
     window.socket.on('moveXupdate', (data) => {
       const player = this.players.children.get('id', data.id);
 
+      // TODO fix animation keys
+
       if (data.left) {
         player.setVelocityX(-1 * PlayerSpeed);
 
