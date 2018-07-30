@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-.ship0 {
+/* .ship0 {
   width: 325px;
   margin-left: -26px;
   margin-top: -18px;
@@ -36,27 +36,27 @@
   width: 344px;
   margin-left: -50px;
   margin-top: -61px;
-}
+} */
 
-.ship3 {
+.ship0 {
   width: 352px;
   margin-left: -50px;
   margin-top: -81px;
 }
 
-.ship4 {
+.ship1 {
   margin-left: -3px;
   margin-top: -19px;
   width: 276px;
 }
 
-.ship5 {
+.ship2 {
   width: 293px;
   margin-left: -21px;
   margin-top: -40px;
 }
 
-.ship6 {
+.ship3 {
   width: 275px;
   margin-left: -12px;
   margin-top: -24px;

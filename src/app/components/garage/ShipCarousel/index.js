@@ -48,9 +48,9 @@ const ShipCarousel = (props) => {
   };
 
   const ships = [
-    Ship7Img,
-    Ship5Img,
-    Ship6Img,
+    // Ship7Img,
+    // Ship5Img,
+    // Ship6Img,
     Ship1Img,
     Ship2Img,
     Ship3Img,
