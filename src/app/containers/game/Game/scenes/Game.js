@@ -149,9 +149,7 @@ export default class Game extends Phaser.Scene {
       newState.left = true;
       newState.right = false;
 
-      console.log(player);
-
-      if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
+      if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 30) {
         player.anims.play(`${player.id}_left`, true);
       } else {
         player.anims.stop(`${player.id}_left`);
@@ -160,7 +158,7 @@ export default class Game extends Phaser.Scene {
       newState.left = false;
       newState.right = true;
 
-      if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
+      if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 30) {
         player.anims.play(`${player.id}_right`, true);
       } else {
         player.anims.stop(`${player.id}_right`);
@@ -169,15 +167,17 @@ export default class Game extends Phaser.Scene {
       newState.left = false;
       newState.right = false;
 
-      if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
-        player.anims.play(`${player.id}_left_back`, true);
-      } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
-        player.anims.play(`${player.id}_right_back`, true);
-      } else {
-        player.anims.stop(`${player.id}_left_back`);
-        player.anims.stop(`${player.id}_right_back`);
-        player.setFrame(0);
-      }
+      player.setFrame(0);
+
+      // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
+      //   player.anims.play(`${player.id}_left_back`, true);
+      // } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
+      //   player.anims.play(`${player.id}_right_back`, true);
+      // } else {
+      //   player.anims.stop(`${player.id}_left_back`);
+      //   player.anims.stop(`${player.id}_right_back`);
+      //   player.setFrame(0);
+      // }
     }
 
     if (!isEqual(this.state, newState)) {
