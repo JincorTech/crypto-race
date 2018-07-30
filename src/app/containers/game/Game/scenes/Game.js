@@ -149,6 +149,8 @@ export default class Game extends Phaser.Scene {
       newState.left = true;
       newState.right = false;
 
+      console.log(player);
+
       if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
         player.anims.play(`${player.id}_left`, true);
       } else {

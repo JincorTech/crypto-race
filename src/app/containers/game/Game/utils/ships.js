@@ -17,7 +17,7 @@ function getKey(player) {
 function createShipAnimation(self, player) {
   self.anims.create({
     key: getKey(player).left,
-    frames: self.anims.generateFrameNumbers(player.ship.type, {
+    frames: self.anims.generateFrameNumbers(`ship${player.ship.type + 1}`, {
       start: leftStartFrame, end: leftEndFrame
     }),
     frameRate: 60,
@@ -26,7 +26,7 @@ function createShipAnimation(self, player) {
 
   self.anims.create({
     key: getKey(player).leftBack,
-    frames: self.anims.generateFrameNumbers(player.ship.type, {
+    frames: self.anims.generateFrameNumbers(`ship${player.ship.type + 1}`, {
       start: leftStartFrame, end: leftEndFrame
     }),
     frameRate: 60,
@@ -35,7 +35,7 @@ function createShipAnimation(self, player) {
 
   self.anims.create({
     key: getKey(player).right,
-    frames: self.anims.generateFrameNumbers(player.ship.type, {
+    frames: self.anims.generateFrameNumbers(`ship${player.ship.type + 1}`, {
       start: rightStartFrame, end: rightEndFrame
     }),
     frameRate: 60,
@@ -44,7 +44,7 @@ function createShipAnimation(self, player) {
 
   self.anims.create({
     key: getKey(player).rightBack,
-    frames: self.anims.generateFrameNumbers(player.ship.type, {
+    frames: self.anims.generateFrameNumbers(`ship${player.ship.type + 1}`, {
       start: rightStartFrame, end: rightEndFrame
     }),
     frameRate: 60,
