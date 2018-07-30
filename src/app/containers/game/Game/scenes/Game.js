@@ -85,6 +85,7 @@ export default class Game extends Phaser.Scene {
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
     this.state.id = data.players[0].id;
+    this.state.id = data.players.filter((player) => player.email === getEmail())[0].id;
     this.state.trackId = data.trackId;
 
     window.socket.on('moveXupdate', (data) => {
@@ -139,14 +140,14 @@ export default class Game extends Phaser.Scene {
 
   update() {
     const newState = {
-      id: this.players.children.entries[0].id,
+      id: this.state.id,
       left: false,
       right: false,
       x: 23,
       trackId: this.state.trackId
     };
 
-    const player = this.players.children.get('id', this.state.id);
+    // const player = this.players.children.get('id', this.state.id);
 
     if (this.commonContext.cursors.left.isDown) {
       newState.left = true;
