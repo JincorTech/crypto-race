@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import io from 'socket.io-client';
 import s from './styles.css';
-import { getToken } from '../../../utils/auth';
 
 class Chat extends Component {
   constructor(props) {
@@ -29,8 +27,9 @@ class Chat extends Component {
   _handleSubmit(e) {
     e.preventDefault();
     if (this.state.message) {
-      this.socket.emit('message', this.state.message);
+      window.socket.emit('message', { message: this.state.message, chatId: this.props.trackId });
       this.setState({ message: '' });
+      this._scrollToBottom();
     }
   }
 
@@ -50,13 +49,9 @@ class Chat extends Component {
     this._scrollToBottom();
     document.addEventListener('keydown', this._handlePressKey, false);
 
-    this.socket = io.connect('https://game-api.secrettech.io/chat', { query: `token=${getToken()}` });
-
-    this.socket.on('connect', () => {
-      this.socket.emit('requestInitData');
-      this.socket.on('responseInitData', (messages) => this.setState({ messages }));
-      this.socket.on('update', (messages) => this.setState({ messages }, this._scrollToBottom()));
-    });
+    window.socket.on('joinedChat', (messages) => this.setState({ messages }, this._scrollToBottom()));
+    window.socket.on('updateChat', (messages) => this.setState({ messages }, this._scrollToBottom()));
+    window.socket.emit('joinChat', { trackId: this.props.trackId });
   }
 
   componentDidUpdate() {
@@ -69,7 +64,7 @@ class Chat extends Component {
     const renderMessage = (message) => (
       <div className={s.message} key={message.ts}>
         <span className={s.author}>{message.author}:</span>
-        <span className={s.message}>{message.message}</span>
+        <span className={s.message}>{message.message.message}</span>
       </div>
     );
 

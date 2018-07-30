@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
-import io from 'socket.io-client';
 import isEqual from 'deep-equal';
 
-import players from '../utils/players';
-import { getToken, getEmail } from '../../../../utils/auth';
+import players from '../utils/_players';
+import ships from '../utils/ships';
+import { getEmail } from '../../../../utils/auth';
 
 const leftStartFrame = 11;
 const leftEndFrame = 18;
@@ -11,7 +11,7 @@ const leftEndFrame = 18;
 const rightStartFrame = 1;
 const rightEndFrame = 10;
 
-const PlayerSpeed = 800;
+const PlayerSpeed = 400;
 const BgSpeed = 1.5;
 
 export default class Game extends Phaser.Scene {
@@ -22,7 +22,8 @@ export default class Game extends Phaser.Scene {
       id: '',
       left: false,
       right: false,
-      x: 23
+      x: 23,
+      trackId: ''
     };
 
     this.commonContext = {};
@@ -57,10 +58,11 @@ export default class Game extends Phaser.Scene {
 
     this.load.spritesheet('nova', '/assets/game/ships/nova.png', { frameWidth: 130, frameHeight: 132 });
     this.load.spritesheet('omega', '/assets/game/ships/omega.png', { frameWidth: 130, frameHeight: 132 });
+    this.load.spritesheet('ship1', 'assets/game/ships/ship1.png', { frameWidth: 127, frameHeight: 130 });
   }
 
   create(data) {
-    this.enemies = this.physics.add.group();
+    this.players = this.physics.add.group();
     this.planets = this.add.group();
 
     this.backgroundSpace = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'space').setOrigin(0);
@@ -75,41 +77,53 @@ export default class Game extends Phaser.Scene {
     this.planets.planet3 = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'planet:planet3').setOrigin(0);
     this.moon = this.add.tileSprite((this.screenWidth / 2) - 180, -180, 360, 360, 'planet:moon').setOrigin(0);
 
-    const percHeight = (window.innerHeight - 180 - 130) / 100;
-    const percWidth = (window.innerWidth) / 100;
-    players.spawnPlayers(this, data.player, data.enemies, percHeight, percWidth);
+    // const percHeight = (window.innerHeight - 180 - 130) / 100;
+    // const percWidth = (window.innerWidth) / 100;
+    players.spawnPlayers(this, data.players);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
 
-    this.state.id = this.player.id;
+    this.state.id = data.players[0].id;
+    this.state.trackId = data.trackId;
 
-    window.globalSocket.on('error', (e) => console.log(e));
+    window.socket.on('moveXupdate', (data) => {
+      const player = this.players.children.get('id', data.id);
 
-    window.globalSocket.on('moveXupdate', (data) => {
-      // console.log(data);
-      if (this.player.id === data.id) {
-        if (data.left) {
-          this.player.setVelocityX(-1 * PlayerSpeed);
-        } else if (data.right) {
-          this.player.setVelocityX(PlayerSpeed);
+      // TODO fix animation keys
+
+      if (data.left) {
+        player.setVelocityX(-1 * PlayerSpeed);
+
+        if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'left' || player.anims.currentFrame.index < 8) {
+          player.anims.play(`${player.id}_left`, true);
         } else {
-          this.player.setVelocityX(0);
+          player.anims.stop(`${player.id}_left`);
+        }
+      } else if (data.right) {
+        player.setVelocityX(PlayerSpeed);
+
+        if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'right' || player.anims.currentFrame.index < 10) {
+          player.anims.play(`${player.id}_right`, true);
+        } else {
+          player.anims.stop(`${player.id}_right`);
         }
       } else {
-        if (data.left) {
-          // console.log(this.enemies);
-          // console.log(this.enemies.children.get('id', data.id), this.player);
-          this.enemies.children.entries[0].setVelocityX(-1 * PlayerSpeed);
-        } else if (data.right) {
-          this.enemies.children.entries[0].setVelocityX(PlayerSpeed);
+        player.setVelocityX(0);
+
+        if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
+          player.anims.play(`${player.id}_left_back`, true);
+        } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
+          player.anims.play(`${player.id}_right_back`, true);
         } else {
-          this.enemies.children.entries[0].setVelocityX(0);
+          player.anims.stop(`${player.id}_left_back`);
+          player.anims.stop(`${player.id}_right_back`);
+          player.setFrame(0);
         }
       }
     });
 
-    window.globalSocket.on('positionUpdate', (data) => {
+    window.socket.on('positionUpdate', (data) => {
       const percentHight = (window.innerHeight - 180 - 130) / 100;
       const getY = (position) =>
         (position === 0 ? (30 * percentHight) + 180 : (60 * percentHight) + 180);
@@ -121,60 +135,81 @@ export default class Game extends Phaser.Scene {
         }
       });
     });
-
-    setTimeout(() => {
-      window.location.replace('/garage');
-    }, 30000);
   }
 
   update() {
     const newState = {
-      id: this.player.id,
+      id: this.players.children.entries[0].id,
       left: false,
       right: false,
-      x: 23
+      x: 23,
+      trackId: this.state.trackId
     };
+
+    const player = this.players.children.get('id', this.state.id);
 
     if (this.commonContext.cursors.left.isDown) {
       newState.left = true;
       newState.right = false;
 
-      if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_left' || this.player.anims.currentFrame.index < 8) {
-        this.player.anims.play('player_left', true);
-      } else {
-        this.player.anims.stop('player_left');
-      }
+      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'left' || player.anims.currentFrame.index < 8) {
+      //   player.anims.play(`${player.id}_left`, true);
+      // } else {
+      //   player.anims.stop(`${player.id}_left`);
+      // }
+
+      // if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_left' || this.player.anims.currentFrame.index < 8) {
+      //   this.player.anims.play('player_left', true);
+      // } else {
+      //   this.player.anims.stop('player_left');
+      // }
     } else if (this.commonContext.cursors.right.isDown) {
       newState.left = false;
       newState.right = true;
 
-      if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_right' || this.player.anims.currentFrame.index < 10) {
-        this.player.anims.play('player_right', true);
-      } else {
-        this.player.anims.stop('player_right');
-      }
+      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== 'right' || player.anims.currentFrame.index < 10) {
+      //   player.anims.play(`${player.id}_right`, true);
+      // } else {
+      //   player.anims.stop(`${player.id}_right`);
+      // }
+
+      // if (!this.player.anims.currentFrame || this.player.anims.currentAnim.key !== 'player_right' || this.player.anims.currentFrame.index < 10) {
+      //   this.player.anims.play('player_right', true);
+      // } else {
+      //   this.player.anims.stop('player_right');
+      // }
     } else {
       newState.left = false;
       newState.right = false;
 
-      if (leftStartFrame < this.player.frame.name
-        && this.player.frame.name <= leftEndFrame) {
-        this.player.anims.play('player_left_back', true);
-      } else if (rightStartFrame < this.player.frame.name
-        && this.player.frame.name <= rightEndFrame) {
-        this.player.anims.play('player_right_back', true);
-      } else {
-        this.player.anims.stop('player_left_back');
-        this.player.anims.stop('player_right_back');
-        this.player.setFrame(0);
-      }
+      // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
+      //   player.anims.play(`${player.id}_left_back`, true);
+      // } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
+      //   player.anims.play(`${player.id}_right_back`, true);
+      // } else {
+      //   player.anims.stop(`${player.id}_left_back`);
+      //   player.anims.stop(`${player.id}_right_back`);
+      //   player.setFrame(0);
+      // }
+
+      // if (leftStartFrame < this.player.frame.name
+      //   && this.player.frame.name <= leftEndFrame) {
+      //   this.player.anims.play('player_left_back', true);
+      // } else if (rightStartFrame < this.player.frame.name
+      //   && this.player.frame.name <= rightEndFrame) {
+      //   this.player.anims.play('player_right_back', true);
+      // } else {
+      //   this.player.anims.stop('player_left_back');
+      //   this.player.anims.stop('player_right_back');
+      //   this.player.setFrame(0);
+      // }
     }
 
     if (!isEqual(this.state, newState)) {
       this.state.left = newState.left;
       this.state.right = newState.right;
-      window.globalSocket.emit('moveX', this.state);
-      // console.log('emit', this.state);
+      window.socket.emit('moveX', this.state);
+      console.log('emit', this.state);
     }
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;

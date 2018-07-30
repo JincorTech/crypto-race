@@ -1,20 +1,11 @@
-import { getEmail } from '../../../../utils/auth';
+// TODO fix animation keys
 
-const leftStartFrame = 11;
-const leftEndFrame = 18;
+const leftStartFrame = 16;
+const leftEndFrame = 29;
 const rightStartFrame = 1;
-const rightEndFrame = 10;
+const rightEndFrame = 15;
 
 function getKey(player) {
-  if (player.email === getEmail()) {
-    return {
-      left: 'player_left',
-      leftBack: 'player_left_back',
-      right: 'player_right',
-      rightBack: 'player_right_back'
-    };
-  }
-
   return {
     left: `${player.id}_left`,
     leftBack: `${player.id}_left_back`,

@@ -5,20 +5,24 @@ export const FETCH_INITIAL_DATA = 'game/game/FETCH_INITIAL_DATA';
 export const fetchInitialData = createAction(FETCH_INITIAL_DATA);
 
 const initialState = {
+  id: '',
   raceName: '',
   start: 0,
   end: 0,
+  totalPlyaers: 0,
   player: {
     id: '',
+    email: '',
+    name: '',
+    picture: '',
     position: 0,
+    x: 0,
     ship: {
       type: ''
     },
-    x: 0,
-    y: 0,
     fuel: []
   },
-  enemies: []
+  players: []
 };
 
 export default createReducer({

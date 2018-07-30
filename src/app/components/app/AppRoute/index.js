@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import { getToken } from '../../../utils/auth';
-import * as routes from '../../../routes';
 
 const AppRoute = (props) => {
   const {
@@ -13,7 +12,7 @@ const AppRoute = (props) => {
   const render = (renderProps) => (
     getToken()
       ? <Component {...renderProps}/>
-      : <Redirect to={routes.SIGN_IN}/>
+      : <Redirect to="/"/>
   );
 
   return (
