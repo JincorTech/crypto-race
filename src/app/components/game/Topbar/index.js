@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { format } from 'date-fns';
 import s from './styles.css';
 
 import timers from '../../../utils/timers';
@@ -14,8 +13,6 @@ class Topbar extends Component {
   componentDidMount() {
     this.setState({ timeLeft: this.props.endTS - Date.now() });
     this.timer = setInterval(this._tick, 1000);
-
-    console.log();
   }
 
   componentWillUnmount() {

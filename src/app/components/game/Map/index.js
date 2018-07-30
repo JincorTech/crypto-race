@@ -12,7 +12,6 @@ class Map extends Component {
 
   componentDidMount() {
     this.setState({ timePass: Date.now() - this.props.startTS });
-    console.log(Date.now(), this.props.startTS, Date.now() - this.props.startTS);
     this.timer = setInterval(this._tick, 1000);
   }
 
@@ -23,7 +22,7 @@ class Map extends Component {
   _tick() {
     const raceTime = this.props.endTS - this.props.startTS;
     const percent = raceTime / 100;
-    const progress = 87//(Date.now() - this.props.startTS) / percent;
+    const progress = (Date.now() - this.props.startTS) / percent;
     this.setState({
       progress,
       timePass: Date.now() - this.props.startTS
