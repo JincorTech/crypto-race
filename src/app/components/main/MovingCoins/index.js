@@ -32,13 +32,17 @@ class MovingCoins extends Component {
   }
 
   throwCoin = () => {
-    const coinWidth = getRandomInt(20, 50)
+    const coinWidthMin = 15;
+    const coinWidthMax = 40;
+    const minDuration = 3500;
+    const coinWidth = getRandomInt(coinWidthMin, coinWidthMax)
     this.setState((prevState) => ({
       coins: prevState.coins.concat({
         id: this.id++,
         img: CoinImgs[getRandomInt(0, CoinImgs.length)],
         x: getRandomInt(0, window.innerWidth - coinWidth),
         width: coinWidth,
+        duration: minDuration * coinWidthMax / coinWidth
       })
     }))
   }
@@ -75,7 +79,7 @@ class MovingCoins extends Component {
     return (
       this.state.coins.map((coin) => {
         return (
-          <VelocityComponent key={coin.id} animation={{top: 600, opacity: 0}} duration={7000} runOnMount complete={() => {
+          <VelocityComponent key={coin.id} animation={{top: 600, opacity: 0}} duration={coin.duration} runOnMount complete={() => {
             this.setState((prevState) => ({
               coins: prevState.coins.filter(oneCoin => oneCoin.id !== coin.id)
             }))
