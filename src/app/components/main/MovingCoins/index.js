@@ -43,11 +43,28 @@ class MovingCoins extends Component {
     }))
   }
 
-  componentDidMount() {
+  runCoins = () => {
     this.throwCoin();
     this.timer = setInterval(() => {
       this.throwCoin();
     }, 1500)
+  }
+
+  stopCoins = () => {
+    clearInterval(this.timer)
+  }
+
+  handleVisibilityChange = () => {
+    if (document.hidden) {
+      this.stopCoins()
+    } else  {
+      this.runCoins()
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+    this.runCoins();
   }
 
   componentWillUnmount() {
