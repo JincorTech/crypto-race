@@ -104,7 +104,9 @@ class MainPage extends React.Component {
 
     return (
       <div>
-        <Header/>
+        <div className={s.header}>
+          <Header/>
+        </div>
         <div className={s.main}>
           <div className={s.bg}>
             <div className={s.container}>
