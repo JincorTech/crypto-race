@@ -109,8 +109,8 @@ class MainPage extends React.Component {
         </div>
         <div className={s.main}>
           <div className={s.bg}>
+            <MovingCoins />
             <div className={s.container}>
-              <MovingCoins />
               <div className={s.topSection}>
                 <img className={s.logo} src={LogoImg}/>
               </div>

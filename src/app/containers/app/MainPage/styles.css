@@ -3,6 +3,8 @@
 }
 
 .container {
+  z-index: 1;
+  position: relative;
   background-size: 1600px;
   background-position-x: center;
   background-repeat: no-repeat;
@@ -233,6 +235,7 @@
   right: 0;
   max-width: 375px;
   width: 100%;
+  z-index: 1;
 }
 
 .waves {
