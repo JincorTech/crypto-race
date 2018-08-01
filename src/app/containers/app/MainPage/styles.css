@@ -1,8 +1,20 @@
+.main {
+  padding-top: 50px;
+}
+
 .container {
+  z-index: 1;
+  position: relative;
   background-size: 1600px;
   background-position-x: center;
   background-repeat: no-repeat;
   background-image: url(/assets/images/main_page/bg.png);
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
 .bg {
@@ -223,6 +235,7 @@
   right: 0;
   max-width: 375px;
   width: 100%;
+  z-index: 1;
 }
 
 .waves {
