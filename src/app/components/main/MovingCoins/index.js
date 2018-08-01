@@ -40,7 +40,7 @@ class MovingCoins extends Component {
       coins: prevState.coins.concat({
         id: this.id++,
         img: CoinImgs[getRandomInt(0, CoinImgs.length)],
-        x: getRandomInt(0, window.innerWidth - coinWidth),
+        x: getRandomInt(0, window.innerWidth - coinWidth - 50),
         width: coinWidth,
         duration: minDuration * coinWidthMax / coinWidth
       })
@@ -51,7 +51,7 @@ class MovingCoins extends Component {
     this.throwCoin();
     this.timer = setInterval(() => {
       this.throwCoin();
-    }, 1500)
+    }, 1000)
   }
 
   stopCoins = () => {
