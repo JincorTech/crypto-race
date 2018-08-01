@@ -5,6 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { fetchInitialData } from '../../../redux/modules/game/game';
 
 import AppRoute from '../../../components/app/AppRoute';
+import MainPageRoute from '../../../components/app/MainPageRoute';
 import AppWrapper from '../AppWrapper';
 import MainPage from '../MainPage';
 
@@ -25,7 +26,7 @@ class Main extends Component {
     return (
       <div className={s.container}>
         <Switch>
-          <Route exact path="/" component={MainPage} />
+          <MainPageRoute exact path="/" component={MainPage} />
           <AppRoute component={AppWrapper}/>
         </Switch>
       </div>
