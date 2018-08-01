@@ -21,3 +21,14 @@
   cursor: pointer;
   color: #39ef99;
 }
+
+.fbLogin {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin: 0 3px;
+  color: #fff;
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  text-align: center;
+}
