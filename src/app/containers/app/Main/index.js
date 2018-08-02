@@ -16,6 +16,7 @@ class Main extends Component {
     window.socket.on('start', (data) => {
       const { players } = data;
       const player = players.filter((p) => p.email === getEmail())[0];
+      console.log('start happend');
       this.props.fetchInitialData({ player, ...data });
       this.props.history.push(`/game?trackId=${data.id}`);
     });
