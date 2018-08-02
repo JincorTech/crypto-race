@@ -8,12 +8,15 @@ const ParticipantsIcon = '/assets/images/races/participants.png';
 const ShowIcon = '/assets/images/races/show.png';
 // const PlusIcon = '/assets/images/races/plus.png';
 
-const RaceItem = ({
-  type,
-  isActive,
-  data,
-  index
-}) => {
+const RaceItem = (props) => {
+  console.log(props);
+  const {
+    type,
+    isActive,
+    data,
+    index
+  } = props;
+
   const {
     id,
     duration,

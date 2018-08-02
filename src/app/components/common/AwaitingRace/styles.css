@@ -1,0 +1,42 @@
+.awaitingRace {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #01f9f9;
+  border-bottom: none;
+  color: #fff;
+  min-width: 200px;
+  max-width: 300px;
+  border-radius: 5px 5px 0 0;
+}
+
+.title {
+  padding: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  border-bottom: 1px solid #01f9f9;
+  cursor: pointer;
+}
+
+.info {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.block {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.blockLabel {
+  font-size: 12px;
+}
+
+.blockValue {
+  font-size: 20px;
+}
+
+.players {
+  padding: 10px;
+  font-size: 12px;
+}
