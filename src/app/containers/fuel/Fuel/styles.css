@@ -24,8 +24,10 @@
 }
 
 .buttons {
-  float: right;
-  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 70px;
 }
 
 .addButton {
