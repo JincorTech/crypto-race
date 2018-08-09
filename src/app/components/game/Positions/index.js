@@ -10,15 +10,15 @@ class Positions extends Component {
         {positions.map((position) => {
           const player = players.find(one => one.id === position.id)
           return (
-          <div className={s.player}>
+          <div key={position.id} className={s.player}>
             <div>
-              <span>Player: </span><span>{player && player.name}</span>
+              <span className={s.label}>Player: </span><span>{player && player.name}</span>
             </div>
             <div>
-              <span>Position: </span><span>{position.position}</span>
+              <span className={s.label}>Position: </span><span>{position.position}</span>
             </div>
             <div>
-              <span>Score: </span><span>{position.score}</span>
+              <span className={s.label}>Score: </span><span>{position.score.toFixed(0)}</span>
             </div>
           </div>
         )})}
