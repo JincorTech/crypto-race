@@ -65,6 +65,8 @@ class Fuel extends React.Component {
       levels
     } = this.state;
 
+    const trackId = queryString.parse(this.props.location.search).trackId
+
     return (
       <React.Fragment>
         <Header />
@@ -93,7 +95,7 @@ class Fuel extends React.Component {
                 {/* <div className={s.addButton}>
                 <Button text="+ADD" color="#3593eb" />
               </div> */}
-                <div className="fb-share-button" data-href="https://jincortech.github.io/garage/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjincortech.github.io%2Fgarage%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Поделиться</a></div>
+                <div className="fb-share-button" data-href={`https://jincortech.github.io/fuel?trackId=${trackId}`} data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjincortech.github.io%2Ffuel%3FtrackId%3D${trackId}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">Поделиться</a></div>
                 <Button text="2THEMOON" color="#ed1c24" onClick={() => this._joinTrack()} />
               </div>
             </div>
