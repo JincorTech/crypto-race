@@ -18,7 +18,7 @@ class Positions extends Component {
               <span className={s.label}>Position: </span><span>{position.position + 1}</span>
             </div>
             <div>
-              <span className={s.label}>Score: </span><span>{position.score.toFixed(0)}</span>
+              <span className={s.label}>Score: </span><span>{position.score && position.score.toFixed(0)}</span>
             </div>
           </div>
         )})}
