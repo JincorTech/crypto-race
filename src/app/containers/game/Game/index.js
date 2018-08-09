@@ -11,6 +11,8 @@ import Game from './scenes/Game';
 import GameOverPopup from '../../../components/game/GameOverPopup';
 import Topbar from '../../../components/game/Topbar';
 import Map from '../../../components/game/Map';
+import Currencies from '../../../components/game/Currencies';
+import Positions from '../../../components/game/Positions';
 import Chat from '../../../components/game/Chat';
 import Profile from '../../../components/game/Profile';
 import s from './styles.css';
@@ -72,7 +74,10 @@ class GameContainer extends React.Component {
 
     this.state = {
       gameover: false,
-      players: []
+      players: [],
+      currencies: [],
+      currenciesStart: [],
+      positions: []
     }
   }
 
@@ -113,6 +118,10 @@ class GameContainer extends React.Component {
       this.setState({ gameover: true, players });
       window.game.scene.pause('game');
     });
+
+    window.socket.on('positionUpdate', (data) => {
+      this.setState({currencies: data[0].currencies, currenciesStart: data[0].currenciesStart, positions: data})
+    })
   }
 
   componentDidUpdate(prevProps) {
@@ -145,6 +154,8 @@ class GameContainer extends React.Component {
         <div className={s.topbar}><Topbar startTS={start} endTS={end}/></div>
         <div className={s.chat}><Chat trackId={queryString.parse(this.props.location.search).trackId}/></div>
         <div className={s.map}><Map startTS={start} endTS={end}/></div>
+        <div className={s.currencies}><Currencies currencies={this.state.currencies} currenciesStart={this.state.currenciesStart}/></div>
+        <div className={s.positions}><Positions positions={this.state.positions} players={this.props.players}/></div>
         <div className={s.profile}><Profile player={player}/></div>
         <div className={s.backdrop}/>
         <div className={s.container} id="content"></div>
