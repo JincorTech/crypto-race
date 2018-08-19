@@ -11,7 +11,7 @@ class GameOverPopup extends Component {
 
   renderPlayer = (player) => (
     <div className={s.player} key={player.position}>
-      #{player.position} {player.name} | {(player.score - 100).toFixed(2)} pts | {player.prize} ETH
+      #{player.position} {player.name} | {+player.score.toFixed(3)} pts | {player.prize} ETH
     </div>
   );
 
@@ -21,7 +21,7 @@ class GameOverPopup extends Component {
         <div className={s.title}>GAME OVER</div>
   
         <div className={s.players}>
-          {this.props.players.map(renderPlayer)}
+          {this.props.players.map(this.renderPlayer)}
         </div>
   
         <div className="fb-share-button" data-href="https://jincortech.github.io/garage/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjincortech.github.io%2Fgarage%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Поделиться</a></div>
