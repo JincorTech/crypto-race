@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import s from './styles.css';
 
 const MoonImg = '/assets/images/moon.png';
+const FlagImg = '/assets/images/game_over/flag.jpg';
 
 class GameOverPopup extends Component {
   componentDidMount() {
@@ -21,7 +22,11 @@ class GameOverPopup extends Component {
     return (
       <div className={s.popup}>
         <img src={MoonImg} className={s.moon} />
-        <div className={s.title}>GAME OVER</div>
+        <div className={s.title}>
+          <img src={FlagImg} className={s.flag} />
+          GAME OVER
+          <img src={FlagImg} className={s.flag} />
+        </div>
   
         <div className={s.players}>
           {this.props.players.map(this.renderPlayer)}

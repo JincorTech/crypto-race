@@ -35,6 +35,12 @@
   width: 392px;
 }
 
+.flag {
+  display: inline-block;
+  width: 33px;
+  margin: 0 15px;
+}
+
 .players {
   font-size: 24px;
   color: #fff;
