@@ -28,7 +28,8 @@ const PLAYERS_MOCK = [
     ship: {
       type: 0
     },
-    x: 20
+    x: 20,
+    score: 99.8,
   },
   {
     email: 'amazing.space.invader@yandex.ru',
@@ -40,7 +41,8 @@ const PLAYERS_MOCK = [
     ship: {
       type: 1
     },
-    x: 40
+    x: 40,
+    score: 100.1,
   },
   {
     email: 'amazing.space.invader@mail.ru',
@@ -52,7 +54,8 @@ const PLAYERS_MOCK = [
     ship: {
       type: 2
     },
-    x: 60
+    x: 60,
+    score: 100,
   },
   {
     email: 'amazing.space.invader@rambler.ru',
@@ -64,7 +67,8 @@ const PLAYERS_MOCK = [
     ship: {
       type: 3
     },
-    x: 80
+    x: 80,
+    score: 99.8,
   }
 ];
 

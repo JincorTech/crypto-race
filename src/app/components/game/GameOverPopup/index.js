@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import s from './styles.css';
 
+const MoonImg = '/assets/images/moon.png';
+
 class GameOverPopup extends Component {
   componentDidMount() {
     if (window.FB) {
@@ -18,6 +20,7 @@ class GameOverPopup extends Component {
   render () {
     return (
       <div className={s.popup}>
+        <img src={MoonImg} className={s.moon} />
         <div className={s.title}>GAME OVER</div>
   
         <div className={s.players}>
