@@ -118,8 +118,15 @@ class GameContainer extends React.Component {
       window.game.scene.start('game', { trackId, players: this.props.players });
     }
 
-    window.socket.on('gameover', (players) => {
-      this.setState({ gameover: true, players });
+    window.socket.on('gameover', (finalPlayers) => {
+      this.setState({ gameover: true, players: finalPlayers.map(player => {
+        const playerInfo = players.find(item => item.id === player.id)
+
+        return {
+          ...player,
+          ship: playerInfo && playerInfo.ship.type
+        }
+      })});
       window.game.scene.pause('game');
     });
 
