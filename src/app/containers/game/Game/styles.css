@@ -39,7 +39,7 @@
 
 .currencies {
   position: absolute;
-  top: 415px;
+  top: 560px;
   left: calc(50% + 608px - 80px);
   z-index: 10;
 }
