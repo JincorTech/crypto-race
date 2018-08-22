@@ -146,6 +146,55 @@
   color: #39ef99;
 }
 
+.buttons {
+  position: absolute;
+  bottom: 30px;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  width: 204px;
+}
+
+.okButton {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.7;
+  text-decoration: none;
+  display: inline-block;
+  height: 29px;
+  border-radius: 40px;
+  width: 90px;
+  margin-left: 12px;
+  background-color: #ed1c24;
+  font-weight: 900;
+  text-align: center;
+}
+
+.listButton {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.7;
+  text-decoration: none;
+  display: inline-block;
+  height: 29px;
+  border-radius: 40px;
+  width: 90px;
+  margin-left: 12px;
+  background-color: #408efa;
+  font-weight: 900;
+  text-align: center;
+}
+
+.okButton:hover {
+  cursor: pointer;
+  background-color: #9a060c;
+}
+
+.listButton:hover {
+  cursor: pointer;
+  background-color: #2b62af
+}
+
 @media (max-width: 768px) {
   .popup {
     height: 1500px;

@@ -85,7 +85,10 @@ class GameOverPopup extends Component {
           GAME OVER
           <img src={FlagImg} className={s.flag} />
         </div>
-  
+        <div className={s.buttons}>
+          <div className={s.listButton}>LIST</div>
+          <Link className={s.okButton} to="/garage">OK</Link>
+        </div>
         {/* <div className={s.players}>
           {players.map(this.renderPlayer)}
         </div> */}
