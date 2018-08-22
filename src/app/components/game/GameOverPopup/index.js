@@ -30,6 +30,8 @@ class GameOverPopup extends Component {
     }
 
     const firstPlayer = players[0];
+    const secondPlayer = players[1];
+    const thirdPlayer = players[2];
 
     return (
       <div className={s.popup}>
@@ -42,6 +44,36 @@ class GameOverPopup extends Component {
               <div className={s.name}>
                 <div className={s.shipNumber}>1</div>
                 <div className={s.nameText}>{firstPlayer.name}</div>
+              </div>
+              <div className={s.result}>RESULT: <span className={s.resultValue}>+20%</span></div>
+              <div className={s.result}>PRIZE: <span className={s.prizeValue}>5 ETH</span></div>
+            </div>
+          </React.Fragment>
+        }
+        {secondPlayer && 
+          <React.Fragment>
+            <div className={s.info2}>
+            <div className={s.otherShipContainer}>
+              <img src={shipsStatic[secondPlayer.ship.type]} className={s.otherShip} />
+            </div>
+              <div className={s.name}>
+                <div className={s.shipNumber}>2</div>
+                <div className={s.nameText}>{secondPlayer.name}</div>
+              </div>
+              <div className={s.result}>RESULT: <span className={s.resultValue}>+20%</span></div>
+              <div className={s.result}>PRIZE: <span className={s.prizeValue}>5 ETH</span></div>
+            </div>
+          </React.Fragment>
+        }
+        {thirdPlayer && 
+          <React.Fragment>
+            <div className={s.info3}>
+              <div className={s.otherShipContainer}>
+                <img src={shipsStatic[thirdPlayer.ship.type]} className={s.otherShip} />
+              </div>
+              <div className={s.name}>
+                <div className={s.shipNumber}>3</div>
+                <div className={s.nameText}>{thirdPlayer.name}</div>
               </div>
               <div className={s.result}>RESULT: <span className={s.resultValue}>+20%</span></div>
               <div className={s.result}>PRIZE: <span className={s.prizeValue}>5 ETH</span></div>
