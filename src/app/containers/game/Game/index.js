@@ -106,13 +106,13 @@ class GameContainer extends React.Component {
     console.log('players: ', players);
     console.log('track id: ', trackId);
 
-    // window.game.scene.start('game', { trackId, players: PLAYERS_MOCK });
+    window.game.scene.start('game', { trackId, players: PLAYERS_MOCK });
 
-    if (!this.props.players.length > 0) {
-      window.socket.emit('loadTrack', { trackId });
-    } else {
-      window.game.scene.start('game', { trackId, players: this.props.players });
-    }
+    // if (!this.props.players.length > 0) {
+    //   window.socket.emit('loadTrack', { trackId });
+    // } else {
+    //   window.game.scene.start('game', { trackId, players: this.props.players });
+    // }
 
     window.socket.on('gameover', (players) => {
       this.setState({ gameover: true, players });
@@ -131,7 +131,8 @@ class GameContainer extends React.Component {
         console.log('if game not started - start it with new props');
         console.log(this.props.players);
         const { trackId } = queryString.parse(this.props.location.search);
-        window.game.scene.start('game', { trackId, players: this.props.players });
+        window.game.scene.start('game', { trackId, players: PLAYERS_MOCK });
+        // window.game.scene.start('game', { trackId, players: this.props.players });
       }
     }
   }
