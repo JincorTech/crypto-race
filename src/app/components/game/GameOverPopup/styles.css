@@ -195,9 +195,19 @@
   background-color: #2b62af
 }
 
+.share {
+  text-align: center;
+  display: block;
+  margin-top: 19px;
+}
+
 @media (max-width: 768px) {
   .popup {
     height: 1500px;
+  }
+
+  .popup.list {
+    height: 700px;
   }
 
   .info2 {
@@ -219,31 +229,13 @@
   }
 }
 
-
-
-
-
-
-
-
-
 .players {
-  font-size: 24px;
+  font-size: 20px;
   color: #fff;
   text-align: center;
+  margin-top: 50px;
 }
 
 .player {
   margin: 10px 0;
-}
-
-.linkWrap {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.link {
-  font-size: 24px;
-  color: #fff;
-  cursor: pointer;
 }
