@@ -170,7 +170,7 @@ class GameContainer extends React.Component {
         <div className={s.profile}><Profile player={player}/></div>
         <div className={s.backdrop}/>
         <div className={s.container} id="content"></div>
-        {this.state.gameover || true && <div className={s.gameover}><GameOverPopup players={PLAYERS_MOCK/*this.state.players*/}/></div>}
+        {this.state.gameover && <div className={s.gameover}><GameOverPopup players={this.state.players}/></div>}
       </div>
     );
   }
