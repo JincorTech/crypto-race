@@ -30,15 +30,13 @@
 
 .message {
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'Roboto';
   margin: 5px 0;
 }
 
 .author {
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 600;
   color: #39ef99;
   margin-right: 5px;
   white-space: nowrap;
