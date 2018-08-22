@@ -28,6 +28,15 @@
   background-repeat: repeat-x;
 }
 
+.circle {
+  position: absolute;
+  top: 135px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 236px;
+}
+
 .moon {
   position: absolute;
   top: -153px;
@@ -40,6 +49,74 @@
   width: 33px;
   margin: 0 15px;
 }
+
+.firstShip {
+  position: absolute;
+  top: 129px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 271px;
+}
+
+.shipNumber {
+  top: -2px;
+  left: -2px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  position: absolute;
+  line-height: 1.9;
+  background-color: #39ef99;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.info {
+  width: 216px;
+  height: 105px;
+  position: absolute;
+  top: 409px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
+
+.name {
+  width: 100%;
+  height: 34px;
+  border: 1px solid #03fcfd;
+  border-radius: 50px;
+}
+
+.nameText {
+  color: #fff;
+  margin-left: 26px;
+  text-align: center;
+  margin-top: 7px;
+}
+
+.result {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.resultValue {
+  color: #03fcfd;
+}
+
+.prizeValue {
+  color: #39ef99;
+}
+
+
+
+
+
+
 
 .players {
   font-size: 24px;

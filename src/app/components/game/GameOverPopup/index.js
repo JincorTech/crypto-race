@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {shipsStatic} from '../../../ships';
 import s from './styles.css';
 
 const MoonImg = '/assets/images/moon.png';
 const FlagImg = '/assets/images/game_over/flag.jpg';
+const CircleImg = '/assets/images/main_page/circle.png';
 
 class GameOverPopup extends Component {
   componentDidMount() {
@@ -19,26 +21,50 @@ class GameOverPopup extends Component {
   );
 
   render () {
+    const {
+      players
+    } = this.props
+
+    if (!players) {
+      return null
+    }
+
+    const firstPlayer = players[0];
+
     return (
       <div className={s.popup}>
+        <img src={CircleImg} className={s.circle} />
         <img src={MoonImg} className={s.moon} />
+        {firstPlayer && 
+          <React.Fragment>
+            <img src={shipsStatic[firstPlayer.ship.type]} className={s.firstShip} />
+            <div className={s.info}>
+              <div className={s.name}>
+                <div className={s.shipNumber}>1</div>
+                <div className={s.nameText}>{firstPlayer.name}</div>
+              </div>
+              <div className={s.result}>RESULT: <span className={s.resultValue}>+20%</span></div>
+              <div className={s.result}>PRIZE: <span className={s.prizeValue}>5 ETH</span></div>
+            </div>
+          </React.Fragment>
+        }
         <div className={s.title}>
           <img src={FlagImg} className={s.flag} />
           GAME OVER
           <img src={FlagImg} className={s.flag} />
         </div>
   
-        <div className={s.players}>
-          {this.props.players.map(this.renderPlayer)}
-        </div>
+        {/* <div className={s.players}>
+          {players.map(this.renderPlayer)}
+        </div> */}
   
         <div className="fb-share-button" data-href="https://jincortech.github.io/garage/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjincortech.github.io%2Fgarage%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Поделиться</a></div>
   
-        <div className={s.linkWrap}>
+        {/* <div className={s.linkWrap}>
           <Link className={s.link} to="/garage">
             BACK TO GARAGE
           </Link>
-        </div>
+        </div> */}
       </div>
     );
   }
