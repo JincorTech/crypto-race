@@ -66,7 +66,7 @@ class GameOverPopup extends Component {
             <React.Fragment>
               {firstPlayer &&
                 <React.Fragment>
-                  <img src={shipsStatic[firstPlayer.ship.type]} className={s.firstShip} />
+                  {firstPlayer.ship && <img src={shipsStatic[firstPlayer.ship.type]} className={s.firstShip} />}
                   <div className={s.info}>
                     <div className={s.name}>
                       <div className={s.shipNumber}>1</div>
@@ -81,7 +81,7 @@ class GameOverPopup extends Component {
                 <React.Fragment>
                   <div className={s.info2}>
                     <div className={s.otherShipContainer}>
-                      <img src={shipsStatic[secondPlayer.ship.type]} className={s.otherShip} />
+                      {secondPlayer.ship && <img src={shipsStatic[secondPlayer.ship.type]} className={s.otherShip} />}
                     </div>
                     <div className={s.name}>
                       <div className={s.shipNumber}>2</div>
@@ -96,7 +96,7 @@ class GameOverPopup extends Component {
                 <React.Fragment>
                   <div className={s.info3}>
                     <div className={s.otherShipContainer}>
-                      <img src={shipsStatic[thirdPlayer.ship.type]} className={s.otherShip} />
+                      {thirdPlayer.ship && <img src={shipsStatic[thirdPlayer.ship.type]} className={s.otherShip} />}
                     </div>
                     <div className={s.name}>
                       <div className={s.shipNumber}>3</div>
