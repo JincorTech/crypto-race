@@ -1,33 +1,241 @@
 .popup {
+  margin: 100px auto 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  max-width: 800px;
+  height: 650px;
+  background-color: #161618;
+  background-size: 1658px;
+  background-image: url(/assets/images/bg.jpg);
+  background-position-x: center;
+  border: 1px solid #02f9f9;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
 }
 
 .title {
-  font-size: 48px;
+  font-size: 28px;
   color: #fff;
   text-align: center;
-  padding: 100px 0 30px;
+  background-color: #000;
+  width: 100%;
+  height: 70px;
+  line-height: 2.5;
+  background-image: linear-gradient(to right, #02f9f9 10%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 10px 1px;
+  background-repeat: repeat-x;
+}
+
+.circle {
+  position: absolute;
+  top: 135px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 236px;
+}
+
+.moon {
+  position: absolute;
+  top: -153px;
+  left: -161px;
+  width: 392px;
+}
+
+.flag {
+  display: inline-block;
+  width: 33px;
+  margin: 0 15px;
+}
+
+.firstShip {
+  position: absolute;
+  top: 129px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 271px;
+}
+
+.otherShipContainer {
+  position: absolute;
+  top: -272px;
+  left: 0px;
+  right: 0px;
+  height: 300px;
+  display: flex;
+}
+
+.otherShip {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 162px;
+}
+
+.shipNumber {
+  top: -2px;
+  left: -2px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  position: absolute;
+  line-height: 1.9;
+  background-color: #39ef99;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.info {
+  width: 216px;
+  height: 105px;
+  position: absolute;
+  top: 409px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
+
+.info2 {
+  width: 216px;
+  height: 105px;
+  position: absolute;
+  top: 462px;
+  left: 37px;
+  right: 0px;
+}
+
+.info3 {
+  width: 216px;
+  height: 105px;
+  position: absolute;
+  top: 462px;
+  left: 542px;
+  right: 0px;
+}
+
+.name {
+  width: 100%;
+  height: 34px;
+  border: 1px solid #03fcfd;
+  border-radius: 50px;
+}
+
+.nameText {
+  color: #fff;
+  margin-left: 26px;
+  text-align: center;
+  margin-top: 7px;
+}
+
+.result {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.resultValue {
+  color: #03fcfd;
+}
+
+.prizeValue {
+  color: #39ef99;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 30px;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  width: 204px;
+}
+
+.okButton {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.7;
+  text-decoration: none;
+  display: inline-block;
+  height: 29px;
+  border-radius: 40px;
+  width: 90px;
+  margin-left: 12px;
+  background-color: #ed1c24;
+  font-weight: 900;
+  text-align: center;
+}
+
+.listButton {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.7;
+  text-decoration: none;
+  display: inline-block;
+  height: 29px;
+  border-radius: 40px;
+  width: 90px;
+  margin-left: 12px;
+  background-color: #408efa;
+  font-weight: 900;
+  text-align: center;
+}
+
+.okButton:hover {
+  cursor: pointer;
+  background-color: #9a060c;
+}
+
+.listButton:hover {
+  cursor: pointer;
+  background-color: #2b62af
+}
+
+.share {
+  text-align: center;
+  display: block;
+  margin-top: 19px;
+}
+
+@media (max-width: 768px) {
+  .popup {
+    height: 1500px;
+  }
+
+  .popup.list {
+    height: 700px;
+  }
+
+  .info2 {
+    top: 800px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+  }
+
+  .info3 {
+    top: 1150px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+  }
+
+  .moon {
+    visibility: hidden;
+  }
 }
 
 .players {
-  font-size: 24px;
+  font-size: 20px;
   color: #fff;
   text-align: center;
+  margin-top: 50px;
 }
 
 .player {
   margin: 10px 0;
-}
-
-.linkWrap {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.link {
-  font-size: 24px;
-  color: #fff;
-  cursor: pointer;
 }
