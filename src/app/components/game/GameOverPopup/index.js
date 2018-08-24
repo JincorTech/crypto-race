@@ -25,7 +25,7 @@ class GameOverPopup extends Component {
 
   renderPlayer = (player) => (
     <div className={s.player} key={player.position}>
-      #{player.position} {player.name} | {+player.score.toFixed(3)} pts | {player.prize} ETH
+      #{player.position} {player.name} | {(+player.result * 100).toFixed(0)}% | {player.prize} ETH
     </div>
   );
 
@@ -72,8 +72,8 @@ class GameOverPopup extends Component {
                       <div className={s.shipNumber}>1</div>
                       <div className={s.nameText}>{firstPlayer.name}</div>
                     </div>
-                    <div className={s.result}>RESULT: <span className={s.resultValue}>{+firstPlayer.score.toFixed(3)} pts</span></div>
-                    <div className={s.result}>PRIZE: <span className={s.prizeValue}>5 ETH</span></div>
+                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+firstPlayer.result * 100).toFixed(0)}%</span></div>
+                    <div className={s.result}>PRIZE: <span className={s.prizeValue}>{firstPlayer.prize} ETH</span></div>
                   </div>
                 </React.Fragment>
               }
@@ -87,8 +87,8 @@ class GameOverPopup extends Component {
                       <div className={s.shipNumber}>2</div>
                       <div className={s.nameText}>{secondPlayer.name}</div>
                     </div>
-                    <div className={s.result}>RESULT: <span className={s.resultValue}>{+secondPlayer.score.toFixed(3)} pts</span></div>
-                    <div className={s.result}>PRIZE: <span className={s.prizeValue}>5 ETH</span></div>
+                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+secondPlayer.result * 100).toFixed(0)}%</span></div>
+                    <div className={s.result}>PRIZE: <span className={s.prizeValue}>{secondPlayer.prize} ETH</span></div>
                   </div>
                 </React.Fragment>
               }
@@ -102,8 +102,8 @@ class GameOverPopup extends Component {
                       <div className={s.shipNumber}>3</div>
                       <div className={s.nameText}>{thirdPlayer.name}</div>
                     </div>
-                    <div className={s.result}>RESULT: <span className={s.resultValue}>{+thirdPlayer.score.toFixed(3)} pts</span></div>
-                    <div className={s.result}>PRIZE: <span className={s.prizeValue}>5 ETH</span></div>
+                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+thirdPlayer.result * 100).toFixed(0)}%</span></div>
+                    <div className={s.result}>PRIZE: <span className={s.prizeValue}>{thirdPlayer.prize} ETH</span></div>
                   </div>
                 </React.Fragment>
               }
