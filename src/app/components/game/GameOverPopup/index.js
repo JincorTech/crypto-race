@@ -25,7 +25,7 @@ class GameOverPopup extends Component {
 
   renderPlayer = (player) => (
     <div className={s.player} key={player.position}>
-      #{player.position} {player.name} | {(+player.result).toFixed(0)}% | {player.prize} ETH
+      #{player.position} {player.name} | {(+player.result).toFixed(3)}% | {player.prize} ETH
     </div>
   );
 
@@ -66,13 +66,13 @@ class GameOverPopup extends Component {
             <React.Fragment>
               {firstPlayer &&
                 <React.Fragment>
-                  {firstPlayer.ship && <img src={shipsStatic[firstPlayer.ship.type]} className={s.firstShip} />}
+                  <img src={shipsStatic[firstPlayer.ship]} className={s.firstShip} />
                   <div className={s.info}>
                     <div className={s.name}>
                       <div className={s.shipNumber}>1</div>
                       <div className={s.nameText}>{firstPlayer.name}</div>
                     </div>
-                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+firstPlayer.result).toFixed(0)}%</span></div>
+                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+firstPlayer.result).toFixed(3)}%</span></div>
                     <div className={s.result}>PRIZE: <span className={s.prizeValue}>{firstPlayer.prize} ETH</span></div>
                   </div>
                 </React.Fragment>
@@ -81,13 +81,13 @@ class GameOverPopup extends Component {
                 <React.Fragment>
                   <div className={s.info2}>
                     <div className={s.otherShipContainer}>
-                      {secondPlayer.ship && <img src={shipsStatic[secondPlayer.ship.type]} className={s.otherShip} />}
+                      <img src={shipsStatic[secondPlayer.ship]} className={s.otherShip} />
                     </div>
                     <div className={s.name}>
                       <div className={s.shipNumber}>2</div>
                       <div className={s.nameText}>{secondPlayer.name}</div>
                     </div>
-                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+secondPlayer.result).toFixed(0)}%</span></div>
+                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+secondPlayer.result).toFixed(3)}%</span></div>
                     <div className={s.result}>PRIZE: <span className={s.prizeValue}>{secondPlayer.prize} ETH</span></div>
                   </div>
                 </React.Fragment>
@@ -96,13 +96,13 @@ class GameOverPopup extends Component {
                 <React.Fragment>
                   <div className={s.info3}>
                     <div className={s.otherShipContainer}>
-                      {thirdPlayer.ship && <img src={shipsStatic[thirdPlayer.ship.type]} className={s.otherShip} />}
+                      <img src={shipsStatic[thirdPlayer.ship]} className={s.otherShip} />
                     </div>
                     <div className={s.name}>
                       <div className={s.shipNumber}>3</div>
                       <div className={s.nameText}>{thirdPlayer.name}</div>
                     </div>
-                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+thirdPlayer.result).toFixed(0)}%</span></div>
+                    <div className={s.result}>RESULT: <span className={s.resultValue}>{(+thirdPlayer.result).toFixed(3)}%</span></div>
                     <div className={s.result}>PRIZE: <span className={s.prizeValue}>{thirdPlayer.prize} ETH</span></div>
                   </div>
                 </React.Fragment>
