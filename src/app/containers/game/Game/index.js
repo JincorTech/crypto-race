@@ -81,7 +81,8 @@ class GameContainer extends React.Component {
       players: [],
       currencies: [],
       currenciesStart: [],
-      positions: []
+      positions: [],
+      track: null,
     }
   }
 
@@ -102,6 +103,12 @@ class GameContainer extends React.Component {
         Game
       ]
     });
+
+    const track = new Audio('/assets/track.mp3')
+    if (track) {
+      track.play()
+      this.setState({track});
+    }
 
     const { trackId } = queryString.parse(this.props.location.search);
     const { players } = this.props;
@@ -143,6 +150,9 @@ class GameContainer extends React.Component {
 
   componentWillUnmount() {
     if (window.game) window.game.destroy();
+    if (this.state.track) {
+      this.state.track.pause()
+    }
   }
 
   render() {
