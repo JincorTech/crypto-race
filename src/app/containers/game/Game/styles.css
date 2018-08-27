@@ -39,8 +39,8 @@
 
 .currencies {
   position: absolute;
-  top: 560px;
-  left: calc(50% + 608px - 80px);
+  top: 100px;
+  left: calc(50% + 819px - 80px);
   z-index: 10;
 }
 
