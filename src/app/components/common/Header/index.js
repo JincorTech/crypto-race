@@ -19,6 +19,7 @@ const Header = ({signIn}) => (
           appId="1643728252419717"
           autoLoad={true}
           fields="name,email,picture"
+          disableMobileRedirect={true}
           callback={(res) => {
             signIn(res.accessToken);
           }} />

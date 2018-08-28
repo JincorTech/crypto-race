@@ -129,6 +129,7 @@ class MainPage extends React.Component {
                     appId="1643728252419717"
                     autoLoad={true}
                     fields="name,email,picture"
+                    disableMobileRedirect={true}
                     callback={(res) => {
                       signIn(res.accessToken);
                     }}/>
