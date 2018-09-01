@@ -16,7 +16,7 @@ class Currencies extends Component {
     return (
       <div className={s.container}>
         {Object.getOwnPropertyNames(currencies).sort().map((ticker) => {
-          const value = ((currenciesStart[ticker] - currencies[ticker]) / currencies[ticker] * 100).toFixed(2);
+          const value = ((currencies[ticker] - currenciesStart[ticker]) / currencies[ticker] * 100).toFixed(2);
           return (
           <div className={s.item} key={ticker}>
             <span className={s.label}>{ticker}: </span>
