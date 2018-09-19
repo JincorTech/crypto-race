@@ -63,7 +63,7 @@
 .avatarContainer {
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 100%;
   margin: 40px auto;
 }
 
@@ -72,4 +72,6 @@
   width: 343px;
   font-size: 14px;
   margin: 0 18px 0 10px;
+  font-size: 18px;
+  line-height: 1.5;
 }

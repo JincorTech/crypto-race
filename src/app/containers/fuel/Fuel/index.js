@@ -79,9 +79,9 @@ class Fuel extends React.Component {
         <div className={s.container}>
           <Caption icon={FuelImg} text='CHOOSE FUEL' />
           <div className={s.avatarContainer}>
-            <Avatar />
+            <Avatar style={{ width: '100px' }} />
             <div className={s.avatarText}>
-              Fill your tank and go to the moon!
+              Distribute 100% of funds on cryptocurrencies and win the prize!
           </div>
           </div>
           <div className={s.body}>

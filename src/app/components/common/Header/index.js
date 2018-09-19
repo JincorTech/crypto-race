@@ -9,9 +9,7 @@ import s from './styles.css';
 const Header = ({signIn}) => (
   <div className={s.container}>
     <div className={s.linksBlock}>
-      <span className={s.link}>RACES</span>|
       <NavLink to="/garage" className={s.link} activeClassName={s.active}>GARAGE</NavLink>|
-      <span className={s.link}>SHOP</span>|
       {!getToken()
         ? <FacebookLogin
           cssClass={cx(s.fbLogin, s.link)}
@@ -24,7 +22,7 @@ const Header = ({signIn}) => (
             signIn(res.accessToken);
           }} />
         : <NavLink to="/" className={s.link} onClick={() => removeToken()}>LOGOUT</NavLink>}
-      
+
     </div>
   </div>
 );
