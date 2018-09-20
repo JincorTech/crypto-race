@@ -43,7 +43,6 @@ const RaceItem = (props) => {
         </div>
       </div>
       <div className={s.buttons}>
-        {isActive && <div className={s.showButton}><img src={ShowIcon}/></div>}
         {!isActive && <Link to={`/fuel?trackId=${id}`} className={s.addButton}>GET IN</Link>}
       </div>
     </div>

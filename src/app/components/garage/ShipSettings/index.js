@@ -32,7 +32,7 @@ const ShipSettings = () => (
       <Caption text='YOUR SHIP'/>
       <ShipCarousel />
     </div>
-    <div className={s.column}>
+    <div className={cx(s.column, s.disabled)}>
       <Caption text='SHOP'/>
       <div className={s.shopShipCaption}>TURBORACER 30000</div>
       <img className={s.shopShip} src={ShopShip} />
