@@ -65,7 +65,7 @@
 .arrow {
   position: absolute;
   height: 34px;
-  top: 229px;
+  top: 253px;
   cursor: pointer;
 }
 
@@ -76,4 +76,30 @@
 
 .arrowRight {
   right: -23px;
+}
+
+
+.selectButtonWrapper {
+  padding-top: 10px;
+}
+
+.selectButton {
+  background-color: #3593eb;
+  color: #fff;
+  font-size: 22px;
+  font-family: "Roboto";
+  font-weight: 900;
+  height: 50px;
+  width: 125px;
+  border-radius: 50px;
+  margin: auto;
+  line-height: 2.3;
+  border: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+
+.selectButton:hover {
+  opacity: 0.7;
 }

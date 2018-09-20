@@ -15,7 +15,7 @@ const ShopShip = '/assets/images/shop/ship.png';
 
 const ShipSettings = () => (
   <div className={s.container}>
-    <div className={cx(s.column)}>
+    <div className={cx(s.column, s.disabled)}>
       <Caption text='TUNING' />
       <Indicator name="CAPACITY" level={30} length={13} color="#39ef99"
         icon={CapacityIcon} />

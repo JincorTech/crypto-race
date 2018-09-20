@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+.column.disabled {
+  opacity: 0.1;
+}
+
 .price {
   margin-bottom: 150px;
 }

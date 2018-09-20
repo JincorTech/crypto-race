@@ -1,9 +1,12 @@
 .avatar {
   margin-right: 14px;
+  width: 80px;
+  flex-shrink: 0;
+  border-radius: 50%;
 }
 
 .avatarImage {
-  width: 80px;
+  width: 100%;
   border-radius: 50%;
   /* border: 3px solid #02f9f9; */
 }

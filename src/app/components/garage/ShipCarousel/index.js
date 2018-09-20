@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 import Slider from 'react-slick';
-import {ships} from '../../../ships'
+import { ships } from '../../../ships';
 import { setupShip } from '../../../redux/modules/garage/setup';
 import s from './styles.css';
 
 const PlaceImg = '/assets/images/your_ship/place.png';
 const ArrowLeftImg = '/assets/images/your_ship/arrow_left.png';
 const ArrowRightImg = '/assets/images/your_ship/arrow_right.png';
+
 
 function getClassNameByIndex(index) {
   return `ship${index}`;
@@ -28,31 +29,48 @@ function PrevArrow(props) {
   );
 }
 
-const ShipCarousel = (props) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow/>,
-    prevArrow: <PrevArrow/>,
-    beforeChange: (current, next) => props.setupShip(next)
-  };
 
-  return (
-    <div className={s.container}>
-      <img className={s.place} src={PlaceImg} />
-      <Slider {...settings}>
-        {ships.map((ship, index) => (
-          <div key={index} className={s.item}>
-            <img className={cx(s.ship, s[getClassNameByIndex(index)])} src={ship} />
-          </div>
-        ))}
-      </Slider>
-    </div>
-  );
+class ShipCarousel extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      carousel: 0
+    };
+  }
+
+  render() {
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow/>,
+      prevArrow: <PrevArrow/>,
+      beforeChange: (current, next) => this.setState({ carousel: next })
+    };
+
+    const { setupShip } = this.props;
+
+    return (
+      <div className={s.container}>
+        <img className={s.place} src={PlaceImg} />
+        <Slider {...settings}>
+          {ships.map((ship, index) => (
+            <div key={index} className={s.item}>
+              <img className={cx(s.ship, s[getClassNameByIndex(index)])} src={ship} />
+            </div>
+          ))}
+        </Slider>
+        <div className={s.selectButtonWrapper}>
+          <button type="button" className={s.selectButton} onClick={() => setupShip(this.state.carousel)}>Select</button>
+        </div>
+      </div>
+    );
+  }
 }
+
 
 export default connect(
   null,

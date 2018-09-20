@@ -1,4 +1,4 @@
-.container {
+.footer {
   padding-top: 80px;
   height: 170px;
   width: 100%;
@@ -6,9 +6,39 @@
   background-color: #090910;
 }
 
-.textBlock {
+.container {
   max-width: 940px;
-  margin: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.textBlock {
+
+}
+
+.mvp {
+  text-align: right;
+}
+
+.ver {
+  color: #a9a9a9;
+  margin-bottom: 20px;
+}
+
+.row {
+  font-size: 14px;
+  color: #737373;
+  margin-bottom: 20px;
+}
+
+.row > a {
+  color: #737373;
+  text-decoration: none;
+}
+
+.row > a:hover {
+  color: #245188;
 }
 
 .logoText {

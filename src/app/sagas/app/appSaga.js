@@ -8,9 +8,11 @@ import { get } from '../../utils/fetch';
 import { signIn } from '../../redux/modules/app/app';
 
 
-function* signInIterator({ payload: token }) {
+function* signInIterator({ payload }) {
+  const { service, token } = payload;
+
   try {
-    const data = yield call(get, `/user/auth/facebook/token?access_token=${token}`);
+    const data = yield call(get, `/user/auth/${service}/token?access_token=${token}`);
     yield put(signIn.success());
     yield call(setToken, data.accessToken);
 
