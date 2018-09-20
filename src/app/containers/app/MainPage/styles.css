@@ -1,4 +1,8 @@
 .main {
+  padding-top: 0px;
+}
+
+.main.auth {
   padding-top: 50px;
 }
 
@@ -39,14 +43,40 @@
   position: relative;
   margin-bottom: 105px;
   background-color: #fff;
-  padding: 5px 45px 90px 45px;
+  padding: 100px 45px;
 }
 
-.loginButtonWrapper {
+.loginButtonWrapper,
+.startButtonWrapper {
   text-align: center;
 }
 
-.loginButton {
+.loginButtonWrapper.hidden,
+.startButtonWrapper.hidden {
+  display: none;
+}
+
+.googleButton,
+.facebookButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.googleButton {
+  background-color: #DB4437;
+}
+
+.facebookButton {
+  background-color: #3B5998;
+}
+
+.startButton {
   width: 172px;
   height: 190px;
   background-image: url(/assets/images/main_page/start-button.png);
@@ -54,9 +84,10 @@
   background-position: -180px -5px;
   background-size: 356px;
   border: none;
+  display: inline-block;
 }
 
-.loginButton:hover {
+.startButton:hover {
   width: 172px;
   height: 190px;
   background-image: url(/assets/images/main_page/start-button.png);
@@ -67,7 +98,7 @@
   cursor: pointer;
 }
 
-.loginButton:focus {
+.startButton:focus {
   outline: 0;
 }
 

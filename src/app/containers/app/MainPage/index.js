@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import classnames from 'classnames/bind';
 
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 import Header from '../../../components/common/Header';
 import Footer from '../../../components/common/Footer';
@@ -11,6 +13,7 @@ import MovingCoins from '../../../components/main/MovingCoins';
 import { signIn } from '../../../redux/modules/app/app';
 
 import { post } from '../../../utils/fetch';
+import { isAuth } from '../../../utils/auth';
 import s from './styles.css';
 
 const Ship1 = '/assets/images/main_page/ship-1.png';
@@ -23,6 +26,8 @@ const ShipSmall3 = '/assets/images/main_page/ship-small-3.png';
 
 const LogoImg = '/assets/images/main_page/logo.png';
 const WavesImg = '/assets/images/main_page/waves-1.png';
+
+const cx = classnames.bind(s);
 
 function isMobileDevice() {
   var check = false;
@@ -113,7 +118,7 @@ class MainPage extends React.Component {
         <div className={s.header}>
           <Header signIn={signIn}/>
         </div>
-        <div className={s.main}>
+        <div className={cx(s.main, isAuth() && s.auth)}>
           <div className={s.bg}>
             {!isMobileDevice() && <MovingCoins />}
             <div className={s.container}>
@@ -122,17 +127,28 @@ class MainPage extends React.Component {
               </div>
               <div className={s.startSection}>
                 {/* this.renderSubscribeForm() */}
-                <div className={s.loginButtonWrapper}>
+                <div className={cx(s.loginButtonWrapper, isAuth() && s.hidden)}>
                   <FacebookLogin
-                    cssClass={s.loginButton}
-                    textButton=""
+                    cssClass={s.facebookButton}
+                    textButton="Login via Facebook"
                     appId="1643728252419717"
                     autoLoad={true}
                     fields="name,email,picture"
                     disableMobileRedirect={true}
                     callback={(res) => {
-                      signIn(res.accessToken);
+                      signIn({ service: 'facebook', token: res.accessToken });
                     }}/>
+
+                  <GoogleLogin
+                    className={s.googleButton}
+                    clientId="144439937873-34r5hj1cjld4stifb5rrgcl50accnvgc.apps.googleusercontent.com"
+                    buttonText="Login via Google"
+                    onSuccess={(res) => signIn({ service: 'google', token: res.accessToken })}
+                    onFailure={(res) => console.log('goog failure', res)}/>
+                </div>
+
+                <div className={cx(s.startButtonWrapper, !isAuth() && s.hidden)}>
+                  <Link className={s.startButton} to="/garage"/>
                 </div>
                 <img className={s.waves} src={WavesImg} />
               </div>
