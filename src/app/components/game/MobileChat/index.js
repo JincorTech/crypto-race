@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+
 import s from './styles.css';
 
-class Chat extends Component {
+class MobileChat extends Component {
   constructor(props) {
     super(props);
 
@@ -43,8 +44,8 @@ class Chat extends Component {
     this._scrollToBottom();
     document.addEventListener('keydown', this._handlePressKey, false);
 
-    window.socket.on('joinedChat', (messages) => this.setState({ messages }, this._scrollToBottom()));
-    window.socket.on('updateChat', (messages) => this.setState({ messages }, this._scrollToBottom()));
+    window.socket.on('joinedChat', (messages) => this.setState({ messages: messages.reverse() }, this._scrollToBottom()));
+    window.socket.on('updateChat', (messages) => this.setState({ messages: messages.reverse() }, this._scrollToBottom()));
     window.socket.emit('joinChat', { trackId: this.props.trackId });
   }
 
@@ -67,10 +68,10 @@ class Chat extends Component {
         className={s.chat}
         onSubmit={this._handleSubmit}
         ref={(el) => { this.chat = el; }}>
-        <div className={s.header}>Chat</div>
         <div className={s.body}>
-          {messages.map(renderMessage)}
+          {/* heres reverse column, so endchat at begin */}
           <div ref={(el) => { this.chatEnd = el; }}/>
+          {messages.map(renderMessage)}
         </div>
         <div className={s.footer}>
           <input
@@ -85,4 +86,4 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+export default MobileChat;

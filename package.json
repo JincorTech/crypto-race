@@ -53,6 +53,7 @@
     "history": "^4.7.2",
     "immutable": "^3.8.2",
     "jwt-decode": "^2.2.0",
+    "mobile-detect": "^1.4.3",
     "phaser": "^3.10.1",
     "query-string": "^6.1.0",
     "react": "^16.4.0",

@@ -1,0 +1,52 @@
+.mobileGameWrapper {
+  height: 100vh;
+}
+
+.container {
+  height: calc(100% - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatWrapper {
+  height: 50px;
+  width: 100%;
+  position: absolute;
+}
+
+.chatWrapper.open {
+  height: 100vh;
+  top: 0;
+}
+
+.chat {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.chat .title {
+  color: #fff;
+  background-color: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  color: #01f9f9;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.gameover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}

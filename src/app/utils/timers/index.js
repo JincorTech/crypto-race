@@ -6,7 +6,11 @@ const formatTS = (ts) => {
 
   const withZero = (num) => (num < 10 ? `0${num}` : num);
 
-  return { h: withZero(h), m: withZero(m), s: withZero(s) };
+  return {
+    h: h > 0 ? withZero(h) : '00',
+    m: m > 0 ? withZero(m) : '00',
+    s: s > 0 ? withZero(s) : '00'
+  };
 };
 
 export default { formatTS };

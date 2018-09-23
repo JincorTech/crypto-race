@@ -10,11 +10,11 @@ const CircleImg = '/assets/images/main_page/circle.png';
 
 class GameOverPopup extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isList: false
-    }
+    };
   }
 
   componentDidMount() {
@@ -32,14 +32,14 @@ class GameOverPopup extends Component {
   render() {
     const {
       players
-    } = this.props
+    } = this.props;
 
     const {
       isList
-    } = this.state
+    } = this.state;
 
     if (!players) {
-      return null
+      return null;
     }
 
     const firstPlayer = players[0];
@@ -47,7 +47,7 @@ class GameOverPopup extends Component {
     const thirdPlayer = players[2];
 
     return (
-      <div className={cx(s.popup, {[s.list]: isList})}>
+      <div className={cx(s.popup, { [s.list]: isList })}>
         {!isList && <img src={CircleImg} className={s.circle} />}
         <img src={MoonImg} className={s.moon} />
         <div className={s.title}>

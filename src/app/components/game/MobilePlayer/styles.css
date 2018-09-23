@@ -1,0 +1,96 @@
+.player {
+  display: block;
+  padding: 10px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.common {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.avatar > img {
+  width: 100%;
+}
+
+.info > .name {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info > .position {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.info > .position > .label {
+  font-size: 12px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info > .position > .indicator {
+  font-size: 12px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: #000;
+  background-color: #39EF99;
+  padding: 1px 6px;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+
+.change {
+  font-size: 14px;
+  color: red;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.bottom {
+  margin: 5px -5px 0;
+}
+
+.bottom > .el {
+  display: inline-flex;
+  margin: 0 5px;
+}
+
+.bottom > .el > img {
+  width: 14px;
+  height: 14px;
+  margin-right: 2px;
+}
+
+.bottom > .el > span {
+  font-size: 12px;
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
