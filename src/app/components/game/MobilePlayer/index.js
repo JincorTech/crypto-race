@@ -12,6 +12,13 @@ const MobilePlayer = (props) => {
     </div>
   ));
 
+  const renderScore = (val) => {
+    if (val >= 100) return <span className={s.green}>{(val - 100).toFixed(2)}</span>;
+    if (val <= 100) return <span className={s.red}>-{(100 - val).toFixed(2)}</span>;
+
+    return null;
+  };
+
   return (
     <div className={s.player}>
       <div className={s.top}>
@@ -24,13 +31,13 @@ const MobilePlayer = (props) => {
             <div className={s.name}>{props.name}</div>
             <div className={s.position}>
               <div className={s.label}>Position</div>
-              <div className={s.indicator}>{props.position}/{props.total}</div>
+              <div className={s.indicator}>{props.position + 1}/{props.total}</div>
             </div>
           </div>
         </div>
 
         <div className={s.change}>
-          +325%
+          {renderScore(props.score)}
         </div>
       </div>
 

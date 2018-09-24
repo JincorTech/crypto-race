@@ -26,8 +26,6 @@ class MobileTopbar extends Component {
   render() {
     const timeLeft = new Date(this.state.timeLeft);
 
-    console.log(timers.formatTS(timeLeft));
-
     return (
       <div className={s.topbar}>
         <div className={s.timer}>

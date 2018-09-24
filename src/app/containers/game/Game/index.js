@@ -7,6 +7,7 @@ import { fetchInitialData } from '../../../redux/modules/game/game';
 
 import DesktopGame from '../DesktopGame';
 import MobileGame from '../MobileGame';
+import ErrorState from '../../../components/game/ErrorState';
 
 import md from '../../../utils/mobile';
 
@@ -111,7 +112,7 @@ class Game extends Component {
       return <DesktopGame trackId={this.trackId} />;
     }
 
-    return <div>LOADING.......</div>;
+    return <ErrorState/>;
   }
 }
 

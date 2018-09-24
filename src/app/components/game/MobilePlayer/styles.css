@@ -73,6 +73,9 @@
   font-weight: 500;
 }
 
+.change > .green { color: red }
+.change > .red { color: blue }
+
 .bottom {
   margin: 5px -5px 0;
 }

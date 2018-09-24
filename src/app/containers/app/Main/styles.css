@@ -10,3 +10,25 @@
 .main {
   min-height: calc(100vh - 350px);
 }
+
+.ribbon {
+  width: 200px;
+  padding: 10px 0;
+  position: absolute;
+  text-align: center;
+  color: #f0f0f0;
+  top: 25px;
+  right: -50px;
+  transform: rotate(45deg);
+  background-color: #39d;
+  display: none;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+@media only screen and (min-width: 768px) {
+  .ribbon {
+    display: block;
+  }
+}

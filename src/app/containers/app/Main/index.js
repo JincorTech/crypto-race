@@ -26,6 +26,7 @@ class Main extends Component {
   render() {
     return (
       <div className={s.container}>
+        <div className={s.ribbon}>MVP</div>
         <Switch>
           <MainPageRoute exact path="/" component={MainPage} />
           <AppRoute component={AppWrapper}/>
