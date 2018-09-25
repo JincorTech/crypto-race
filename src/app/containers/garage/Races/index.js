@@ -33,7 +33,7 @@ class Races extends Component {
             {activeTracks.map((race, index) =>
               <RaceItem key={race.id} index={index} data={race} isActive/>)}
           </div>
-          <div className={s.racesColumn}>
+          <div className={s.racesColumn} id='joyride-garage-2'>
             <div className={s.awaitingCaption}>AWAITING YOU</div>
             {awaitingTracks.map((race, index) =>
               <RaceItem key={race.id} index={index} data={race}/>)}

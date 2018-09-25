@@ -17,12 +17,6 @@ const Footer = () => (
         </div>
         <div className={s.copyright}>© 2018 All rights Reserved</div>
       </div>
-
-      <div className={s.mvp}>
-        <div className={s.ver}>MVP v0.9.5</div>
-        <div className={s.row}><a href="https://ropsten.etherscan.io/" target="_blank">Ropsten Etherscan</a></div>
-        <div className={s.copyright}>This application uses Ropsten testnet</div>
-      </div>
     </div>
   </div>
 );

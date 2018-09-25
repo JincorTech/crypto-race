@@ -64,7 +64,7 @@ class ShipCarousel extends Component {
           ))}
         </Slider>
         <div className={s.selectButtonWrapper}>
-          <button type="button" className={s.selectButton} onClick={() => setupShip(this.state.carousel)}>Select</button>
+          <button type="button" id="joyride-garage-1" className={s.selectButton} onClick={() => setupShip(this.state.carousel)}>Select</button>
         </div>
       </div>
     );

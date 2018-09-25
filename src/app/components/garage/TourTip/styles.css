@@ -1,0 +1,33 @@
+.tip {
+  position: relative;
+  width: auto;
+  min-width: 300px;
+  max-width: 350px;
+  height: 80px;
+}
+
+.pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.pic > img {
+  width: 100%;
+}
+
+.advice {
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  width: calc(100% - 40px);
+  padding: 4px 4px 4px 44px;
+  border: 3px solid #FFC506;
+  background-color: #000;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 20px;
+}
