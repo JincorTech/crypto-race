@@ -15,12 +15,25 @@
   min-height: calc(100vh - 350px);
 }
 
+.wrap {
+  top: 0;
+  right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  pointer-events: none;
+  display: none;
+}
+
 .ribbon {
   width: 200px;
   padding: 10px 0;
-  position: absolute;
   text-align: center;
   color: #f0f0f0;
+  position: absolute;
   top: 25px;
   right: -50px;
   transform: rotate(45deg);
@@ -32,7 +45,8 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .ribbon {
+  .ribbon,
+  .wrap {
     display: block;
   }
 }

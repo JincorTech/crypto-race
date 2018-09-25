@@ -7,18 +7,12 @@ import ShipSettings from '../ShipSettings';
 import Races from '../../../containers/garage/Races';
 import TourTip from '../../../components/garage/TourTip';
 
+import { completeTour, isTourCompleted } from '../../../utils/tour';
 import s from './styles.css';
 
 const stepStyle = {
   options: {
-    arrowColor: '#fff',
-    backgroundColor: '#fff',
-    beaconSize: 36,
-    overlayColor: 'rgba(0, 0, 0, 0.5)',
-    primaryColor: '#f04',
-    spotlightShadow: '0 0 15px rgba(0, 0, 0, 0.5)',
-    textColor: '#333',
-    width: undefined,
+    arrowColor: 'transparent',
     zIndex: 100
   }
 };
@@ -50,7 +44,9 @@ export default class Layout extends React.Component {
   }
 
   callback(data) {
-    console.log('callback', data);
+    if (data.status === 'skipped' || data.status === 'finished') {
+      completeTour();
+    }
   }
 
   render() {
@@ -66,13 +62,14 @@ export default class Layout extends React.Component {
           <Races />
         </div>
 
-        <Joyride
-          steps={this.state.steps}
-          run={this.state.run}
-          callback={this.callback}
-          continuous
-          hideBackButton
-          tooltipComponent={TourTip}/>
+        {!isTourCompleted() &&
+          <Joyride
+            steps={this.state.steps}
+            run={this.state.run}
+            callback={this.callback}
+            continuous
+            hideBackButton
+            tooltipComponent={TourTip}/>}
       </div>
     );
   }

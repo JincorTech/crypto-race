@@ -11,9 +11,9 @@ const Footer = () => (
           <span className={s.divider}>|</span>
           <a href='#'>Privacy Policy</a>
           <span className={s.divider}>|</span>
-          <a href='#'>Telegram</a>
+          <a href='https://t-do.ru/joinchat/CG4UE0bhtznEIFYfRMnJPw' target="_blank">Telegram</a>
           <span className={s.divider}>|</span>
-          <a href='#'>Send feedback</a>
+          <a href='https://goo.gl/forms/rbBg0xaiopM2VOjk2' target="_blank">Send feedback</a>
         </div>
         <div className={s.copyright}>© 2018 All rights Reserved</div>
       </div>
