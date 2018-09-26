@@ -88,15 +88,15 @@ export default class Game extends Phaser.Scene {
 
     window.socket.on('moveXupdate', (data) => {
       const player = this.players.children.get('id', data.id);
-      const playerScore = this.playersScores.children.get('id', data.id);
+      // const playerScore = this.playersScores.children.get('id', data.id);
 
-      console.log(playerScore);
+      // console.log(playerScore);
 
       // TODO fix animation keys
 
       if (data.left) {
         player.setVelocityX(-1 * PlayerSpeed);
-        playerScore.x = player.x + 75;
+        // playerScore.x = player.x + 75;
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_left`, true);
@@ -105,7 +105,7 @@ export default class Game extends Phaser.Scene {
         }
       } else if (data.right) {
         player.setVelocityX(PlayerSpeed);
-        playerScore.x = player.x + 75;
+        // playerScore.x = player.x + 75;
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_right`, true);
@@ -114,7 +114,7 @@ export default class Game extends Phaser.Scene {
         }
       } else {
         player.setVelocityX(0);
-        playerScore.x = player.x + 75;
+        // playerScore.x = player.x + 75;
 
         // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
         //   player.anims.play(`${player.id}_left_back`, true);
@@ -179,6 +179,14 @@ export default class Game extends Phaser.Scene {
       this.state.right = newState.right;
       window.socket.emit('moveX', this.state);
     }
+
+    // console.log(this.players.children);
+
+    this.players.children.entries.forEach((player) => {
+      const ownScore = this.playersScores.children.get('id', player.id);
+
+      ownScore.x = player.x + 75;
+    });
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;
     const getRandX = () => (Math.random() * (0.01 - 0.1)) + 0.1;
