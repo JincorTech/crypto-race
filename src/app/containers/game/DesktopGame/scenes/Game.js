@@ -138,10 +138,24 @@ export default class Game extends Phaser.Scene {
         return (row * (pos + 1)) + 180;
       };
 
+      const calcScore = (playerScore, val) => {
+        if (val >= 100) {
+          playerScore.setText(`+${(val - 100).toFixed(2)}`);
+          playerScore.style.setColor('#3DB54B');
+        }
+
+        if (val <= 100) {
+          playerScore.setText(`-${(100 - val).toFixed(2)}`);
+          playerScore.style.setColor('#ED1B25');
+        }
+      };
+
       data.forEach((p) => {
         const player = this.players.children.get('id', p.id);
         const playerScore = this.playersScores.children.get('id', p.id);
         const targetPosition = getY(p.position, data.length);
+
+        calcScore(playerScore, p.score);
 
         this.tweens.add({
           targets: [player, playerScore],
