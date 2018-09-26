@@ -118,16 +118,12 @@ class GameContainer extends React.Component {
     const { trackId } = queryString.parse(this.props.location.search);
     const { players } = this.props;
 
-    console.log('game: ', window.game);
-    console.log('players: ', players);
-    console.log('track id: ', trackId);
-
     // window.game.scene.start('game', { trackId, players: PLAYERS_MOCK });
 
     if (!this.props.players.length > 0) {
       window.socket.emit('loadTrack', { trackId });
     } else {
-      window.game.scene.start('game', { trackId, players: this.props.players });
+      window.game.scene.start('game', { trackId, players });
     }
 
     window.socket.on('gameover', (finalPlayers) => {
@@ -156,7 +152,7 @@ class GameContainer extends React.Component {
   componentWillUnmount() {
     if (window.game) window.game.destroy();
     if (this.state.track) {
-      this.state.track.pause()
+      this.state.track.pause();
     }
   }
 

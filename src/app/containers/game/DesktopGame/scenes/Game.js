@@ -62,6 +62,7 @@ export default class Game extends Phaser.Scene {
 
   create(data) {
     this.players = this.physics.add.group();
+    this.playersScores = this.add.group();
     this.planets = this.add.group();
 
     this.backgroundSpace = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'space').setOrigin(0);
@@ -77,6 +78,7 @@ export default class Game extends Phaser.Scene {
     this.moon = this.add.tileSprite((this.screenWidth / 2) - 180, -180, 360, 360, 'planet:moon').setOrigin(0);
 
     players.spawnPlayers(this, data.players);
+    players.createScore(this, data.players);
 
     //  Input Events
     this.commonContext.cursors = this.input.keyboard.createCursorKeys();
@@ -86,21 +88,24 @@ export default class Game extends Phaser.Scene {
 
     window.socket.on('moveXupdate', (data) => {
       const player = this.players.children.get('id', data.id);
+      const playerScore = this.playersScores.children.get('id', data.id);
+
+      console.log(playerScore);
 
       // TODO fix animation keys
 
       if (data.left) {
         player.setVelocityX(-1 * PlayerSpeed);
+        playerScore.x = player.x + 75;
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_left`, true);
-          console.log('play happend');
         } else {
           player.anims.stop(`${player.id}_left`);
-          console.log('stop happend');
         }
       } else if (data.right) {
         player.setVelocityX(PlayerSpeed);
+        playerScore.x = player.x + 75;
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_right`, true);
@@ -109,6 +114,7 @@ export default class Game extends Phaser.Scene {
         }
       } else {
         player.setVelocityX(0);
+        playerScore.x = player.x + 75;
 
         // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
         //   player.anims.play(`${player.id}_left_back`, true);
@@ -132,46 +138,18 @@ export default class Game extends Phaser.Scene {
         return (row * (pos + 1)) + 180;
       };
 
-      console.log(data); // id, postition
       data.forEach((p) => {
         const player = this.players.children.get('id', p.id);
+        const playerScore = this.playersScores.children.get('id', p.id);
         const targetPosition = getY(p.position, data.length);
 
-        console.log('target y', targetPosition);
-        console.log('curr y', player.y);
-
-        console.log(this);
-
-        // const tween = this.add(player);
-        // tween.to({ y: targetPosition }, 2000, Phaser.Easing.Bounce.Out, true);
-
         this.tweens.add({
-          targets: player,
+          targets: [player, playerScore],
           y: targetPosition,
           ease: 'Power1',
           duration: 2000,
-          repeat: 0,
-          onStart: () => console.log('tween start'),
-          onComplete: () => console.log('tween end')
+          repeat: 0
         });
-
-        // if (targetPosition < player.y) {
-        //   player.setVelocityY(-PlayerSpeed);
-        // } else if (targetPosition > player.y) {
-        //   player.setVelocityY(PlayerSpeed);
-        // } else {
-        //   player.setVelocityY(0);
-        // }
-
-        // if (player.y < targetPosition) {
-        //   while (player.y < targetPosition) {
-        //     player.y += 0.01;
-        //   }
-        // } else if (player.y > targetPosition) {
-        //   while (player.y > targetPosition) {
-        //     player.y -= 0.01;
-        //   }
-        // }
       });
     });
   }
@@ -185,44 +163,18 @@ export default class Game extends Phaser.Scene {
       trackId: this.state.trackId
     };
 
-    // const player = this.players.children.get('id', this.state.id);
-
     if (this.commonContext.cursors.left.isDown) {
       newState.left = true;
       newState.right = false;
-
-      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 30) {
-      //   player.anims.play(`${player.id}_left`, true);
-      // } else {
-      //   player.anims.stop(`${player.id}_left`);
-      // }
     } else if (this.commonContext.cursors.right.isDown) {
       newState.left = false;
       newState.right = true;
-
-      // if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 30) {
-      //   player.anims.play(`${player.id}_right`, true);
-      // } else {
-      //   player.anims.stop(`${player.id}_right`);
-      // }
     } else {
       newState.left = false;
       newState.right = false;
-
-      // player.setFrame(0);
-
-      // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
-      //   player.anims.play(`${player.id}_left_back`, true);
-      // } else if (rightStartFrame < player.frame.name && player.frame.name <= rightEndFrame) {
-      //   player.anims.play(`${player.id}_right_back`, true);
-      // } else {
-      //   player.anims.stop(`${player.id}_left_back`);
-      //   player.anims.stop(`${player.id}_right_back`);
-      //   player.setFrame(0);
-      // }
     }
 
-    if (true) {
+    if (!isEqual(this.state, newState)) {
       this.state.left = newState.left;
       this.state.right = newState.right;
       window.socket.emit('moveX', this.state);

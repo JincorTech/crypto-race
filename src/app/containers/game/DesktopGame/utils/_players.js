@@ -14,9 +14,12 @@ const spawnPlayers = (self, players) => {
     const playerObject = self.physics.add.sprite(player.x * percWidth, getY(player.position, players.length), `ship${player.ship.type + 1}`);
     playerObject.id = player.id;
     playerObject.isPlayer = player.email === getEmail();
-
+    playerObject.setCollideWorldBounds(true);
     self.players.add(playerObject);
-    self.players.children.get('id', player.id).setCollideWorldBounds(true);
+
+    // const scoreObject = self.add.text((player.x * percWidth) + 75, getY(player.position, players.length), '+0%', { fontSize: '20px', fill: '#ffffff' });
+    // scoreObject.id = player.id;
+    // self.playersScores.add(scoreObject);
 
     ships.createShipAnimation(self, player);
   };
@@ -24,4 +27,21 @@ const spawnPlayers = (self, players) => {
   players.map(spawnSinglePlayer);
 };
 
-export default { spawnPlayers };
+const createScore = (self, players) => {
+  const createSingleScore = (player) => {
+    const scoreObject = self.add.text(
+      (player.x * percWidth) + 75,
+      getY(player.position, players.length),
+      '+0%',
+      { fontSize: '20px', fill: '#ffffff' }
+    );
+    scoreObject.id = player.id;
+    self.playersScores.add(scoreObject);
+
+    console.log(self.playersScores);
+  };
+
+  players.map(createSingleScore);
+};
+
+export default { spawnPlayers, createScore };
