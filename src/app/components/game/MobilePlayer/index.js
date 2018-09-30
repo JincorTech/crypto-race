@@ -13,8 +13,8 @@ const MobilePlayer = (props) => {
   ));
 
   const renderScore = (val) => {
-    if (val >= 100) return <span className={s.green}>{(val - 100).toFixed(2)}</span>;
-    if (val <= 100) return <span className={s.red}>-{(100 - val).toFixed(2)}</span>;
+    if (val >= 100) return <span className={s.green}>+{(val - 100).toFixed(2)}%</span>;
+    if (val <= 100) return <span className={s.red}>-{(100 - val).toFixed(2)}%</span>;
 
     return null;
   };

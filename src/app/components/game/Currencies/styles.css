@@ -7,6 +7,14 @@
 
 .item {
   margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item > img {
+  width: 16px;
+  margin-right: 5px;
 }
 
 .label {

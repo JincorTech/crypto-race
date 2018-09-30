@@ -15,7 +15,7 @@ class Currencies extends Component {
           const value = ((currencies[ticker] - currenciesStart[ticker]) / currencies[ticker] * 100).toFixed(2);
           return (
           <div className={s.item} key={ticker}>
-            <span className={s.label}>{ticker}: </span>
+            <img src={`/assets/images/game_icons/curr/${ticker}.png`}/>
             <span style={{ color: this.chooseColor(value) }}>{value}%</span>
           </div>
         )})}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import AwaitingRace from '../../../components/common/AwaitingRace';
@@ -16,10 +17,11 @@ const Lobby = (props) => {
     return isPlayerExist ? trackEl : acc;
   }, {});
 
+  if (props.location.pathname === '/game') return null;
   if (track.status === 'awaiting') return <AwaitingRace track={track}/>;
   if (track.status === 'active') return <ActiveRace trackId={track.id}/>;
 
   return null;
 };
 
-export default connect((state) => ({ ...state.garage.tracks }))(Lobby);
+export default withRouter(connect((state) => ({ ...state.garage.tracks }))(Lobby));

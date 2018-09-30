@@ -35,7 +35,7 @@ class ShipCarousel extends Component {
     super(props);
 
     this.state = {
-      carousel: 0
+      carousel: 3
     };
   }
 
@@ -51,10 +51,16 @@ class ShipCarousel extends Component {
       beforeChange: (current, next) => this.setState({ carousel: next })
     };
 
-    const { setupShip } = this.props;
+    const { setupShip, setup } = this.props;
+
+    const renderButton = () => {
+      if (this.state.carousel === this.props.setup) return null;
+
+      return <button type="button" className={s.selectButton} onClick={() => setupShip(this.state.carousel)}>Select</button>;
+    };
 
     return (
-      <div className={s.container}>
+      <div className={s.container} id="joyride-garage-1">
         <img className={s.place} src={PlaceImg} />
         <Slider {...settings}>
           {ships.map((ship, index) => (
@@ -64,7 +70,7 @@ class ShipCarousel extends Component {
           ))}
         </Slider>
         <div className={s.selectButtonWrapper}>
-          <button type="button" id="joyride-garage-1" className={s.selectButton} onClick={() => setupShip(this.state.carousel)}>Select</button>
+          {renderButton()}
         </div>
       </div>
     );
@@ -73,7 +79,9 @@ class ShipCarousel extends Component {
 
 
 export default connect(
-  null,
+  (state) => ({
+    setup: state.garage.setup
+  }),
   {
     setupShip
   }

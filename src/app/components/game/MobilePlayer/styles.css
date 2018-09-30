@@ -67,14 +67,14 @@
 }
 
 .change {
-  font-size: 14px;
+  font-size: 16px;
   color: red;
   font-family: 'Roboto';
   font-weight: 500;
 }
 
-.change > .green { color: red }
-.change > .red { color: blue }
+.change > .green { color: #3DB54B }
+.change > .red { color: #ED1B25 }
 
 .bottom {
   margin: 5px -5px 0;
