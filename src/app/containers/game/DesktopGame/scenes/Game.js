@@ -63,6 +63,7 @@ export default class Game extends Phaser.Scene {
   create(data) {
     this.players = this.physics.add.group();
     this.playersScores = this.add.group();
+    this.playersNames = this.add.group();
     this.planets = this.add.group();
 
     this.backgroundSpace = this.add.tileSprite(0, 0, this.screenWidth, this.screenHeight, 'space').setOrigin(0);
@@ -88,15 +89,11 @@ export default class Game extends Phaser.Scene {
 
     window.socket.on('moveXupdate', (data) => {
       const player = this.players.children.get('id', data.id);
-      // const playerScore = this.playersScores.children.get('id', data.id);
-
-      // console.log(playerScore);
 
       // TODO fix animation keys
 
       if (data.left) {
         player.setVelocityX(-1 * PlayerSpeed);
-        // playerScore.x = player.x + 75;
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_left` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_left`, true);
@@ -105,7 +102,6 @@ export default class Game extends Phaser.Scene {
         }
       } else if (data.right) {
         player.setVelocityX(PlayerSpeed);
-        // playerScore.x = player.x + 75;
 
         if (!player.anims.currentFrame || player.anims.currentAnim.key !== `${player.id}_right` || player.anims.currentFrame.index < 29) {
           player.anims.play(`${player.id}_right`, true);
@@ -114,7 +110,6 @@ export default class Game extends Phaser.Scene {
         }
       } else {
         player.setVelocityX(0);
-        // playerScore.x = player.x + 75;
 
         // if (leftStartFrame < player.frame.name && player.frame.name <= leftEndFrame) {
         //   player.anims.play(`${player.id}_left_back`, true);
@@ -153,15 +148,32 @@ export default class Game extends Phaser.Scene {
       data.forEach((p) => {
         const player = this.players.children.get('id', p.id);
         const playerScore = this.playersScores.children.get('id', p.id);
+        const playerName = this.playersNames.children.get('id', p.id);
         const targetPosition = getY(p.position, data.length);
 
         calcScore(playerScore, p.score);
 
         this.tweens.add({
-          targets: [player, playerScore],
+          targets: player,
           y: targetPosition,
           ease: 'Power1',
-          duration: 2000,
+          duration: 1000,
+          repeat: 0
+        });
+
+        this.tweens.add({
+          targets: playerScore,
+          y: targetPosition - 10,
+          ease: 'Power1',
+          duration: 1000,
+          repeat: 0
+        });
+
+        this.tweens.add({
+          targets: playerName,
+          y: targetPosition + 20,
+          ease: 'Power1',
+          duration: 1000,
           repeat: 0
         });
       });
@@ -198,8 +210,10 @@ export default class Game extends Phaser.Scene {
 
     this.players.children.entries.forEach((player) => {
       const ownScore = this.playersScores.children.get('id', player.id);
+      const ownName = this.playersNames.children.get('id', player.id);
 
       ownScore.x = player.x + 75;
+      ownName.x = player.x + 75;
     });
 
     const getRandY = () => (Math.random() * (0.5 - 1.5)) + 1;

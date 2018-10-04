@@ -21,13 +21,12 @@ export const PLAYERS_MOCK = [
     ],
     id: '5b5cc3cbcbbeae012934cbd0',
     name: 'Aidar Ibatullin',
-    picture: '',
+    picture: 'https://graph.facebook.com/v2.6/1979032155461228/picture?type=large',
     position: 3,
     ship: {
       type: 0
     },
-    x: 20,
-    score: 99.8,
+    x: 20
   },
   {
     email: 'amazing.space.invader@yandex.ru',
@@ -36,18 +35,16 @@ export const PLAYERS_MOCK = [
       { name: 'btc', value: 20 },
       { name: 'eth', value: 20 },
       { name: 'ltc', value: 10 },
-      { name: 'xrp', value: 10 },
-      { name: 'rnd', value: 30 }
+      { name: 'xrp', value: 10 }
     ],
     id: '5b5cc3cbcbbeae012934cbd1',
     name: 'First',
-    picture: '',
+    picture: 'https://graph.facebook.com/v2.6/1979032155461228/picture?type=large',
     position: 1,
     ship: {
       type: 1
     },
-    x: 40,
-    score: 100.1,
+    x: 40
   },
   {
     email: 'amazing.space.invader@mail.ru',
@@ -58,13 +55,12 @@ export const PLAYERS_MOCK = [
     ],
     id: '5b5cc3cbcbbeae012934cbd2',
     name: 'Autobot',
-    picture: '',
+    picture: 'https://graph.facebook.com/v2.6/1979032155461228/picture?type=large',
     position: 2,
     ship: {
       type: 2
     },
-    x: 60,
-    score: 100,
+    x: 60
   },
   {
     email: 'amazing.space.invader@rambler.ru',
@@ -73,13 +69,12 @@ export const PLAYERS_MOCK = [
     ],
     id: '5b5cc3cbcbbeae012934cbd3',
     name: 'Last',
-    picture: '',
+    picture: 'https://graph.facebook.com/v2.6/1979032155461228/picture?type=large',
     position: 0,
     ship: {
       type: 3
     },
-    x: 80,
-    score: 99.8,
+    x: 80
   }
 ];
 

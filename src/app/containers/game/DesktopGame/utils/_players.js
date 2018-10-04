@@ -11,15 +11,24 @@ const getY = (pos, playersLen) => {
 
 const spawnPlayers = (self, players) => {
   const spawnSinglePlayer = (player) => {
-    const playerObject = self.physics.add.sprite(player.x * percWidth, getY(player.position, players.length), `ship${player.ship.type + 1}`);
+    const playerObject = self.physics.add.sprite(
+      player.x * percWidth,
+      getY(player.position, players.length),
+      `ship${player.ship.type + 1}`
+    );
     playerObject.id = player.id;
     playerObject.isPlayer = player.email === getEmail();
     playerObject.setCollideWorldBounds(true);
     self.players.add(playerObject);
 
-    // const scoreObject = self.add.text((player.x * percWidth) + 75, getY(player.position, players.length), '+0%', { fontSize: '20px', fill: '#ffffff' });
-    // scoreObject.id = player.id;
-    // self.playersScores.add(scoreObject);
+    const nameObject = self.add.text(
+      (player.x * percWidth) + 75,
+      getY(player.position, players.length) + 20,
+      player.name,
+      { fontFamily: 'Roboto', fontSize: '14px', fill: '#ffffff' }
+    );
+    nameObject.id = player.id;
+    self.playersNames.add(nameObject);
 
     ships.createShipAnimation(self, player);
   };
@@ -31,14 +40,12 @@ const createScore = (self, players) => {
   const createSingleScore = (player) => {
     const scoreObject = self.add.text(
       (player.x * percWidth) + 75,
-      getY(player.position, players.length),
+      getY(player.position, players.length) - 10,
       '+0%',
-      { fontSize: '20px', fill: '#ffffff' }
+      { fontFamily: 'Roboto', fontSize: '20px', fill: '#ffffff' }
     );
     scoreObject.id = player.id;
     self.playersScores.add(scoreObject);
-
-    console.log(self.playersScores);
   };
 
   players.map(createSingleScore);

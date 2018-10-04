@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import Phaser from 'phaser';
 import queryString from 'query-string';
 import isArrayEqual from 'array-equal';
+import Slider from 'react-slick';
+import cx from 'classnames';
 
 import { fetchInitialData } from '../../../redux/modules/game/game';
 
@@ -11,8 +13,6 @@ import Game from './scenes/Game';
 import GameOverPopup from '../../../components/game/GameOverPopup';
 import Topbar from '../../../components/game/Topbar';
 import Map from '../../../components/game/Map';
-import Currencies from '../../../components/game/Currencies';
-import Positions from '../../../components/game/Positions';
 import Chat from '../../../components/game/Chat';
 import Profile from '../../../components/game/Profile';
 
@@ -21,61 +21,24 @@ import MobileGame from '../MobileGame';
 import md from '../../../utils/mobile';
 import s from './styles.css';
 
+import { PLAYERS_MOCK } from '../Game';
 
-const PLAYERS_MOCK = [
-  {
-    email: 'amazing.space.invader@gmail.com',
-    fuel: [],
-    id: '5b5cc3cbcbbeae012934cbd0',
-    name: 'Aidar Ibatullin',
-    picture: '',
-    position: 0,
-    ship: {
-      type: 0
-    },
-    x: 20,
-    score: 99.8,
-  },
-  {
-    email: 'amazing.space.invader@yandex.ru',
-    fuel: [],
-    id: '5b5cc3cbcbbeae012934cbd1',
-    name: 'Autobot',
-    picture: '',
-    position: 1,
-    ship: {
-      type: 1
-    },
-    x: 40,
-    score: 100.1,
-  },
-  {
-    email: 'amazing.space.invader@mail.ru',
-    fuel: [],
-    id: '5b5cc3cbcbbeae012934cbd2',
-    name: 'Autobot',
-    picture: '',
-    position: 2,
-    ship: {
-      type: 2
-    },
-    x: 60,
-    score: 100,
-  },
-  {
-    email: 'amazing.space.invader@rambler.ru',
-    fuel: [],
-    id: '5b5cc3cbcbbeae012934cbd3',
-    name: 'Autobot',
-    picture: '',
-    position: 3,
-    ship: {
-      type: 3
-    },
-    x: 80,
-    score: 99.8,
-  }
-];
+const ArrowLeftImg = '/assets/images/your_ship/arrow_left.png';
+const ArrowRightImg = '/assets/images/your_ship/arrow_right.png';
+
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <img className={cx(s.arrow, s.arrowRight)} src={ArrowRightImg} onClick={onClick}/>
+  );
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <img className={cx(s.arrow, s.arrowLeft)} src={ArrowLeftImg} onClick={onClick}/>
+  );
+}
 
 class GameContainer extends React.Component {
   constructor(props) {
@@ -160,22 +123,61 @@ class GameContainer extends React.Component {
     const {
       start,
       end,
-      player
+      player,
+      players
     } = this.props;
+
+    const profileCarouselSettings = {
+      dots: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow/>,
+      prevArrow: <PrevArrow/>
+    };
 
     if (md.mobile()) return <MobileGame />;
 
     return (
       <div>
-        <div className={s.topbar}><Topbar startTS={start} endTS={end}/></div>
-        <div className={s.chat}><Chat trackId={queryString.parse(this.props.location.search).trackId}/></div>
-        <div className={s.map}><Map startTS={start} endTS={end}/></div>
-        <div className={s.currencies}><Currencies currencies={this.state.currencies} currenciesStart={this.state.currenciesStart}/></div>
-        <div className={s.positions}><Positions positions={this.state.positions} players={this.props.players}/></div>
-        <div className={s.profile}><Profile player={player}/></div>
+        <div className={s.topbar}>
+          <Topbar
+            startTS={start}
+            endTS={end}
+            currencies={this.state.currencies}
+            currenciesStart={this.state.currenciesStart}/>
+        </div>
+
+        <div className={s.chat}>
+          <Chat trackId={queryString.parse(this.props.location.search).trackId}/>
+        </div>
+
+        <div className={s.map}>
+          <Map
+            startTS={start}
+            endTS={end}/>
+        </div>
+
+        <div className={s.profile}>
+          <div className={s.left}><Profile player={player}/></div>
+          <div className={s.right}>
+            <Slider {...profileCarouselSettings}>
+              {players
+              .filter((p) => p.id !== player.id)
+              .map((p) =>
+                <div className={s.pcsItem} key={p.id}><Profile player={p}/></div>)}
+            </Slider>
+          </div>
+        </div>
+
         <div className={s.backdrop}/>
-        <div className={s.container} id="content"></div>
-        {this.state.gameover && <div className={s.gameover}><GameOverPopup players={this.state.players}/></div>}
+
+        <div className={s.container} id="content"/>
+
+        {this.state.gameover &&
+          <div className={s.gameover}>
+            <GameOverPopup players={this.state.players}/>
+          </div>}
       </div>
     );
   }

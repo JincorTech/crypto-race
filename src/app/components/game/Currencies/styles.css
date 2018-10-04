@@ -1,7 +1,6 @@
 .container {
   color: #fff;
   padding: 10px;
-  background-color: rgba(0, 0, 0, .5);
   display: flex;
 }
 

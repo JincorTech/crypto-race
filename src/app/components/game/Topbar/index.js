@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import s from './styles.css';
 
+import Currencies from '../Currencies';
+
 import timers from '../../../utils/timers';
 
 class Topbar extends Component {
@@ -49,12 +51,11 @@ class Topbar extends Component {
 
           <div className={s.divider}/>
 
-          <nav className={s.nav}>
-            <a href="javascript:void(0);">RACES</a>
-            <a href="javascript:void(0);">GARAGE</a>
-            <a href="javascript:void(0);">SHOP</a>
-            <a href="javascript:void(0);">LOG OUT</a>
-          </nav>
+          <div className={s.currencies}>
+            <Currencies
+              currencies={this.props.currencies}
+              currenciesStart={this.props.currenciesStart}/>
+          </div>
         </div>
       </div>
     );
